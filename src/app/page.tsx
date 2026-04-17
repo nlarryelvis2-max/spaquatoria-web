@@ -438,6 +438,12 @@ export default function HomePage() {
             className="eyebrow tap px-2 py-0.5 -mr-2" style={{ color: "var(--lp-tertiary)" }}>Выйти</button>
         </div>
 
+        <div className="relative overflow-hidden mb-8 -mx-5" style={{ borderRadius: "0 0 28px 28px" }}>
+          <img src="/brand/hero/face-care.jpg" alt=""
+            className="w-full h-[220px] object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 60%)" }} />
+        </div>
+
         <h1 className="heading-xl mb-6">
           Ритуал кожи,<br/>
           <span style={{ color: "var(--lp-muted)", fontStyle: "italic" }}>настроенный вами</span>
