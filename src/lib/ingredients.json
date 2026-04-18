@@ -1,0 +1,564 @@
+[
+  {
+    "id": "polynesian-pearl",
+    "name": "Экстракт полинезийского жемчуга",
+    "category": "marine",
+    "description": "Содержит 22 аминокислоты, минералы и конхиолин. Глубоко увлажняет, выравнивает тон, придаёт сияние. Основа линии Pearl Endorphin.",
+    "benefits": [
+      "moisturizing",
+      "antiAge"
+    ],
+    "faceLines": [
+      "pearl-endorphin"
+    ],
+    "safetyScore": 95
+  },
+  {
+    "id": "peptide-complex",
+    "name": "Пептидный комплекс Matrixyl™",
+    "category": "peptide",
+    "description": "Пальмитоил трипептид-1 и пальмитоил тетрапептид-7. Стимулирует синтез коллагена, эластина и гиалуроновой кислоты. Заполняет морщины изнутри.",
+    "benefits": [
+      "antiAge",
+      "lifting"
+    ],
+    "faceLines": [
+      "pearl-endorphin",
+      "grand-cru-elixir"
+    ],
+    "safetyScore": 92
+  },
+  {
+    "id": "red-grape",
+    "name": "Экстракт красного винограда",
+    "category": "botanical",
+    "description": "Ресвератрол и полифенолы — мощнейшие антиоксиданты. Защищают клетки от свободных радикалов, замедляют фотостарение. Ключевой ингредиент Grand Cru Elixir.",
+    "benefits": [
+      "antiAge",
+      "nourishing"
+    ],
+    "faceLines": [
+      "grand-cru-elixir"
+    ],
+    "safetyScore": 96
+  },
+  {
+    "id": "edelweiss-stem-cells",
+    "name": "Стволовые клетки эдельвейса",
+    "category": "botanical",
+    "description": "Экстракт Leontopodium alpinum. Активирует теломеразу, защищает ДНК клеток от повреждений, восстанавливает барьерную функцию кожи.",
+    "benefits": [
+      "antiAge",
+      "nourishing"
+    ],
+    "faceLines": [
+      "grand-cru-elixir",
+      "swan-grace"
+    ],
+    "safetyScore": 94
+  },
+  {
+    "id": "carnosine",
+    "name": "Карнозин",
+    "category": "peptide",
+    "description": "Дипептид-антиоксидант. Нейтрализует карбонильный стресс, предотвращает гликацию белков. Борется с пожелтением и потерей упругости кожи.",
+    "benefits": [
+      "antiAge"
+    ],
+    "faceLines": [
+      "grand-cru-elixir"
+    ],
+    "safetyScore": 91
+  },
+  {
+    "id": "swan-peptide",
+    "name": "Лебединый пептид",
+    "category": "peptide",
+    "description": "Авторский пептидный комплекс SPAquatoria для лифтинга шеи и декольте. Укрепляет овал лица, подтягивает кожу шеи.",
+    "benefits": [
+      "lifting",
+      "antiAge"
+    ],
+    "faceLines": [
+      "swan-grace"
+    ],
+    "safetyScore": 90
+  },
+  {
+    "id": "hyaluronic-acid",
+    "name": "Гиалуроновая кислота",
+    "category": "acid",
+    "description": "Низко- и высокомолекулярная. Низкомолекулярная проникает в глубокие слои, высокомолекулярная создаёт увлажняющую плёнку на поверхности.",
+    "benefits": [
+      "moisturizing",
+      "antiAge"
+    ],
+    "faceLines": [
+      "pearl-endorphin",
+      "grand-cru-elixir",
+      "swan-grace"
+    ],
+    "safetyScore": 98
+  },
+  {
+    "id": "shea-butter",
+    "name": "Масло ши (карите)",
+    "category": "oil",
+    "description": "Богато витаминами A, E, F. Восстанавливает липидный барьер, питает сухую кожу, устраняет шелушение. Не комедогенно.",
+    "benefits": [
+      "nourishing",
+      "moisturizing"
+    ],
+    "faceLines": [
+      "pearl-endorphin"
+    ],
+    "safetyScore": 97
+  },
+  {
+    "id": "jojoba-oil",
+    "name": "Масло жожоба",
+    "category": "oil",
+    "description": "Жидкий воск, по составу близкий к себуму. Регулирует салоотделение, не забивает поры, создаёт защитный барьер.",
+    "benefits": [
+      "moisturizing",
+      "nourishing"
+    ],
+    "faceLines": [
+      "pearl-endorphin",
+      "grand-cru-elixir"
+    ],
+    "safetyScore": 96
+  },
+  {
+    "id": "vitamin-c",
+    "name": "Витамин C (аскорбил глюкозид)",
+    "category": "vitamin",
+    "description": "Стабильная форма витамина C. Антиоксидант, осветляет пигментацию, стимулирует синтез коллагена, выравнивает тон.",
+    "benefits": [
+      "antiAge",
+      "nourishing"
+    ],
+    "faceLines": [
+      "pearl-endorphin",
+      "grand-cru-elixir"
+    ],
+    "safetyScore": 95
+  },
+  {
+    "id": "vitamin-e",
+    "name": "Витамин E (токоферол)",
+    "category": "vitamin",
+    "description": "Мощный антиоксидант. Защищает клеточные мембраны, ускоряет регенерацию, предотвращает трансэпидермальную потерю влаги.",
+    "benefits": [
+      "antiAge",
+      "nourishing"
+    ],
+    "faceLines": [
+      "pearl-endorphin",
+      "grand-cru-elixir",
+      "swan-grace"
+    ],
+    "safetyScore": 96
+  },
+  {
+    "id": "retinol",
+    "name": "Ретинол (витамин A)",
+    "category": "vitamin",
+    "description": "Золотой стандарт anti-age. Ускоряет обновление клеток, стимулирует коллаген, уменьшает глубину морщин, выравнивает рельеф.",
+    "benefits": [
+      "antiAge",
+      "lifting"
+    ],
+    "faceLines": [
+      "grand-cru-elixir",
+      "swan-grace"
+    ],
+    "safetyScore": 88
+  },
+  {
+    "id": "squalane",
+    "name": "Сквалан",
+    "category": "oil",
+    "description": "Растительный аналог компонента кожного себума. Лёгкий, некомедогенный. Восстанавливает барьер, смягчает, не оставляет жирности.",
+    "benefits": [
+      "moisturizing",
+      "nourishing"
+    ],
+    "faceLines": [
+      "pearl-endorphin",
+      "grand-cru-elixir"
+    ],
+    "safetyScore": 97
+  },
+  {
+    "id": "aloe-vera",
+    "name": "Алоэ вера",
+    "category": "botanical",
+    "description": "200+ биоактивных компонентов. Успокаивает, увлажняет, ускоряет заживление. Противовоспалительное и антибактериальное действие.",
+    "benefits": [
+      "moisturizing",
+      "nourishing"
+    ],
+    "faceLines": [
+      "pearl-endorphin"
+    ],
+    "safetyScore": 98
+  },
+  {
+    "id": "marine-collagen",
+    "name": "Морской коллаген",
+    "category": "marine",
+    "description": "Гидролизат коллагена из морских рыб. Мелкие пептиды проникают в дерму, стимулируют собственный коллагеногенез, уплотняют кожу.",
+    "benefits": [
+      "antiAge",
+      "lifting"
+    ],
+    "faceLines": [
+      "swan-grace"
+    ],
+    "safetyScore": 93
+  },
+  {
+    "id": "spirulina",
+    "name": "Спирулина",
+    "category": "marine",
+    "description": "Микроводоросль с 65% белка. Содержит хлорофилл, фикоцианин, железо. Детоксицирует, насыщает кислородом, выравнивает тон.",
+    "benefits": [
+      "detox",
+      "nourishing"
+    ],
+    "faceLines": [],
+    "safetyScore": 94
+  },
+  {
+    "id": "fucus",
+    "name": "Фукус пузырчатый",
+    "category": "marine",
+    "description": "Бурая водоросль, богатая йодом, фукоиданом и альгинатами. Стимулирует микроциркуляцию, выводит токсины, укрепляет стенки сосудов.",
+    "benefits": [
+      "detox",
+      "antiAge"
+    ],
+    "faceLines": [],
+    "safetyScore": 92
+  },
+  {
+    "id": "laminaria",
+    "name": "Ламинария",
+    "category": "marine",
+    "description": "Морская капуста — кладезь минералов (йод, калий, магний). Увлажняет, подтягивает, выводит лишнюю жидкость. Основа талассотерапии.",
+    "benefits": [
+      "moisturizing",
+      "detox"
+    ],
+    "faceLines": [],
+    "safetyScore": 93
+  },
+  {
+    "id": "dead-sea-mud",
+    "name": "Грязь Мёртвого моря",
+    "category": "marine",
+    "description": "26 минералов, магний, бром, калий. Глубоко очищает поры, выводит токсины, снимает воспаления, улучшает тургор.",
+    "benefits": [
+      "detox",
+      "cleansing"
+    ],
+    "faceLines": [],
+    "safetyScore": 91
+  },
+  {
+    "id": "caffeine",
+    "name": "Кофеин",
+    "category": "botanical",
+    "description": "Стимулирует микроциркуляцию, уменьшает отёчность, активирует липолиз. Антиоксидант. Основной компонент антицеллюлитных программ.",
+    "benefits": [
+      "antiCellulite",
+      "detox"
+    ],
+    "faceLines": [],
+    "safetyScore": 89
+  },
+  {
+    "id": "ginger-extract",
+    "name": "Экстракт имбиря",
+    "category": "botanical",
+    "description": "Гингеролы разогревают, стимулируют кровоток, ускоряют лимфодренаж. Антиоксидант и противовоспалительное.",
+    "benefits": [
+      "antiCellulite",
+      "detox"
+    ],
+    "faceLines": [],
+    "safetyScore": 93
+  },
+  {
+    "id": "grape-seed-oil",
+    "name": "Масло виноградной косточки",
+    "category": "oil",
+    "description": "Линолевая кислота + проантоцианидины. Лёгкое, быстро впитывается. Укрепляет капилляры, защищает от фотостарения.",
+    "benefits": [
+      "nourishing",
+      "antiAge"
+    ],
+    "faceLines": [
+      "grand-cru-elixir"
+    ],
+    "safetyScore": 95
+  },
+  {
+    "id": "macadamia-oil",
+    "name": "Масло макадамии",
+    "category": "oil",
+    "description": "Пальмитолеиновая кислота — редкий компонент, идентичный кожному себуму. Глубоко питает зрелую кожу, не вызывает комедонов.",
+    "benefits": [
+      "nourishing",
+      "moisturizing"
+    ],
+    "faceLines": [
+      "swan-grace"
+    ],
+    "safetyScore": 96
+  },
+  {
+    "id": "panthenol",
+    "name": "Пантенол (провитамин B5)",
+    "category": "vitamin",
+    "description": "Универсальный восстановитель. Ускоряет регенерацию, снимает раздражение, удерживает влагу в эпидермисе.",
+    "benefits": [
+      "moisturizing",
+      "nourishing"
+    ],
+    "faceLines": [
+      "pearl-endorphin"
+    ],
+    "safetyScore": 97
+  },
+  {
+    "id": "niacinamide",
+    "name": "Ниацинамид (витамин B3)",
+    "category": "vitamin",
+    "description": "Укрепляет барьер, сужает поры, осветляет пигментацию, снижает салоотделение. Совместим с большинством активов.",
+    "benefits": [
+      "antiAge",
+      "moisturizing"
+    ],
+    "faceLines": [
+      "pearl-endorphin",
+      "grand-cru-elixir"
+    ],
+    "safetyScore": 96
+  },
+  {
+    "id": "glycolic-acid",
+    "name": "Гликолевая кислота",
+    "category": "acid",
+    "description": "Самая маленькая AHA. Растворяет межклеточные связи ороговевшего слоя, ускоряет обновление, выравнивает рельеф и тон.",
+    "benefits": [
+      "cleansing",
+      "antiAge"
+    ],
+    "faceLines": [
+      "grand-cru-elixir"
+    ],
+    "safetyScore": 85
+  },
+  {
+    "id": "lactic-acid",
+    "name": "Молочная кислота",
+    "category": "acid",
+    "description": "Мягкая AHA. Отшелушивает, увлажняет (NMF-компонент), осветляет. Подходит чувствительной коже.",
+    "benefits": [
+      "cleansing",
+      "moisturizing"
+    ],
+    "faceLines": [
+      "pearl-endorphin"
+    ],
+    "safetyScore": 88
+  },
+  {
+    "id": "salicylic-acid",
+    "name": "Салициловая кислота",
+    "category": "acid",
+    "description": "BHA — проникает в поры, растворяет себум. Противовоспалительная, антибактериальная. Для жирной и проблемной кожи.",
+    "benefits": [
+      "cleansing",
+      "detox"
+    ],
+    "faceLines": [],
+    "safetyScore": 84
+  },
+  {
+    "id": "argireline",
+    "name": "Аргирелин",
+    "category": "peptide",
+    "description": "Ацетил гексапептид-8. «Ботокс в кремe» — расслабляет мимические мышцы, уменьшает глубину морщин вокруг глаз и лба.",
+    "benefits": [
+      "antiAge",
+      "lifting"
+    ],
+    "faceLines": [
+      "swan-grace"
+    ],
+    "safetyScore": 90
+  },
+  {
+    "id": "ceramides",
+    "name": "Церамиды",
+    "category": "oil",
+    "description": "Липиды, составляющие 50% межклеточного цемента. Восстанавливают барьер, предотвращают ТЭПВ, защищают от внешних агрессоров.",
+    "benefits": [
+      "moisturizing",
+      "nourishing"
+    ],
+    "faceLines": [
+      "pearl-endorphin",
+      "swan-grace"
+    ],
+    "safetyScore": 97
+  },
+  {
+    "id": "coenzyme-q10",
+    "name": "Коэнзим Q10",
+    "category": "enzyme",
+    "description": "Убихинон — клеточный энергетик. Защищает митохондрии от окислительного стресса, восстанавливает энергетический потенциал клеток.",
+    "benefits": [
+      "antiAge",
+      "nourishing"
+    ],
+    "faceLines": [
+      "grand-cru-elixir",
+      "swan-grace"
+    ],
+    "safetyScore": 94
+  },
+  {
+    "id": "green-tea",
+    "name": "Экстракт зелёного чая",
+    "category": "botanical",
+    "description": "EGCG — катехин с мощным антиоксидантным действием. Защищает от UV, успокаивает, матирует, сужает поры.",
+    "benefits": [
+      "antiAge",
+      "detox"
+    ],
+    "faceLines": [],
+    "safetyScore": 96
+  },
+  {
+    "id": "chamomile",
+    "name": "Экстракт ромашки",
+    "category": "botanical",
+    "description": "Бисаболол и азулен — противовоспалительные компоненты. Успокаивает раздражённую кожу, снимает покраснение и зуд.",
+    "benefits": [
+      "nourishing",
+      "moisturizing"
+    ],
+    "faceLines": [
+      "pearl-endorphin"
+    ],
+    "safetyScore": 97
+  },
+  {
+    "id": "rosemary",
+    "name": "Экстракт розмарина",
+    "category": "botanical",
+    "description": "Карнозиновая кислота и розмариновая кислота. Антиоксидант, стимулирует кровоток, тонизирует, укрепляет сосуды.",
+    "benefits": [
+      "detox",
+      "antiAge"
+    ],
+    "faceLines": [
+      "grand-cru-elixir"
+    ],
+    "safetyScore": 93
+  },
+  {
+    "id": "allantoin",
+    "name": "Аллантоин",
+    "category": "botanical",
+    "description": "Стимулирует обновление клеток, смягчает ороговевший слой, ускоряет заживление микроповреждений. Не вызывает раздражения.",
+    "benefits": [
+      "nourishing",
+      "moisturizing"
+    ],
+    "faceLines": [
+      "pearl-endorphin"
+    ],
+    "safetyScore": 96
+  },
+  {
+    "id": "argan-oil",
+    "name": "Масло арганы",
+    "category": "oil",
+    "description": "«Жидкое золото Марокко». Токоферолы, стерины, ненасыщенные жирные кислоты. Питает, разглаживает, защищает от UV.",
+    "benefits": [
+      "nourishing",
+      "antiAge"
+    ],
+    "faceLines": [
+      "swan-grace"
+    ],
+    "safetyScore": 95
+  },
+  {
+    "id": "sea-salt",
+    "name": "Морская соль",
+    "category": "marine",
+    "description": "Минеральный комплекс: магний, калий, кальций, бром. Осмотически вытягивает токсины, улучшает микроциркуляцию, тонизирует.",
+    "benefits": [
+      "detox",
+      "cleansing"
+    ],
+    "faceLines": [],
+    "safetyScore": 90
+  },
+  {
+    "id": "thermal-water",
+    "name": "Термальная вода",
+    "category": "marine",
+    "description": "Минерализованная вода из термальных источников. Успокаивает, снимает раздражение, восстанавливает минеральный баланс кожи.",
+    "benefits": [
+      "moisturizing"
+    ],
+    "faceLines": [
+      "pearl-endorphin"
+    ],
+    "safetyScore": 98
+  },
+  {
+    "id": "papain",
+    "name": "Папаин",
+    "category": "enzyme",
+    "description": "Фермент из папайи. Мягко расщепляет кератин, убирает ороговевшие клетки без механического повреждения. Подходит чувствительной коже.",
+    "benefits": [
+      "cleansing"
+    ],
+    "faceLines": [],
+    "safetyScore": 87
+  },
+  {
+    "id": "bromelain",
+    "name": "Бромелаин",
+    "category": "enzyme",
+    "description": "Фермент из ананаса. Противовоспалительное и отшелушивающее действие. Уменьшает отёчность, выравнивает текстуру кожи.",
+    "benefits": [
+      "cleansing",
+      "detox"
+    ],
+    "faceLines": [],
+    "safetyScore": 86
+  },
+  {
+    "id": "centella-asiatica",
+    "name": "Центелла азиатская",
+    "category": "botanical",
+    "description": "Мадекассосид и азиатикозид. Стимулирует синтез коллагена I и III типа, укрепляет сосуды, ускоряет заживление.",
+    "benefits": [
+      "antiAge",
+      "nourishing"
+    ],
+    "faceLines": [
+      "swan-grace"
+    ],
+    "safetyScore": 95
+  }
+]

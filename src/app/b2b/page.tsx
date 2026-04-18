@@ -88,7 +88,7 @@ export default function B2BPage() {
             { label: "SPA-центры", img: "/brand/hero/massage.jpg" },
             { label: "Салоны красоты", img: "/brand/hero/face-care.jpg" },
             { label: "Магазины косметики", img: "/brand/hero/body-care.jpg" },
-            { label: "Маркетплейсы", img: "/brand/hero/training.jpg" },
+            { label: "Маркетплейсы", img: "/brand/hero/subscribe-bg.png" },
           ].map(f => (
             <div key={f.label} className="glass-card py-3 text-center overflow-hidden">
               <img src={f.img} alt="" className="w-full h-[60px] object-cover rounded-lg mb-2 px-3" />

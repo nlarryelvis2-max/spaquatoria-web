@@ -140,7 +140,7 @@ export default function DealersPage() {
     return (
       <div className="max-w-lg mx-auto px-5 py-6">
         <div className="relative -mx-5 mb-6 overflow-hidden" style={{ borderRadius: "0 0 28px 28px" }}>
-          <img src="/brand/hero/training.jpg" alt=""
+          <img src="/brand/hero/subscribe-bg.png" alt=""
             className="w-full h-[160px] object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
         </div>

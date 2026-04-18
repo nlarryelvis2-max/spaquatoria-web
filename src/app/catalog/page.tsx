@@ -166,7 +166,7 @@ function CollectionSection({ collectionId, items, dominantDosha }: {
     <div>
       {collImage && (
         <div className="mb-3 overflow-hidden" style={{ borderRadius: 18 }}>
-          <img src={collImage} alt={name} className="w-full h-[120px] object-cover" />
+          <img src={collImage} alt={name} className="w-full h-[120px] object-cover" style={{ objectPosition: "top" }} />
         </div>
       )}
       <div className="flex items-start justify-between mb-2">
@@ -400,7 +400,7 @@ function CatalogInner() {
                 >
                   {cat.image && (
                     <div className="aspect-[4/3] w-full overflow-hidden">
-                      <img src={cat.image} alt="" className="w-full h-full object-cover" />
+                      <img src={cat.image} alt="" className="w-full h-full object-cover" style={{ objectPosition: "center 30%" }} />
                     </div>
                   )}
                   <div className="p-3.5">

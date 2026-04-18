@@ -22,7 +22,7 @@ export default async function FaceLinePage({ params }: { params: Promise<{ id: s
       {/* Hero image */}
       <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 28px 28px" }}>
         <img src={`/about/lines/${line.id}.jpg`} alt={line.name}
-          className="w-full h-[200px] object-cover" />
+          className="w-full h-[200px] object-cover" style={{ objectPosition: "top" }} />
         <div className="absolute inset-0" style={{ background: `linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)` }} />
         <div className="absolute bottom-4 left-5">
           <span className="eyebrow" style={{ color: "rgba(255,255,255,0.8)" }}>Линия для лица</span>
@@ -99,7 +99,7 @@ export default async function FaceLinePage({ params }: { params: Promise<{ id: s
         <div className="mt-6">
           <div className="relative -mx-5 mb-4 overflow-hidden rounded-2xl mx-0">
             <img src={`/brand/collections/${line.id}.jpg`} alt={`${line.name} коллекция`}
-              className="w-full h-[120px] object-cover rounded-2xl" />
+              className="w-full h-[120px] object-cover rounded-2xl" style={{ objectPosition: "top" }} />
           </div>
           <div className="flex items-center justify-between mb-3">
             <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide">Средства линии</p>

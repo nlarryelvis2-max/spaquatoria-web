@@ -208,12 +208,16 @@ export default function ProfilePage() {
   return (
     <div className="max-w-md mx-auto px-5 py-5 pb-28">
 
-      {/* ── 1. HERO: Avatar + Name + Dosha + Level ───── */}
+      {/* ── 1. HERO: Banner + Avatar + Name + Dosha ───── */}
       <div className="mb-6">
-        <p className="eyebrow mb-2">Мой путь</p>
-        <div className="flex items-center gap-4">
+        <div className="relative overflow-hidden -mx-5 mb-5" style={{ borderRadius: "0 0 28px 28px" }}>
+          <img src="/brand/hero/body-care.jpg" alt="" className="w-full h-[180px] object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 55%)" }} />
+        </div>
+
+        <div className="flex items-center gap-4 -mt-12 relative">
           <div className="w-16 h-16 flex items-center justify-center shrink-0"
-            style={{ background: dosha ? `${DOSHA_COLORS[dosha]}18` : "var(--lp-soft)", borderRadius: "50%" }}>
+            style={{ background: dosha ? `${DOSHA_COLORS[dosha]}18` : "var(--lp-soft)", borderRadius: "50%", border: "3px solid var(--lp-bg)" }}>
             <span className="text-[22px] font-light" style={{ color: dosha ? DOSHA_COLORS[dosha] : "var(--lp-muted)", letterSpacing: "0.04em" }}>
               {account.name.charAt(0).toUpperCase()}
             </span>

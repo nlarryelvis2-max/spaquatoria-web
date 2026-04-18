@@ -471,18 +471,25 @@ export default function HomePage() {
       {/* ═══ IN FOCUS — Ingredient of the Day ═══════ */}
       <section className="mb-14">
         <span className="eyebrow mb-4 block">В фокусе · Ингредиент</span>
-        <Link href={`/lines/${ingredientStory.lineId}`} className="block tap">
-          <div className="paper-card" style={{ borderLeft: `2px solid ${ingredientStory.color}` }}>
-            <h2 className="heading-lg mb-2" style={{ color: ingredientStory.color }}>
-              {ingredientStory.title}
-            </h2>
-            <p className="eyebrow mb-5" style={{ color: "var(--lp-muted)" }}>{ingredientStory.subtitle}</p>
-            <p className="body-lp" style={{ lineHeight: 1.7 }}>{ingredientStory.text}</p>
-            <div className="flex items-center gap-2 mt-6">
-              <span className="eyebrow" style={{ color: ingredientStory.color }}>Читать далее</span>
-              <svg className="w-3 h-3" style={{ color: ingredientStory.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
+        <Link href={`/lines/${ingredientStory.lineId}`} className="block tap group">
+          <div className="paper-card overflow-hidden" style={{ borderLeft: `2px solid ${ingredientStory.color}`, padding: 0 }}>
+            <div className="h-[160px] overflow-hidden" style={{ background: "var(--lp-soft)" }}>
+              <img src={`/brand/collections/${ingredientStory.lineId}.jpg`} alt=""
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                style={{ objectPosition: "top" }} />
+            </div>
+            <div className="p-6">
+              <h2 className="heading-lg mb-2" style={{ color: ingredientStory.color }}>
+                {ingredientStory.title}
+              </h2>
+              <p className="eyebrow mb-5" style={{ color: "var(--lp-muted)" }}>{ingredientStory.subtitle}</p>
+              <p className="body-lp" style={{ lineHeight: 1.7 }}>{ingredientStory.text}</p>
+              <div className="flex items-center gap-2 mt-6">
+                <span className="eyebrow" style={{ color: ingredientStory.color }}>Читать далее</span>
+                <svg className="w-3 h-3" style={{ color: ingredientStory.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </div>
             </div>
           </div>
         </Link>
@@ -497,12 +504,45 @@ export default function HomePage() {
             </span>
             <Link href="/catalog" className="eyebrow tap" style={{ color: "var(--brand)" }}>Вся коллекция →</Link>
           </div>
+
+          {/* Hero card — first product */}
+          {(() => {
+            const hero = recommendedProducts[0];
+            return (
+              <Link href={`/catalog/${hero.id}`} className="block tap group mb-6">
+                {hero.images[0] && (
+                  <div className="relative overflow-hidden -mx-5" style={{ borderRadius: "20px" }}>
+                    <img src={hero.images[0].url} alt=""
+                      className="w-full h-[240px] object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.7) 0%, transparent 55%)" }} />
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <p className="eyebrow mb-2" style={{ color: "rgba(255,255,255,0.65)" }}>
+                        {hero.purposes?.[0] === "antiAge" ? "Anti-age" :
+                         hero.purposes?.[0] === "moisturizing" ? "Увлажнение" :
+                         hero.purposes?.[0] === "nourishing" ? "Питание" :
+                         hero.purposes?.[0] === "lifting" ? "Лифтинг" :
+                         hero.purposes?.[0] === "cleansing" ? "Очищение" : "Уход"}
+                      </p>
+                      <h3 className="heading-md text-white mb-1" style={{ fontWeight: 400 }}>{hero.name}</h3>
+                      {hero.volumes[0] && (
+                        <p className="numeric-lp text-[15px]" style={{ color: "rgba(255,255,255,0.8)" }}>
+                          {hero.volumes[0].retailPrice.toLocaleString("ru-RU")} ₽
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </Link>
+            );
+          })()}
+
+          {/* Remaining products — larger images */}
           <div className="space-y-5">
-            {recommendedProducts.slice(0, 3).map((product) => (
+            {recommendedProducts.slice(1, 3).map((product) => (
               <Link key={product.id} href={`/catalog/${product.id}`} className="flex gap-5 tap group">
                 {product.images[0] && (
-                  <div className="w-[108px] h-[140px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)" }}>
-                    <img src={`https://spaquatoria.ru${product.images[0].url}`} alt=""
+                  <div className="w-[140px] h-[180px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "12px" }}>
+                    <img src={product.images[0].url} alt=""
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   </div>
                 )}
@@ -534,30 +574,42 @@ export default function HomePage() {
       {/* ═══ PHILOSOPHY OF THE SEASON ══════════════ */}
       <section className="mb-14">
         <span className="eyebrow mb-4 block">Философия сезона</span>
-        <div className="paper-card flat">
-          <div className="flex items-baseline justify-between mb-4">
-            <h2 className="heading-md" style={{ fontWeight: 300, color: season.color }}>
-              {season.name}
-            </h2>
-            <span className="eyebrow" style={{ color: season.color }}>{season.nameEn}</span>
+        <div className="paper-card flat overflow-hidden" style={{ padding: 0 }}>
+          <div className="h-[140px] overflow-hidden" style={{ background: "var(--lp-soft)" }}>
+            <img src={
+              season.name === "Шишира" ? "/brand/hero/face-care.jpg" :
+              season.name === "Васанта" ? "/brand/collections/berry-glow.jpg" :
+              season.name === "Гришма" ? "/brand/collections/ocean-prana.jpg" :
+              season.name === "Варша" ? "/brand/hero/body-care.jpg" :
+              season.name === "Шарад" ? "/brand/collections/forest-power.jpg" :
+              "/brand/collections/himalayah.jpg"
+            } alt="" className="w-full h-full object-cover" style={{ objectPosition: "top" }} />
           </div>
-          <p className="body-lp mb-6" style={{ lineHeight: 1.7 }}>{season.skinTip}</p>
-          <div className="grid grid-cols-2 gap-6 pt-6" style={{ borderTop: "1px solid var(--lp-line-soft)" }}>
-            <div>
-              <span className="eyebrow mb-2 block" style={{ color: "var(--lp-tertiary)" }}>Ритуал</span>
-              <p className="body-lp text-[13px]" style={{ lineHeight: 1.55 }}>{season.ritualTip}</p>
+          <div className="p-6">
+            <div className="flex items-baseline justify-between mb-4">
+              <h2 className="heading-md" style={{ fontWeight: 300, color: season.color }}>
+                {season.name}
+              </h2>
+              <span className="eyebrow" style={{ color: season.color }}>{season.nameEn}</span>
             </div>
-            <div>
-              <span className="eyebrow mb-2 block" style={{ color: "var(--lp-tertiary)" }}>Питание</span>
-              <p className="body-lp text-[13px]" style={{ lineHeight: 1.55 }}>{season.foodTip}</p>
+            <p className="body-lp mb-6" style={{ lineHeight: 1.7 }}>{season.skinTip}</p>
+            <div className="grid grid-cols-2 gap-6 pt-6" style={{ borderTop: "1px solid var(--lp-line-soft)" }}>
+              <div>
+                <span className="eyebrow mb-2 block" style={{ color: "var(--lp-tertiary)" }}>Ритуал</span>
+                <p className="body-lp text-[13px]" style={{ lineHeight: 1.55 }}>{season.ritualTip}</p>
+              </div>
+              <div>
+                <span className="eyebrow mb-2 block" style={{ color: "var(--lp-tertiary)" }}>Питание</span>
+                <p className="body-lp text-[13px]" style={{ lineHeight: 1.55 }}>{season.foodTip}</p>
+              </div>
             </div>
+            <Link href="/season" className="flex items-center gap-2 mt-6 tap">
+              <span className="eyebrow" style={{ color: season.color }}>Шесть сезонов Ритучарьи</span>
+              <svg className="w-3 h-3" style={{ color: season.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </Link>
           </div>
-          <Link href="/season" className="flex items-center gap-2 mt-6 tap">
-            <span className="eyebrow" style={{ color: season.color }}>Шесть сезонов Ритучарьи</span>
-            <svg className="w-3 h-3" style={{ color: season.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-          </Link>
         </div>
 
         {todayEvent && (
@@ -574,7 +626,15 @@ export default function HomePage() {
       {/* ═══ FROM THE DIARIES — pull quote ═════════ */}
       <section className="mb-14">
         <span className="eyebrow mb-6 block">Из дневников</span>
-        <figure className="px-2">
+        <div className="relative overflow-hidden" style={{ borderRadius: "20px" }}>
+          <img src={
+            todayReview.dosha === "Питта" ? "/brand/collections/pearl-endorphin.jpg" :
+            todayReview.dosha === "Вата" ? "/brand/collections/swan-grace.jpg" :
+            "/brand/collections/grand-cru-elixir.jpg"
+          } alt="" className="w-full h-[100px] object-cover" style={{ opacity: 0.15, objectPosition: "top" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 0%, var(--lp-bg) 100%)" }} />
+        </div>
+        <figure className="px-2 -mt-6 relative">
           <blockquote className="heading-lg mb-6" style={{ fontStyle: "italic", fontWeight: 300, lineHeight: 1.25 }}>
             <span style={{ color: todayReview.doshaColor, fontSize: "1.2em", lineHeight: 0 }}>"</span>
             {todayReview.quote}
@@ -596,6 +656,26 @@ export default function HomePage() {
       {sharedIngredients.length >= 2 && (
         <section className="mb-14">
           <span className="eyebrow mb-4 block">Наука вашего ухода</span>
+
+          {/* Product synergy avatars */}
+          <div className="flex items-center mb-5 -space-x-2">
+            {usages.slice(0, 4).map((u) => {
+              const p = getProduct(u.productId);
+              return p?.images[0] ? (
+                <div key={u.productId} className="w-[48px] h-[48px] rounded-full overflow-hidden shrink-0"
+                  style={{ border: "2px solid var(--lp-bg)", background: "var(--lp-soft)" }}>
+                  <img src={p.images[0].url} alt="" className="w-full h-full object-cover" />
+                </div>
+              ) : null;
+            })}
+            {usages.length > 4 && (
+              <div className="w-[48px] h-[48px] rounded-full shrink-0 flex items-center justify-center"
+                style={{ border: "2px solid var(--lp-bg)", background: "var(--lp-soft)" }}>
+                <span className="eyebrow" style={{ color: "var(--lp-muted)" }}>+{usages.length - 4}</span>
+              </div>
+            )}
+          </div>
+
           <p className="heading-md mb-5" style={{ fontWeight: 300, maxWidth: "36ch" }}>
             {usages.length} средств работают в синергии —
             усиливая друг друга в {sharedIngredients.length} направлениях.
@@ -627,9 +707,13 @@ export default function HomePage() {
       {/* ═══ VOICE OF AYURVEDA ═════════════════════ */}
       <section className="mb-14">
         <span className="eyebrow mb-4 block">Голос аюрведы</span>
-        <div className="paper-card flat">
-          <h3 className="heading-md mb-3" style={{ fontWeight: 400 }}>{ayurvedaTip.title}</h3>
-          <p className="body-lp" style={{ lineHeight: 1.7 }}>{ayurvedaTip.text}</p>
+        <div className="relative overflow-hidden -mx-5" style={{ borderRadius: "20px" }}>
+          <img src="/brand/hero/massage.jpg" alt="" className="w-full h-[280px] object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.82) 0%, rgba(22,18,12,0.45) 100%)" }} />
+          <div className="absolute inset-0 flex flex-col justify-end p-7">
+            <h3 className="heading-md text-white mb-3" style={{ fontWeight: 400 }}>{ayurvedaTip.title}</h3>
+            <p className="body-lp text-[14px]" style={{ lineHeight: 1.7, color: "rgba(255,255,255,0.82)" }}>{ayurvedaTip.text}</p>
+          </div>
         </div>
       </section>
 
@@ -702,7 +786,7 @@ export default function HomePage() {
                 className="flex items-center gap-4 tap" style={{ paddingBottom: 12, borderBottom: "1px solid var(--lp-line-soft)" }}>
                 {product.images[0] && (
                   <div className="w-[48px] h-[48px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)" }}>
-                    <img src={`https://spaquatoria.ru${product.images[0].url}`} alt="" className="w-full h-full object-cover" />
+                    <img src={product.images[0].url} alt="" className="w-full h-full object-cover" />
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
@@ -951,7 +1035,7 @@ export default function HomePage() {
                     style={i > 0 ? { borderTop: "0.5px solid var(--separator)" } : undefined}>
                     {p.images[0] && (
                       <div className="w-11 h-11 rounded-[12px] overflow-hidden shrink-0 bg-fill">
-                        <img src={`https://spaquatoria.ru${p.images[0].url}`} alt="" className="w-full h-full object-cover" />
+                        <img src={p.images[0].url} alt="" className="w-full h-full object-cover" />
                       </div>
                     )}
                     <div className="flex-1 min-w-0">

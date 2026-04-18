@@ -33,7 +33,7 @@ export default function IngredientsPage() {
     <div className="max-w-lg mx-auto px-5 py-6 pb-28">
       <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 28px 28px" }}>
         <img src="/brand/hero/berry-glow.jpg" alt=""
-          className="w-full h-[180px] object-cover" />
+          className="w-full h-[180px] object-cover" style={{ objectPosition: "center 40%" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
       </div>
       <p className="eyebrow mb-3">Состав и наука</p>

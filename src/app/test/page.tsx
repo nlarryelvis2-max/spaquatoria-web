@@ -156,7 +156,7 @@ export default function TestPage() {
     <div className="max-w-md mx-auto px-5 py-10">
       <div className="relative -mx-5 mb-6 overflow-hidden" style={{ borderRadius: "0 0 28px 28px" }}>
         <img src="/brand/collections/pearl-endorphin.jpg" alt=""
-          className="w-full h-[160px] object-cover" />
+          className="w-full h-[160px] object-cover" style={{ objectPosition: "top" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
       </div>
       <div className="text-center mb-8">

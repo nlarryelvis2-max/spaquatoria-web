@@ -1,0 +1,492 @@
+[
+  {
+    "id": "skraby-i-pilingi",
+    "name": "Скрабы и пилинги",
+    "subtitle": "Уход за телом",
+    "slug": "skraby-i-pilingi",
+    "description": "",
+    "imageURL": null,
+    "productCount": 28,
+    "doshaFocus": "kapha"
+  },
+  {
+    "id": "creams-butters",
+    "name": "Кремы-баттеры",
+    "subtitle": "Домашняя коллекция",
+    "slug": "creams-butters",
+    "description": "",
+    "imageURL": null,
+    "productCount": 24,
+    "doshaFocus": null
+  },
+  {
+    "id": "molochnaya-rosa",
+    "name": "Молочная роса",
+    "subtitle": "Домашняя коллекция",
+    "slug": "molochnaya-rosa",
+    "description": "",
+    "imageURL": null,
+    "productCount": 16,
+    "doshaFocus": null
+  },
+  {
+    "id": "vodopady",
+    "name": "Очищающие водопады",
+    "subtitle": "Домашняя коллекция",
+    "slug": "vodopady",
+    "description": "",
+    "imageURL": null,
+    "productCount": 15,
+    "doshaFocus": null
+  },
+  {
+    "id": "podarochnye-nabory-i-upakovka",
+    "name": "Подарочные наборы и упаковка",
+    "subtitle": "Подарочные наборы и упаковка",
+    "slug": "podarochnye-nabory-i-upakovka",
+    "description": "",
+    "imageURL": null,
+    "productCount": 15,
+    "doshaFocus": null
+  },
+  {
+    "id": "swan-grace",
+    "name": "SWAN GRACE",
+    "subtitle": "Уход за лицом",
+    "slug": "swan-grace",
+    "description": "",
+    "imageURL": null,
+    "productCount": 13,
+    "doshaFocus": "pitta"
+  },
+  {
+    "id": "pearl-endorphin",
+    "name": "Pearl Endorphin",
+    "subtitle": "Уход за лицом",
+    "slug": "pearl-endorphin",
+    "description": "",
+    "imageURL": null,
+    "productCount": 12,
+    "doshaFocus": "pitta"
+  },
+  {
+    "id": "spa-manicure",
+    "name": "Уход за руками",
+    "subtitle": "Среда",
+    "slug": "spa-manicure",
+    "description": "",
+    "imageURL": null,
+    "productCount": 11,
+    "doshaFocus": null
+  },
+  {
+    "id": "grand-cru-elixir",
+    "name": "Grand Cru Elixir",
+    "subtitle": "Уход за лицом",
+    "slug": "grand-cru-elixir",
+    "description": "",
+    "imageURL": null,
+    "productCount": 10,
+    "doshaFocus": "pitta"
+  },
+  {
+    "id": "prana-okeana",
+    "name": "Прана Океана",
+    "subtitle": "Уход за телом",
+    "slug": "prana-okeana",
+    "description": "",
+    "imageURL": null,
+    "productCount": 8,
+    "doshaFocus": null
+  },
+  {
+    "id": "aroma-essentsii",
+    "name": "Арома-эссенции",
+    "subtitle": "Yoga Line",
+    "slug": "aroma-essentsii",
+    "description": "",
+    "imageURL": null,
+    "productCount": 7,
+    "doshaFocus": "vata"
+  },
+  {
+    "id": "geli",
+    "name": "Гели",
+    "subtitle": "Yoga Line",
+    "slug": "geli",
+    "description": "",
+    "imageURL": null,
+    "productCount": 7,
+    "doshaFocus": "vata"
+  },
+  {
+    "id": "aromamasla",
+    "name": "Аромамасла",
+    "subtitle": "Средства для массажа",
+    "slug": "aromamasla",
+    "description": "",
+    "imageURL": null,
+    "productCount": 6,
+    "doshaFocus": null
+  },
+  {
+    "id": "celebrity-perfume-oil",
+    "name": "Celebrity / Perfume oil",
+    "subtitle": "Celebrity",
+    "slug": "celebrity-perfume-oil",
+    "description": "",
+    "imageURL": null,
+    "productCount": 6,
+    "doshaFocus": null
+  },
+  {
+    "id": "martsipanovyy-kapriz",
+    "name": "Марципановый каприз",
+    "subtitle": "Уход за телом",
+    "slug": "martsipanovyy-kapriz",
+    "description": "",
+    "imageURL": null,
+    "productCount": 5,
+    "doshaFocus": null
+  },
+  {
+    "id": "sreda",
+    "name": "SREDA",
+    "subtitle": "Среда",
+    "slug": "sreda",
+    "description": "",
+    "imageURL": null,
+    "productCount": 5,
+    "doshaFocus": null
+  },
+  {
+    "id": "celebrity",
+    "name": "Celebrity / Tree Of Love",
+    "subtitle": "Celebrity",
+    "slug": "celebrity",
+    "description": "",
+    "imageURL": null,
+    "productCount": 5,
+    "doshaFocus": null
+  },
+  {
+    "id": "celebrity--spice-up-your-life",
+    "name": "Celebrity / Spice up your life!",
+    "subtitle": "Celebrity",
+    "slug": "celebrity--spice-up-your-life",
+    "description": "",
+    "imageURL": null,
+    "productCount": 5,
+    "doshaFocus": null
+  },
+  {
+    "id": "syvorotki-maski",
+    "name": "Сыворотки-маски",
+    "subtitle": "Уход за волосами",
+    "slug": "syvorotki-maski",
+    "description": "",
+    "imageURL": null,
+    "productCount": 5,
+    "doshaFocus": null
+  },
+  {
+    "id": "pancha-amrita-5-nektarov",
+    "name": "«Pancha Amrita» / Пять нектаров",
+    "subtitle": "Уход за телом",
+    "slug": "pancha-amrita-5-nektarov",
+    "description": "",
+    "imageURL": null,
+    "productCount": 4,
+    "doshaFocus": null
+  },
+  {
+    "id": "molochnye-vanny",
+    "name": "Молочные ванны",
+    "subtitle": "Уход за телом",
+    "slug": "molochnye-vanny",
+    "description": "",
+    "imageURL": null,
+    "productCount": 4,
+    "doshaFocus": "vata"
+  },
+  {
+    "id": "marokkanskiy-khammam",
+    "name": "Марокканский хаммам",
+    "subtitle": "Уход за телом",
+    "slug": "marokkanskiy-khammam",
+    "description": "",
+    "imageURL": null,
+    "productCount": 4,
+    "doshaFocus": null
+  },
+  {
+    "id": "berry-glow",
+    "name": "Ягодное сияние",
+    "subtitle": "Уход за лицом",
+    "slug": "berry-glow",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": "kapha"
+  },
+  {
+    "id": "hymalayah",
+    "name": "Hymalayah",
+    "subtitle": "Уход за телом",
+    "slug": "hymalayah",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "grand-cru",
+    "name": "GRAND CRU Ampelospa Therapy",
+    "subtitle": "Уход за телом",
+    "slug": "grand-cru",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "sila-lyesa",
+    "name": "СИЛА ЛЕСА",
+    "subtitle": "Уход за телом",
+    "slug": "sila-lyesa",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "shokoladnoe-naslazhdenie",
+    "name": "«Шоколадное наслаждение»",
+    "subtitle": "Уход за телом",
+    "slug": "shokoladnoe-naslazhdenie",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "gels",
+    "name": "Термоактивные гели",
+    "subtitle": "Гели",
+    "slug": "gels",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "aroma-sprei",
+    "name": "Арома-спреи",
+    "subtitle": "Среда",
+    "slug": "aroma-sprei",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "celebrity-dancing-beauty_1",
+    "name": "Celebrity / Dancing Beauty!",
+    "subtitle": "Celebrity",
+    "slug": "celebrity-dancing-beauty_1",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "celebrity-full-moon-show",
+    "name": "Celebrity / FULL MOON SHOW",
+    "subtitle": "Celebrity",
+    "slug": "celebrity-full-moon-show",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "celebrity-holi-colorfest",
+    "name": "Celebrity / HOLI COLORFEST",
+    "subtitle": "Celebrity",
+    "slug": "celebrity-holi-colorfest",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "celebrity--legendary-musk",
+    "name": "Celebrity / Legendary Musk",
+    "subtitle": "Celebrity",
+    "slug": "celebrity--legendary-musk",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "syvorotki-shampuni",
+    "name": "Сыворотки-шампуни",
+    "subtitle": "Уход за волосами",
+    "slug": "syvorotki-shampuni",
+    "description": "",
+    "imageURL": null,
+    "productCount": 3,
+    "doshaFocus": null
+  },
+  {
+    "id": "vanilnye-oblaka",
+    "name": "Ванильные облака",
+    "subtitle": "Уход за лицом",
+    "slug": "vanilnye-oblaka",
+    "description": "",
+    "imageURL": null,
+    "productCount": 2,
+    "doshaFocus": "vata"
+  },
+  {
+    "id": "zhivaya-rosa",
+    "name": "Живая роса",
+    "subtitle": "Уход за лицом",
+    "slug": "zhivaya-rosa",
+    "description": "",
+    "imageURL": null,
+    "productCount": 2,
+    "doshaFocus": "pitta"
+  },
+  {
+    "id": "thai-inspiration",
+    "name": "Thai inspiration",
+    "subtitle": "Уход за телом",
+    "slug": "thai-inspiration",
+    "description": "",
+    "imageURL": null,
+    "productCount": 2,
+    "doshaFocus": "vata"
+  },
+  {
+    "id": "lavananda",
+    "name": "Лавананда",
+    "subtitle": "Уход за телом",
+    "slug": "lavananda",
+    "description": "",
+    "imageURL": null,
+    "productCount": 2,
+    "doshaFocus": null
+  },
+  {
+    "id": "c-vit-shot",
+    "name": "C-VIT SHOT",
+    "subtitle": "Уход за телом",
+    "slug": "c-vit-shot",
+    "description": "",
+    "imageURL": null,
+    "productCount": 2,
+    "doshaFocus": "kapha"
+  },
+  {
+    "id": "vozrozhdenie",
+    "name": "«Возрождение»",
+    "subtitle": "Уход за телом",
+    "slug": "vozrozhdenie",
+    "description": "",
+    "imageURL": null,
+    "productCount": 2,
+    "doshaFocus": null
+  },
+  {
+    "id": "spa-manicure-pedicure",
+    "name": "Уход за руками и ногами",
+    "subtitle": "SPA Маникюр / Педикюр",
+    "slug": "spa-manicure-pedicure",
+    "description": "",
+    "imageURL": null,
+    "productCount": 2,
+    "doshaFocus": null
+  },
+  {
+    "id": "algomineralnye-maski",
+    "name": "Альгоминеральные маски",
+    "subtitle": "Уход за лицом",
+    "slug": "algomineralnye-maski",
+    "description": "",
+    "imageURL": null,
+    "productCount": 1,
+    "doshaFocus": null
+  },
+  {
+    "id": "clays-algae",
+    "name": "Глины и водоросли",
+    "subtitle": "Уход за телом",
+    "slug": "clays-algae",
+    "description": "",
+    "imageURL": null,
+    "productCount": 1,
+    "doshaFocus": "kapha"
+  },
+  {
+    "id": "obnovlenie",
+    "name": "«Обновление»",
+    "subtitle": "Уход за телом",
+    "slug": "obnovlenie",
+    "description": "",
+    "imageURL": null,
+    "productCount": 1,
+    "doshaFocus": null
+  },
+  {
+    "id": "rice--vegetables",
+    "name": "Rice &amp; Vegetables",
+    "subtitle": "Уход за телом",
+    "slug": "rice--vegetables",
+    "description": "",
+    "imageURL": null,
+    "productCount": 1,
+    "doshaFocus": null
+  },
+  {
+    "id": "lnyanoe-ukutyvanie",
+    "name": "Льняное укутывание",
+    "subtitle": "Уход за телом",
+    "slug": "lnyanoe-ukutyvanie",
+    "description": "",
+    "imageURL": null,
+    "productCount": 1,
+    "doshaFocus": null
+  },
+  {
+    "id": "syvorotka-protiv-rastyazhek",
+    "name": "Сыворотки против растяжек",
+    "subtitle": "Домашняя коллекция",
+    "slug": "syvorotka-protiv-rastyazhek",
+    "description": "",
+    "imageURL": null,
+    "productCount": 1,
+    "doshaFocus": null
+  },
+  {
+    "id": "home",
+    "name": "Для дома и интерьера",
+    "subtitle": "Home",
+    "slug": "home",
+    "description": "",
+    "imageURL": null,
+    "productCount": 1,
+    "doshaFocus": null
+  },
+  {
+    "id": "novinki",
+    "name": "Новинки",
+    "subtitle": "Новинки",
+    "slug": "novinki",
+    "description": "",
+    "imageURL": null,
+    "productCount": 1,
+    "doshaFocus": null
+  }
+]

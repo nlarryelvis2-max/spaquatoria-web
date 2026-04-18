@@ -1,0 +1,404 @@
+[
+  {
+    "id": "face-vata-active",
+    "dosha": "vata",
+    "ageGroup": "active",
+    "zone": "face",
+    "steps": [
+      {
+        "order": 1, "timeOfDay": "morning", "type": "cleansing",
+        "title": "Мягкое очищение",
+        "description": "Деликатно очистите кожу, сохраняя её защитный барьер",
+        "productId": "971"
+      },
+      {
+        "order": 2, "timeOfDay": "morning", "type": "serum",
+        "title": "Жемчужная сыворотка",
+        "description": "Нанесите сыворотку на влажную кожу для глубокого увлажнения",
+        "productId": "970"
+      },
+      {
+        "order": 3, "timeOfDay": "morning", "type": "cream",
+        "title": "Дневной крем для сухой кожи",
+        "description": "Распределите крем по массажным линиям, уделяя внимание зонам шелушения",
+        "productId": "973"
+      },
+      {
+        "order": 4, "timeOfDay": "evening", "type": "cleansing",
+        "title": "Демакияж",
+        "description": "Мицеллярная вода снимет макияж без трения и раздражения",
+        "productId": "968"
+      },
+      {
+        "order": 5, "timeOfDay": "evening", "type": "cleansing",
+        "title": "Умывание",
+        "description": "Очистите кожу гелем для умывания тёплой водой",
+        "productId": "971"
+      },
+      {
+        "order": 6, "timeOfDay": "evening", "type": "serum",
+        "title": "Жемчужная сыворотка",
+        "description": "Восстанавливающая доза пептидов и жемчуга перед сном",
+        "productId": "970"
+      },
+      {
+        "order": 7, "timeOfDay": "evening", "type": "cream",
+        "title": "Ночной крем",
+        "description": "Насыщенный крем работает пока вы спите",
+        "productId": "976"
+      }
+    ]
+  },
+  {
+    "id": "face-pitta-active",
+    "dosha": "pitta",
+    "ageGroup": "active",
+    "zone": "face",
+    "steps": [
+      {
+        "order": 1, "timeOfDay": "morning", "type": "cleansing",
+        "title": "Бережное очищение",
+        "description": "Гель для умывания без сульфатов — не раздражает чувствительную кожу",
+        "productId": "971"
+      },
+      {
+        "order": 2, "timeOfDay": "morning", "type": "serum",
+        "title": "Успокаивающая сыворотка",
+        "description": "Пептиды и жемчуг снижают реактивность и увлажняют",
+        "productId": "970"
+      },
+      {
+        "order": 3, "timeOfDay": "morning", "type": "cream",
+        "title": "Дневной крем для комби-кожи",
+        "description": "Лёгкая текстура без перегрузки — идеально для Питты",
+        "productId": "972"
+      },
+      {
+        "order": 4, "timeOfDay": "evening", "type": "cleansing",
+        "title": "Демакияж",
+        "description": "Мягкая мицеллярная вода без спирта",
+        "productId": "968"
+      },
+      {
+        "order": 5, "timeOfDay": "evening", "type": "serum",
+        "title": "Сыворотка",
+        "description": "Вечерняя порция успокаивающих пептидов",
+        "productId": "970"
+      },
+      {
+        "order": 6, "timeOfDay": "evening", "type": "cream",
+        "title": "Ночной крем",
+        "description": "Восстановление кожи за ночь",
+        "productId": "976"
+      }
+    ]
+  },
+  {
+    "id": "face-kapha-active",
+    "dosha": "kapha",
+    "ageGroup": "active",
+    "zone": "face",
+    "steps": [
+      {
+        "order": 1, "timeOfDay": "morning", "type": "cleansing",
+        "title": "Тонизирующее очищение",
+        "description": "Гель для умывания глубоко очистит поры",
+        "productId": "971"
+      },
+      {
+        "order": 2, "timeOfDay": "morning", "type": "serum",
+        "title": "Сыворотка-энергетик",
+        "description": "Пептидная сыворотка пробудит кожу и выровняет тон",
+        "productId": "970"
+      },
+      {
+        "order": 3, "timeOfDay": "morning", "type": "cream",
+        "title": "Лёгкий дневной крем",
+        "description": "Для комбинированной кожи — увлажняет без жирности",
+        "productId": "972"
+      },
+      {
+        "order": 4, "timeOfDay": "evening", "type": "cleansing",
+        "title": "Демакияж + умывание",
+        "description": "Двухэтапное очищение для контроля жирности",
+        "productId": "968"
+      },
+      {
+        "order": 5, "timeOfDay": "evening", "type": "exfoliation",
+        "title": "Пилинг (2 раза в неделю)",
+        "description": "Крем-пилинг обновляет и выводит токсины",
+        "productId": "974"
+      },
+      {
+        "order": 6, "timeOfDay": "evening", "type": "cream",
+        "title": "Ночной крем",
+        "description": "Ночной уход для комби-кожи",
+        "productId": "975"
+      }
+    ]
+  },
+  {
+    "id": "face-vata-mature",
+    "dosha": "vata",
+    "ageGroup": "mature",
+    "zone": "face",
+    "steps": [
+      {
+        "order": 1, "timeOfDay": "morning", "type": "cleansing",
+        "title": "Деликатное очищение",
+        "description": "Тоник без спирта подготовит кожу к активам",
+        "productId": "982"
+      },
+      {
+        "order": 2, "timeOfDay": "morning", "type": "serum",
+        "title": "Арома-эссенция Вата",
+        "description": "Увлажняющие масла для сухой возрастной кожи",
+        "productId": "988"
+      },
+      {
+        "order": 3, "timeOfDay": "morning", "type": "cream",
+        "title": "Крем-регенератор SPF 35",
+        "description": "Anti-age защита с SPF для дневного использования",
+        "productId": "987"
+      },
+      {
+        "order": 4, "timeOfDay": "evening", "type": "cleansing",
+        "title": "Тоник",
+        "description": "Подготовьте кожу к ночной регенерации",
+        "productId": "982"
+      },
+      {
+        "order": 5, "timeOfDay": "evening", "type": "serum",
+        "title": "Арома-эссенция",
+        "description": "Концентрированное питание перед кремом",
+        "productId": "988"
+      },
+      {
+        "order": 6, "timeOfDay": "evening", "type": "cream",
+        "title": "Крем-регенератор",
+        "description": "Мощная ночная регенерация с ресвератролом",
+        "productId": "986"
+      },
+      {
+        "order": 7, "timeOfDay": "evening", "type": "eyeCream",
+        "title": "Крем для век",
+        "description": "Отдельный уход для нежной кожи вокруг глаз",
+        "productId": "985"
+      }
+    ]
+  },
+  {
+    "id": "face-pitta-mature",
+    "dosha": "pitta",
+    "ageGroup": "mature",
+    "zone": "face",
+    "steps": [
+      {
+        "order": 1, "timeOfDay": "morning", "type": "cleansing",
+        "title": "Тоник",
+        "description": "Успокаивающий тоник для чувствительной кожи",
+        "productId": "982"
+      },
+      {
+        "order": 2, "timeOfDay": "morning", "type": "serum",
+        "title": "Арома-эссенция Питта",
+        "description": "Масла для чувствительной проблемной кожи",
+        "productId": "990"
+      },
+      {
+        "order": 3, "timeOfDay": "morning", "type": "cream",
+        "title": "Дневной SPF 35",
+        "description": "Защита от солнца — критично для Питта-кожи",
+        "productId": "987"
+      },
+      {
+        "order": 4, "timeOfDay": "evening", "type": "cleansing",
+        "title": "Тоник",
+        "description": "Очищение без раздражения",
+        "productId": "982"
+      },
+      {
+        "order": 5, "timeOfDay": "evening", "type": "cream",
+        "title": "Ночная регенерация",
+        "description": "Крем-регенератор восстанавливает и укрепляет",
+        "productId": "986"
+      },
+      {
+        "order": 6, "timeOfDay": "evening", "type": "eyeCream",
+        "title": "Крем для век",
+        "description": "Антивозрастной уход для зоны вокруг глаз",
+        "productId": "985"
+      }
+    ]
+  },
+  {
+    "id": "face-kapha-mature",
+    "dosha": "kapha",
+    "ageGroup": "mature",
+    "zone": "face",
+    "steps": [
+      {
+        "order": 1, "timeOfDay": "morning", "type": "cleansing",
+        "title": "Тонизирующий тоник",
+        "description": "Активный тоник сужает поры и тонизирует",
+        "productId": "982"
+      },
+      {
+        "order": 2, "timeOfDay": "morning", "type": "serum",
+        "title": "Арома-эссенция Капха",
+        "description": "Детокс-масла для жирной и пористой кожи",
+        "productId": "989"
+      },
+      {
+        "order": 3, "timeOfDay": "morning", "type": "cream",
+        "title": "Дневной крем SPF 35",
+        "description": "Лёгкая текстура с защитой от солнца",
+        "productId": "987"
+      },
+      {
+        "order": 4, "timeOfDay": "evening", "type": "cleansing",
+        "title": "Тоник",
+        "description": "Вечернее очищение и подготовка",
+        "productId": "982"
+      },
+      {
+        "order": 5, "timeOfDay": "evening", "type": "cream",
+        "title": "Ночной крем-регенератор",
+        "description": "Регенерация без утяжеления кожи",
+        "productId": "986"
+      }
+    ]
+  },
+  {
+    "id": "face-vata-premium",
+    "dosha": "vata",
+    "ageGroup": "premium",
+    "zone": "face",
+    "steps": [
+      {
+        "order": 1, "timeOfDay": "morning", "type": "cleansing",
+        "title": "Гидрофильное масло",
+        "description": "Масло мягко растворяет загрязнения, не сушит",
+        "productId": "997"
+      },
+      {
+        "order": 2, "timeOfDay": "morning", "type": "cleansing",
+        "title": "Крем-пенка",
+        "description": "Второй этап — нежная пенка без стягивания",
+        "productId": "1002"
+      },
+      {
+        "order": 3, "timeOfDay": "morning", "type": "cream",
+        "title": "Дневной крем SPF 50",
+        "description": "Максимальная UV-защита для истончённой кожи",
+        "productId": "998"
+      },
+      {
+        "order": 4, "timeOfDay": "morning", "type": "eyeCream",
+        "title": "Лифтинг-крем для век",
+        "description": "Пептидный лифтинг для зоны вокруг глаз",
+        "productId": "1001"
+      },
+      {
+        "order": 5, "timeOfDay": "evening", "type": "cleansing",
+        "title": "Гидрофильное масло",
+        "description": "Глубокое снятие макияжа и загрязнений",
+        "productId": "997"
+      },
+      {
+        "order": 6, "timeOfDay": "evening", "type": "serum",
+        "title": "Компресс-лифтинг для век",
+        "description": "Интенсивный лифтинг перед сном",
+        "productId": "1000"
+      },
+      {
+        "order": 7, "timeOfDay": "evening", "type": "cream",
+        "title": "Ночной крем-лифтинг",
+        "description": "Максимальная регенерация и лифтинг за ночь",
+        "productId": "1007"
+      }
+    ]
+  },
+  {
+    "id": "face-pitta-premium",
+    "dosha": "pitta",
+    "ageGroup": "premium",
+    "zone": "face",
+    "steps": [
+      {
+        "order": 1, "timeOfDay": "morning", "type": "cleansing",
+        "title": "Крем-пенка",
+        "description": "Нежное очищение без раздражения",
+        "productId": "1002"
+      },
+      {
+        "order": 2, "timeOfDay": "morning", "type": "cream",
+        "title": "DD крем-лифтинг SPF 15",
+        "description": "Тональный уход с лифтингом и защитой",
+        "productId": "996"
+      },
+      {
+        "order": 3, "timeOfDay": "morning", "type": "eyeCream",
+        "title": "Крем-лифтинг для век",
+        "description": "Укрепление тонкой кожи вокруг глаз",
+        "productId": "1001"
+      },
+      {
+        "order": 4, "timeOfDay": "evening", "type": "cleansing",
+        "title": "Гидрофильное масло",
+        "description": "Мягкий демакияж маслом",
+        "productId": "997"
+      },
+      {
+        "order": 5, "timeOfDay": "evening", "type": "cream",
+        "title": "Ночной крем-лифтинг",
+        "description": "Восстановление и подтяжка за ночь",
+        "productId": "1007"
+      },
+      {
+        "order": 6, "timeOfDay": "evening", "type": "eyeCream",
+        "title": "Компресс для век",
+        "description": "Интенсивный ночной уход для зоны глаз",
+        "productId": "1000"
+      }
+    ]
+  },
+  {
+    "id": "face-kapha-premium",
+    "dosha": "kapha",
+    "ageGroup": "premium",
+    "zone": "face",
+    "steps": [
+      {
+        "order": 1, "timeOfDay": "morning", "type": "cleansing",
+        "title": "Крем-пенка",
+        "description": "Очищение и контроль жирности",
+        "productId": "1002"
+      },
+      {
+        "order": 2, "timeOfDay": "morning", "type": "cream",
+        "title": "Дневной крем-лифтинг",
+        "description": "Лёгкий лифтинг без утяжеления",
+        "productId": "999"
+      },
+      {
+        "order": 3, "timeOfDay": "evening", "type": "cleansing",
+        "title": "Гидрофильное масло",
+        "description": "Растворяет себум и макияж",
+        "productId": "997"
+      },
+      {
+        "order": 4, "timeOfDay": "evening", "type": "cream",
+        "title": "Ночной крем-лифтинг",
+        "description": "Ночная подтяжка без перегрузки кожи",
+        "productId": "1007"
+      },
+      {
+        "order": 5, "timeOfDay": "evening", "type": "eyeCream",
+        "title": "Крем для век",
+        "description": "Лифтинг зоны вокруг глаз",
+        "productId": "1001"
+      }
+    ]
+  }
+]
