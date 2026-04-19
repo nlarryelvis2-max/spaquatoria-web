@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { products } from "@/lib/data";
 import {
   loadAccount, UserAccount, saveAccount, clearAccount, SKIN_CONCERN_OPTIONS,
@@ -246,6 +247,11 @@ export default function ProfilePage() {
             </svg>
           </button>
         </div>
+      </div>
+
+      {/* ── Role switcher ─────────────────────── */}
+      <div className="glass-card p-1 mb-4 flex justify-center">
+        <RoleSwitcher />
       </div>
 
       {/* ── 2. BY THE NUMBERS — 4 stat cards ───────── */}
