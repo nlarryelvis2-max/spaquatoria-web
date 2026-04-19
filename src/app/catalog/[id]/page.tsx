@@ -27,7 +27,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     <div className="max-w-lg mx-auto px-5 py-6">
       <div className="space-y-6">
         {/* Image */}
-        <div className="aspect-square rounded-3xl overflow-hidden relative glass-card">
+        <div className="aspect-square overflow-hidden relative" style={{ borderRadius: "8px", background: "var(--lp-soft)" }}>
           {mainImage ? (
             <Image src={mainImage.url} alt={product.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover product-img" priority />
           ) : (

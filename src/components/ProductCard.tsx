@@ -15,7 +15,7 @@ export function ProductCard({ product, showScore = false }: { product: Product; 
       href={`/catalog/${product.id}`}
       className="group block tap"
     >
-      <div className="relative aspect-[4/5] overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "22px" }}>
+      <div className="relative aspect-[4/5] overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "6px" }}>
         {mainImage ? (
           <Image
             src={mainImage.url}
@@ -32,8 +32,8 @@ export function ProductCard({ product, showScore = false }: { product: Product; 
         )}
 
         {product.doshaAffinity.length > 0 && (
-          <div className="absolute top-2 left-2 px-[7px] py-[3px] flex gap-[3px]"
-            style={{ background: "rgba(255,253,249,0.92)", borderRadius: "999px" }}>
+          <div className="absolute top-2 left-2 px-[6px] py-[3px] flex gap-[3px]"
+            style={{ background: "rgba(255,253,249,0.85)", borderRadius: "4px" }}>
             {product.doshaAffinity.map((d) => (
               <span key={d} className="w-[5px] h-[5px] rounded-full" style={{ backgroundColor: DOSHA_COLORS[d] }} />
             ))}
@@ -42,20 +42,20 @@ export function ProductCard({ product, showScore = false }: { product: Product; 
 
         {scoreData && (
           <div
-            className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white"
-            style={{ backgroundColor: GRADE_COLORS[scoreData.grade] }}
+            className="absolute top-2 right-2 w-5 h-5 flex items-center justify-center text-[9px] font-bold text-white"
+            style={{ backgroundColor: GRADE_COLORS[scoreData.grade], borderRadius: "3px" }}
           >
             {scoreData.grade}
           </div>
         )}
       </div>
 
-      <div className="pt-3 pb-1">
-        <h3 className="text-[13px] font-medium leading-tight line-clamp-2" style={{ color: "var(--lp-ink)", letterSpacing: "0.02em" }}>
+      <div className="pt-2.5 pb-1">
+        <h3 className="text-[13px] leading-tight line-clamp-2" style={{ color: "var(--lp-ink)", fontWeight: 400 }}>
           {product.name}
         </h3>
         {price && (
-          <p className="numeric-lp text-[14px] mt-1.5" style={{ color: "var(--lp-ink)" }}>
+          <p className="numeric-lp text-[13px] mt-1" style={{ color: "var(--lp-muted)" }}>
             {price.retailPrice.toLocaleString("ru-RU")} ₽
           </p>
         )}
