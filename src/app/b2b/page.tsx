@@ -91,7 +91,9 @@ export default function B2BPage() {
             { label: "Маркетплейсы", img: "/brand/hero/subscribe-bg.png" },
           ].map(f => (
             <div key={f.label} className="glass-card py-3 text-center overflow-hidden">
-              <img src={f.img} alt="" className="w-full h-[60px] object-cover rounded-lg mb-2 px-3" />
+              <div className="mx-3 mb-2 overflow-hidden" style={{ borderRadius: "6px" }}>
+                <img src={f.img} alt="" className="w-full h-[60px] object-cover" />
+              </div>
               <p className="text-[15px] font-medium">{f.label}</p>
             </div>
           ))}

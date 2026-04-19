@@ -781,7 +781,7 @@ export default function HomePage() {
               <Link key={usage.productId} href={`/catalog/${product.id}`}
                 className="flex items-center gap-4 tap" style={{ paddingBottom: 12, borderBottom: "1px solid var(--lp-line-soft)" }}>
                 {product.images[0] && (
-                  <div className="w-[48px] h-[48px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)" }}>
+                  <div className="w-[48px] h-[48px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "6px" }}>
                     <img src={product.images[0].url} alt="" className="w-full h-full object-cover product-img" />
                   </div>
                 )}

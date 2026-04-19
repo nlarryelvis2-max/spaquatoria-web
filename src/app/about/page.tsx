@@ -214,7 +214,7 @@ export default function AboutPage() {
                 style={i > 0 ? { borderTop: "1px solid var(--lp-line-soft)" } : undefined}>
                 <div className="flex gap-3">
                   {slide.photo && (
-                    <div className="relative w-[72px] h-[72px] shrink-0 overflow-hidden bg-fill">
+                    <div className="relative w-[72px] h-[72px] shrink-0 overflow-hidden bg-fill" style={{ borderRadius: "6px" }}>
                       <Image
                         src={slide.photo}
                         alt={slide.heading}
@@ -329,7 +329,7 @@ export default function AboutPage() {
                     </div>
                     <div className="flex gap-3">
                       {j.photo && !isOpen && (
-                        <div className="relative w-[72px] h-[72px] shrink-0 overflow-hidden bg-fill">
+                        <div className="relative w-[72px] h-[72px] shrink-0 overflow-hidden bg-fill" style={{ borderRadius: "6px" }}>
                           <Image
                             src={j.photo}
                             alt={j.photoAlt || j.body}
@@ -519,7 +519,7 @@ export default function AboutPage() {
               { slug: "berry-glow", name: "Berry Glow", desc: "Ягодные активы, тело", img: "/about/lines/berry-glow.jpg" },
             ].map(line => (
               <Link href={`/lines/${line.slug}`} key={line.slug} className="group block tap">
-                <div className="relative aspect-[4/5] overflow-hidden bg-fill">
+                <div className="relative aspect-[4/5] overflow-hidden bg-fill" style={{ borderRadius: "8px" }}>
                   <Image
                     src={line.img}
                     alt={line.name}
@@ -545,7 +545,7 @@ export default function AboutPage() {
             <p className="eyebrow">Фабрика</p>
             <span className="eyebrow" style={{ color: "var(--lp-tertiary)" }}>Поярково · МО</span>
           </div>
-          <div className="relative -mx-5 aspect-[16/9] overflow-hidden mb-2">
+          <div className="relative -mx-5 aspect-[16/9] overflow-hidden mb-2" style={{ borderRadius: "8px" }}>
             <Image
               src="/about/factory/1.jpg"
               alt="Фабрика SPAquatoria"
@@ -555,10 +555,10 @@ export default function AboutPage() {
             />
           </div>
           <div className="grid grid-cols-2 gap-2 -mx-5">
-            <div className="relative aspect-square overflow-hidden">
+            <div className="relative aspect-square overflow-hidden" style={{ borderRadius: "8px" }}>
               <Image src="/about/factory/2.jpg" alt="Лаборатория" fill sizes="50vw" className="object-cover" />
             </div>
-            <div className="relative aspect-square overflow-hidden">
+            <div className="relative aspect-square overflow-hidden" style={{ borderRadius: "8px" }}>
               <Image src="/about/factory/3.jpg" alt="Производство" fill sizes="50vw" className="object-cover" />
             </div>
           </div>
