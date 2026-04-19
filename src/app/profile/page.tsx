@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/lib/data";
 import {
@@ -210,8 +211,8 @@ export default function ProfilePage() {
 
       {/* ── 1. HERO: Banner + Avatar + Name + Dosha ───── */}
       <div className="mb-6">
-        <div className="relative overflow-hidden -mx-5 mb-5" style={{ borderRadius: "0 0 8px 8px" }}>
-          <img src="/brand/hero/body-care.jpg" alt="" className="w-full h-[180px] object-cover" />
+        <div className="relative overflow-hidden -mx-5 mb-5 h-[180px]" style={{ borderRadius: "0 0 8px 8px" }}>
+          <Image src="/brand/hero/body-care.jpg" alt="Профиль — SPAquatoria" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 55%)" }} />
         </div>
 
@@ -597,14 +598,35 @@ export default function ProfilePage() {
         <div className="mb-3">
           <div className="flex items-center justify-between mb-1.5 px-0.5">
             <p className="text-[11px] font-semibold text-fg-secondary uppercase tracking-wide">Избранное · {favoriteProducts.length}</p>
-            <Link href="/catalog" className="text-[11px] text-brand tap">Каталог →</Link>
+            <div className="flex items-center gap-3">
+              <button
+                className="text-[11px] text-brand tap"
+                onClick={async () => {
+                  const items = favoriteProducts.map(p => p.name).join("\n• ");
+                  const text = `Мой wish-list SPAquatoria:\n• ${items}\n\nhttps://spaquatoria.com/catalog`;
+                  if (navigator.share) {
+                    try {
+                      await navigator.share({ title: "Wish-list SPAquatoria", text });
+                    } catch {}
+                  } else {
+                    await navigator.clipboard.writeText(text);
+                    alert("Список скопирован!");
+                  }
+                }}
+              >
+                Поделиться
+              </button>
+              <Link href="/catalog" className="text-[11px] text-brand tap">Каталог →</Link>
+            </div>
           </div>
           <div className="grid grid-cols-2 gap-2">
             {favoriteProducts.slice(0, 6).map(product => (
               <Link key={product.id} href={`/catalog/${product.id}`}
                 className="glass-card overflow-hidden tap">
                 {product.images[0] && (
-                  <img src={product.images[0].url} alt="" className="w-full h-28 object-cover product-img" />
+                  <div className="relative h-28">
+                    <Image src={product.images[0].url} alt={product.name} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover product-img" />
+                  </div>
                 )}
                 <div className="p-2">
                   <p className="text-[11px] font-medium line-clamp-2 leading-tight">{product.name}</p>

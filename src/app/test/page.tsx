@@ -7,6 +7,7 @@ import { questions, DoshaAnswer } from "@/lib/questions";
 import { DoshaProfile, getDominantDosha, DOSHA_NAMES, DOSHA_SUBTITLES, DOSHA_SKIN, DOSHA_COLORS, DoshaType } from "@/lib/types";
 import { saveProfile } from "@/lib/store";
 import { products } from "@/lib/data";
+import { addToCart } from "@/lib/cart";
 import { Product } from "@/lib/types";
 
 function pickStarterKit(dosha: DoshaType): Product[] {
@@ -34,6 +35,7 @@ export default function TestPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, DoshaAnswer>>({});
   const [result, setResult] = useState<DoshaProfile | null>(null);
+  const [kitAdded, setKitAdded] = useState(false);
 
   const q = questions[currentIndex];
   const progress = Object.keys(answers).length / questions.length;
@@ -129,6 +131,19 @@ export default function TestPage() {
               <p className="eyebrow">Набор</p>
               <p className="numeric-lp text-[20px]">{starterTotal.toLocaleString("ru-RU")} ₽</p>
             </div>
+            <button
+              onClick={() => {
+                for (const p of starter) {
+                  const vol = p.volumes.find(x => x.inStock) || p.volumes[0];
+                  if (vol) addToCart(p.id, vol.id);
+                }
+                setKitAdded(true);
+              }}
+              disabled={kitAdded}
+              className="btn-lp w-full mt-4 disabled:opacity-60"
+            >
+              {kitAdded ? "Набор в корзине" : `Добавить набор в корзину · ${starterTotal.toLocaleString("ru-RU")} ₽`}
+            </button>
           </div>
         )}
 
@@ -154,9 +169,9 @@ export default function TestPage() {
   // ─── Quiz ─────────────────────────────────
   return (
     <div className="max-w-md mx-auto px-5 py-10">
-      <div className="relative -mx-5 mb-6 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
-        <img src="/brand/collections/pearl-endorphin.jpg" alt=""
-          className="w-full h-[160px] object-cover" style={{ objectPosition: "top" }} />
+      <div className="relative -mx-5 mb-6 overflow-hidden h-[160px]" style={{ borderRadius: "0 0 8px 8px" }}>
+        <Image src="/brand/collections/pearl-endorphin.jpg" alt="Доша-тест — SPAquatoria"
+          fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={{ objectPosition: "top" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
       </div>
       <div className="text-center mb-8">

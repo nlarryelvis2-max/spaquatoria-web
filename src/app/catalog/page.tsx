@@ -3,9 +3,10 @@
 import { useState, useMemo, useEffect, useRef, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { products, collections, faceLines, getProductScore } from "@/lib/data";
 import { ProductCard } from "@/components/ProductCard";
-import { DoshaType, DoshaProfile, DOSHA_NAMES, DOSHA_COLORS, getDominantDosha, AGE_SUBTITLES, AgeGroup } from "@/lib/types";
+import { DoshaType, DoshaProfile, DOSHA_NAMES, DOSHA_COLORS, getDominantDosha, AGE_SUBTITLES, AgeGroup, Purpose, PURPOSE_NAMES } from "@/lib/types";
 import { loadProfile, loadAgeGroup } from "@/lib/store";
 
 const doshas: DoshaType[] = ["vata", "pitta", "kapha"];
@@ -145,7 +146,9 @@ function getMinPrice(p: typeof products[0]): number {
   return (inStock.length > 0 ? inStock : p.volumes).reduce((min, v) => Math.min(min, v.retailPrice), Infinity);
 }
 
-type SortOption = "default" | "price-asc" | "price-desc" | "name";
+type SortOption = "default" | "price-asc" | "price-desc" | "name" | "rating";
+
+const PURPOSE_FILTER_ORDER: Purpose[] = ["moisturizing", "antiAge", "cleansing", "nourishing", "lifting", "detox", "relaxation", "antiCellulite", "sunProtection"];
 
 /* ─── Collection Section ─── */
 
@@ -165,8 +168,8 @@ function CollectionSection({ collectionId, items, dominantDosha }: {
   return (
     <div>
       {collImage && (
-        <div className="mb-3 overflow-hidden" style={{ borderRadius: 8 }}>
-          <img src={collImage} alt={name} className="w-full h-[120px] object-cover" style={{ objectPosition: "top" }} />
+        <div className="relative mb-3 overflow-hidden h-[120px]" style={{ borderRadius: 8 }}>
+          <Image src={collImage} alt={name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={{ objectPosition: "top" }} />
         </div>
       )}
       <div className="flex items-start justify-between mb-2">
@@ -213,6 +216,7 @@ function CatalogInner() {
   const [search, setSearch] = useState("");
   const [activeCat, setActiveCat] = useState<string | null>(initialCat);
   const [selectedDosha, setSelectedDosha] = useState<DoshaType | null>(null);
+  const [selectedPurpose, setSelectedPurpose] = useState<Purpose | null>(null);
   const [sort, setSort] = useState<SortOption>("default");
   const [profile, setProfile] = useState<DoshaProfile | null>(null);
   const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
@@ -252,15 +256,17 @@ function CatalogInner() {
     }
     if (activeCat && activeCat !== "__all__") result = result.filter(p => p.categoryId === activeCat);
     if (selectedDosha) result = result.filter(p => p.doshaAffinity.includes(selectedDosha));
+    if (selectedPurpose) result = result.filter(p => p.purposes.includes(selectedPurpose));
     if (sort === "price-asc") result = [...result].sort((a, b) => getMinPrice(a) - getMinPrice(b));
     else if (sort === "price-desc") result = [...result].sort((a, b) => getMinPrice(b) - getMinPrice(a));
     else if (sort === "name") result = [...result].sort((a, b) => a.name.localeCompare(b.name, "ru"));
+    else if (sort === "rating") result = [...result].sort((a, b) => getProductScore(b.id).score - getProductScore(a.id).score);
     return result;
-  }, [search, activeCat, selectedDosha, sort]);
+  }, [search, activeCat, selectedDosha, selectedPurpose, sort]);
 
   // Group products by collection for category view
   const collectionGroups = useMemo(() => {
-    if (!activeCat || activeCat === "__all__" || search || selectedDosha || sort !== "default") return null;
+    if (!activeCat || activeCat === "__all__" || search || selectedDosha || selectedPurpose || sort !== "default") return null;
 
     const catProducts = products.filter(p => p.categoryId === activeCat);
     const groups: { collectionId: string; items: typeof products }[] = [];
@@ -288,7 +294,7 @@ function CatalogInner() {
     }
 
     return groups;
-  }, [activeCat, search, selectedDosha, sort, dominantDosha]);
+  }, [activeCat, search, selectedDosha, selectedPurpose, sort, dominantDosha]);
 
   const [activeCollId, setActiveCollId] = useState<string | null>(null);
   const collectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -403,7 +409,7 @@ function CatalogInner() {
                 >
                   {cat.image ? (
                     <div className="relative aspect-[3/4] w-full overflow-hidden" style={{ borderRadius: 8 }}>
-                      <img src={cat.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style={{ objectPosition: "top" }} />
+                      <Image src={cat.image} alt={cat.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" style={{ objectPosition: "top" }} />
                       <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.88) 0%, rgba(22,18,12,0.55) 40%, rgba(22,18,12,0.15) 70%, transparent 100%)" }} />
                       <div className="absolute bottom-0 left-0 right-0 p-4">
                         <p className="text-[16px] font-medium text-white" style={{ letterSpacing: "-0.01em", textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}>{cat.name}</p>
@@ -460,8 +466,8 @@ function CatalogInner() {
                     }}
                   >
                     <div className="h-[100px] overflow-hidden relative">
-                      <img src={`/about/lines/${line.id}.jpg`} alt={line.name}
-                        className="w-full h-full object-cover" />
+                      <Image src={`/about/lines/${line.id}.jpg`} alt={line.name}
+                        fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                       <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, #${line.color}80)` }} />
                       <div className="absolute bottom-2 left-3 flex items-center gap-2">
                         <span className="text-[13px] font-bold text-white">{line.name}</span>
@@ -517,7 +523,7 @@ function CatalogInner() {
         /* ═══════ Grouped by collection ═══════ */
         <>
           <button
-            onClick={() => { setActiveCat(null); setSelectedDosha(null); setSort("default"); }}
+            onClick={() => { setActiveCat(null); setSelectedDosha(null); setSelectedPurpose(null); setSort("default"); }}
             className="flex items-center gap-1.5 text-[15px] text-brand mb-3 tap"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -574,7 +580,7 @@ function CatalogInner() {
           </div>
 
           {/* Dosha/sort filters */}
-          <div className="flex items-center gap-2 mb-4 overflow-x-auto no-scrollbar -mx-5 px-5">
+          <div className="flex items-center gap-2 mb-2 overflow-x-auto no-scrollbar -mx-5 px-5">
             {doshas.map(d => (
               <button
                 key={d}
@@ -598,7 +604,29 @@ function CatalogInner() {
               <option value="price-asc">Дешевле</option>
               <option value="price-desc">Дороже</option>
               <option value="name">По названию</option>
+              <option value="rating">По рейтингу</option>
             </select>
+          </div>
+
+          {/* Purpose filter */}
+          <div className="flex items-center gap-1.5 mb-4 overflow-x-auto no-scrollbar -mx-5 px-5">
+            {PURPOSE_FILTER_ORDER.map(p => {
+              const count = products.filter(pr => pr.categoryId === activeCat && pr.purposes.includes(p)).length;
+              if (count === 0) return null;
+              return (
+                <button
+                  key={p}
+                  onClick={() => setSelectedPurpose(selectedPurpose === p ? null : p)}
+                  className={`shrink-0 px-2.5 py-[5px] rounded text-[12px] font-medium transition-colors ${
+                    selectedPurpose === p
+                      ? "bg-brand text-white"
+                      : "bg-fill text-fg-secondary"
+                  }`}
+                >
+                  {PURPOSE_NAMES[p]} <span className="opacity-50">{count}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Collection groups with journal inserts */}
@@ -628,7 +656,7 @@ function CatalogInner() {
         <>
           {activeCat && (
             <button
-              onClick={() => { setActiveCat(null); setSelectedDosha(null); setSort("default"); }}
+              onClick={() => { setActiveCat(null); setSelectedDosha(null); setSelectedPurpose(null); setSort("default"); }}
               className="flex items-center gap-1.5 text-[15px] text-brand mb-3 tap"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -643,7 +671,7 @@ function CatalogInner() {
           )}
 
           {/* Filters */}
-          <div className="flex items-center gap-2 mb-3 overflow-x-auto no-scrollbar -mx-5 px-5">
+          <div className="flex items-center gap-2 mb-2 overflow-x-auto no-scrollbar -mx-5 px-5">
             {doshas.map(d => (
               <button
                 key={d}
@@ -667,7 +695,34 @@ function CatalogInner() {
               <option value="price-asc">Дешевле</option>
               <option value="price-desc">Дороже</option>
               <option value="name">По названию</option>
+              <option value="rating">По рейтингу</option>
             </select>
+          </div>
+
+          {/* Purpose filter */}
+          <div className="flex items-center gap-1.5 mb-3 overflow-x-auto no-scrollbar -mx-5 px-5">
+            {PURPOSE_FILTER_ORDER.map(p => {
+              const count = products.filter(pr => {
+                let match = pr.purposes.includes(p);
+                if (activeCat && activeCat !== "__all__") match = match && pr.categoryId === activeCat;
+                if (selectedDosha) match = match && pr.doshaAffinity.includes(selectedDosha);
+                return match;
+              }).length;
+              if (count === 0) return null;
+              return (
+                <button
+                  key={p}
+                  onClick={() => setSelectedPurpose(selectedPurpose === p ? null : p)}
+                  className={`shrink-0 px-2.5 py-[5px] rounded text-[12px] font-medium transition-colors ${
+                    selectedPurpose === p
+                      ? "bg-brand text-white"
+                      : "bg-fill text-fg-secondary"
+                  }`}
+                >
+                  {PURPOSE_NAMES[p]} <span className="opacity-50">{count}</span>
+                </button>
+              );
+            })}
           </div>
 
           <p className="text-[13px] text-fg-secondary mb-3">{searchFiltered.length} средств</p>
@@ -676,7 +731,7 @@ function CatalogInner() {
             <div className="text-center py-16">
               <p className="text-[17px] text-fg-secondary">Ничего не найдено</p>
               <button
-                onClick={() => { setSearch(""); setSelectedDosha(null); setActiveCat(null); setSort("default"); }}
+                onClick={() => { setSearch(""); setSelectedDosha(null); setSelectedPurpose(null); setActiveCat(null); setSort("default"); }}
                 className="text-[15px] text-brand mt-3 tap"
               >
                 Сбросить

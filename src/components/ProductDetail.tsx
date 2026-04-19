@@ -6,6 +6,12 @@ import { addToCart, getCart } from "@/lib/cart";
 import { toggleFavorite, getFavorites } from "@/lib/store";
 import type { Product } from "@/lib/types";
 
+const REPLENISH_INTERVALS = [
+  { days: 30, label: "30 дней" },
+  { days: 60, label: "60 дней" },
+  { days: 90, label: "90 дней" },
+];
+
 interface Props {
   product: Product;
 }
@@ -17,6 +23,8 @@ export function ProductDetail({ product }: Props) {
   );
   const [inCart, setInCart] = useState(false);
   const [isFav, setIsFav] = useState(false);
+  const [replenish, setReplenish] = useState(false);
+  const [replenishInterval, setReplenishInterval] = useState(60);
 
   useEffect(() => {
     function check() {
@@ -83,6 +91,47 @@ export function ProductDetail({ product }: Props) {
           </svg>
         </button>
       </div>
+
+      {/* Auto-replenishment hint */}
+      {selectedVolume && selectedVolume.inStock && (
+        <div className="glass-card p-3.5 mb-4">
+          <label className="flex items-start gap-3 cursor-pointer tap">
+            <input
+              type="checkbox"
+              checked={replenish}
+              onChange={() => setReplenish(!replenish)}
+              className="mt-0.5 accent-[var(--brand)]"
+              style={{ width: 16, height: 16 }}
+            />
+            <div className="flex-1">
+              <p className="text-[13px] font-medium">
+                Авто-пополнение — скидка 15%
+              </p>
+              <p className="text-[11px] text-fg-tertiary mt-0.5">
+                Получайте каждые {replenishInterval} дней за {Math.round(selectedVolume.retailPrice * 0.85).toLocaleString("ru-RU")} ₽
+              </p>
+              {replenish && (
+                <div className="flex gap-1.5 mt-2">
+                  {REPLENISH_INTERVALS.map(opt => (
+                    <button
+                      key={opt.days}
+                      type="button"
+                      onClick={(e) => { e.preventDefault(); setReplenishInterval(opt.days); }}
+                      className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors ${
+                        replenishInterval === opt.days
+                          ? "bg-brand text-white"
+                          : "bg-fill text-fg-secondary"
+                      }`}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </label>
+        </div>
+      )}
 
       {/* Sticky bottom bar */}
       <div className="fixed bottom-[72px] left-0 right-0 z-40 px-5 pb-2 pt-3"

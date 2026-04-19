@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { products, getProduct, getImbalanceAdvice } from "@/lib/data";
 import {
   loadProfile, loadAgeGroup, loadName, saveAgeGroup,
@@ -434,9 +435,9 @@ export default function HomePage() {
             className="eyebrow tap px-2 py-0.5 -mr-2" style={{ color: "var(--lp-tertiary)" }}>Выйти</button>
         </div>
 
-        <div className="relative overflow-hidden mb-8 -mx-5" style={{ borderRadius: "0 0 8px 8px" }}>
-          <img src="/brand/hero/face-care.jpg" alt=""
-            className="w-full h-[220px] object-cover" />
+        <div className="relative overflow-hidden mb-8 -mx-5 h-[220px]" style={{ borderRadius: "0 0 8px 8px" }}>
+          <Image src="/brand/hero/face-care.jpg" alt="Уход за лицом — SPAquatoria"
+            fill sizes="(max-width: 768px) 100vw, 50vw" priority className="object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 60%)" }} />
         </div>
 
@@ -469,9 +470,10 @@ export default function HomePage() {
         <span className="eyebrow mb-4 block">В фокусе · Ингредиент</span>
         <Link href={`/lines/${ingredientStory.lineId}`} className="block tap group">
           <div className="paper-card overflow-hidden" style={{ borderLeft: `2px solid ${ingredientStory.color}`, padding: 0 }}>
-            <div className="h-[160px] overflow-hidden" style={{ background: "var(--lp-soft)" }}>
-              <img src={`/brand/collections/${ingredientStory.lineId}.jpg`} alt=""
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            <div className="relative h-[160px] overflow-hidden" style={{ background: "var(--lp-soft)" }}>
+              <Image src={`/brand/collections/${ingredientStory.lineId}.jpg`} alt="Коллекция SPAquatoria"
+                fill sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 style={{ objectPosition: "top" }} />
             </div>
             <div className="p-6">
@@ -507,9 +509,10 @@ export default function HomePage() {
             return (
               <Link href={`/catalog/${hero.id}`} className="block tap group mb-6">
                 {hero.images[0] && (
-                  <div className="relative overflow-hidden -mx-5" style={{ borderRadius: "8px" }}>
-                    <img src={hero.images[0].url} alt=""
-                      className="w-full h-[240px] object-cover product-img transition-transform duration-700 group-hover:scale-105" />
+                  <div className="relative overflow-hidden -mx-5 h-[240px]" style={{ borderRadius: "8px" }}>
+                    <Image src={hero.images[0].url} alt={hero.name}
+                      fill sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover product-img transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.7) 0%, transparent 55%)" }} />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <p className="eyebrow mb-2" style={{ color: "rgba(255,255,255,0.65)" }}>
@@ -537,9 +540,10 @@ export default function HomePage() {
             {recommendedProducts.slice(1, 3).map((product) => (
               <Link key={product.id} href={`/catalog/${product.id}`} className="flex gap-5 tap group">
                 {product.images[0] && (
-                  <div className="w-[140px] h-[180px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "6px" }}>
-                    <img src={product.images[0].url} alt=""
-                      className="w-full h-full object-cover product-img transition-transform duration-700 group-hover:scale-105" />
+                  <div className="relative w-[140px] h-[180px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "6px" }}>
+                    <Image src={product.images[0].url} alt={product.name}
+                      fill sizes="(max-width: 768px) 50vw, 33vw"
+                      className="object-cover product-img transition-transform duration-700 group-hover:scale-105" />
                   </div>
                 )}
                 <div className="flex-1 min-w-0 py-1">
@@ -571,15 +575,15 @@ export default function HomePage() {
       <section className="mb-14">
         <span className="eyebrow mb-4 block">Философия сезона</span>
         <div className="paper-card flat overflow-hidden" style={{ padding: 0 }}>
-          <div className="h-[140px] overflow-hidden" style={{ background: "var(--lp-soft)" }}>
-            <img src={
+          <div className="relative h-[140px] overflow-hidden" style={{ background: "var(--lp-soft)" }}>
+            <Image src={
               season.name === "Шишира" ? "/brand/hero/face-care.jpg" :
               season.name === "Васанта" ? "/brand/collections/berry-glow.jpg" :
               season.name === "Гришма" ? "/brand/collections/ocean-prana.jpg" :
               season.name === "Варша" ? "/brand/hero/body-care.jpg" :
               season.name === "Шарад" ? "/brand/collections/forest-power.jpg" :
               "/brand/collections/himalayah.jpg"
-            } alt="" className="w-full h-full object-cover" style={{ objectPosition: "top" }} />
+            } alt="Коллекция SPAquatoria" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={{ objectPosition: "top" }} />
           </div>
           <div className="p-6">
             <div className="flex items-baseline justify-between mb-4">
@@ -622,12 +626,12 @@ export default function HomePage() {
       {/* ═══ FROM THE DIARIES — pull quote ═════════ */}
       <section className="mb-14">
         <span className="eyebrow mb-6 block">Из дневников</span>
-        <div className="relative overflow-hidden" style={{ borderRadius: "8px" }}>
-          <img src={
+        <div className="relative overflow-hidden h-[100px]" style={{ borderRadius: "8px" }}>
+          <Image src={
             todayReview.dosha === "Питта" ? "/brand/collections/pearl-endorphin.jpg" :
             todayReview.dosha === "Вата" ? "/brand/collections/swan-grace.jpg" :
             "/brand/collections/grand-cru-elixir.jpg"
-          } alt="" className="w-full h-[100px] object-cover" style={{ opacity: 0.15, objectPosition: "top" }} />
+          } alt="Коллекция SPAquatoria" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={{ opacity: 0.15, objectPosition: "top" }} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 0%, var(--lp-bg) 100%)" }} />
         </div>
         <figure className="px-2 -mt-6 relative">
@@ -658,9 +662,9 @@ export default function HomePage() {
             {usages.slice(0, 4).map((u) => {
               const p = getProduct(u.productId);
               return p?.images[0] ? (
-                <div key={u.productId} className="w-[48px] h-[48px] rounded-full overflow-hidden shrink-0"
+                <div key={u.productId} className="relative w-[48px] h-[48px] rounded-full overflow-hidden shrink-0"
                   style={{ border: "2px solid var(--lp-bg)", background: "var(--lp-soft)" }}>
-                  <img src={p.images[0].url} alt="" className="w-full h-full object-cover product-img" />
+                  <Image src={p.images[0].url} alt={p.name} fill sizes="48px" className="object-cover product-img" />
                 </div>
               ) : null;
             })}
@@ -703,8 +707,8 @@ export default function HomePage() {
       {/* ═══ VOICE OF AYURVEDA ═════════════════════ */}
       <section className="mb-14">
         <span className="eyebrow mb-4 block">Голос аюрведы</span>
-        <div className="relative overflow-hidden -mx-5" style={{ borderRadius: "8px" }}>
-          <img src="/brand/hero/massage.jpg" alt="" className="w-full h-[280px] object-cover" />
+        <div className="relative overflow-hidden -mx-5 h-[280px]" style={{ borderRadius: "8px" }}>
+          <Image src="/brand/hero/massage.jpg" alt="Массаж — SPAquatoria" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.82) 0%, rgba(22,18,12,0.45) 100%)" }} />
           <div className="absolute inset-0 flex flex-col justify-end p-7">
             <h3 className="heading-md text-white mb-3" style={{ fontWeight: 400 }}>{ayurvedaTip.title}</h3>
@@ -781,8 +785,8 @@ export default function HomePage() {
               <Link key={usage.productId} href={`/catalog/${product.id}`}
                 className="flex items-center gap-4 tap" style={{ paddingBottom: 12, borderBottom: "1px solid var(--lp-line-soft)" }}>
                 {product.images[0] && (
-                  <div className="w-[48px] h-[48px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "6px" }}>
-                    <img src={product.images[0].url} alt="" className="w-full h-full object-cover product-img" />
+                  <div className="relative w-[48px] h-[48px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "6px" }}>
+                    <Image src={product.images[0].url} alt={product.name} fill sizes="48px" className="object-cover product-img" />
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
@@ -1030,8 +1034,8 @@ export default function HomePage() {
                     className="w-full flex items-center gap-3.5 py-3.5 tap text-left"
                     style={i > 0 ? { borderTop: "0.5px solid var(--separator)" } : undefined}>
                     {p.images[0] && (
-                      <div className="w-11 h-11 rounded-lg overflow-hidden shrink-0 bg-fill">
-                        <img src={p.images[0].url} alt="" className="w-full h-full object-cover product-img" />
+                      <div className="relative w-11 h-11 rounded-lg overflow-hidden shrink-0 bg-fill">
+                        <Image src={p.images[0].url} alt={p.name} fill sizes="44px" className="object-cover product-img" />
                       </div>
                     )}
                     <div className="flex-1 min-w-0">

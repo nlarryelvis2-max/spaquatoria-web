@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { routines, getProduct } from "@/lib/data";
+import { addToCart } from "@/lib/cart";
 import { loadProfile, loadAgeGroup } from "@/lib/store";
 import { getDominantDosha, DOSHA_NAMES, DOSHA_COLORS, AGE_NAMES, AGE_SUBTITLES, STEP_NAMES, AgeGroup, DoshaType } from "@/lib/types";
 
@@ -11,6 +13,7 @@ export default function RoutinePage() {
   const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
   const [timeOfDay, setTimeOfDay] = useState<"morning" | "evening">("morning");
   const [mounted, setMounted] = useState(false);
+  const [ritualAdded, setRitualAdded] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -34,9 +37,9 @@ export default function RoutinePage() {
   if (!dosha || !ageGroup) {
     return (
       <div className="max-w-md mx-auto px-5 py-10">
-        <div className="relative -mx-5 mb-6 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
-          <img src="/brand/hero/face-care.jpg" alt=""
-            className="w-full h-[160px] object-cover" />
+        <div className="relative -mx-5 mb-6 overflow-hidden h-[160px]" style={{ borderRadius: "0 0 8px 8px" }}>
+          <Image src="/brand/hero/face-care.jpg" alt="Уход за лицом — SPAquatoria"
+            fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
         </div>
         <p className="eyebrow mb-3">Ваш ритуал</p>
@@ -75,9 +78,9 @@ export default function RoutinePage() {
   // ─── Routine ─────────────────────────────
   return (
     <div className="max-w-md mx-auto px-5 py-10">
-      <div className="relative -mx-5 mb-6 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
-        <img src="/brand/hero/face-care.jpg" alt=""
-          className="w-full h-[160px] object-cover" />
+      <div className="relative -mx-5 mb-6 overflow-hidden h-[160px]" style={{ borderRadius: "0 0 8px 8px" }}>
+        <Image src="/brand/hero/face-care.jpg" alt="Уход за лицом — SPAquatoria"
+          fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
       </div>
       <p className="eyebrow mb-3">Персональный уход</p>
@@ -112,6 +115,7 @@ export default function RoutinePage() {
 
       {/* Steps */}
       {routine && steps.length > 0 ? (
+        <>
         <div className="glass-card overflow-hidden">
           {steps.map((step, i) => {
             const product = getProduct(step.productId);
@@ -144,6 +148,34 @@ export default function RoutinePage() {
             );
           })}
         </div>
+        {/* Add ritual to cart */}
+        {(() => {
+          const ritualProducts = steps
+            .map(s => ({ product: getProduct(s.productId), step: s }))
+            .filter(x => x.product && x.product.volumes.some(v => v.inStock));
+          if (ritualProducts.length === 0) return null;
+          const ritualTotal = ritualProducts.reduce((sum, { product: p }) => {
+            const vol = p!.volumes.find(v => v.inStock) || p!.volumes[0];
+            return sum + (vol ? vol.retailPrice : 0);
+          }, 0);
+          return (
+            <button
+              onClick={() => {
+                for (const { product: p } of ritualProducts) {
+                  if (!p) continue;
+                  const vol = p.volumes.find(v => v.inStock) || p.volumes[0];
+                  if (vol) addToCart(p.id, vol.id);
+                }
+                setRitualAdded(true);
+              }}
+              disabled={ritualAdded}
+              className="btn-lp w-full mt-4 disabled:opacity-60"
+            >
+              {ritualAdded ? "Ритуал в корзине" : `Собрать ритуал · ${ritualTotal.toLocaleString("ru-RU")} ₽`}
+            </button>
+          );
+        })()}
+        </>
       ) : (
         <div className="text-center py-12">
           <p className="text-[15px] text-fg-secondary">Ритуал для этой комбинации пока не готов</p>
@@ -166,7 +198,7 @@ export default function RoutinePage() {
         <p className="eyebrow mb-2">Персональная консультация</p>
         <p className="body-lp mb-4">Косметолог подберёт уход под ваш запрос и ответит на вопросы в WhatsApp.</p>
         <a
-          href={`https://wa.me/79031234567?text=${encodeURIComponent(`Здравствуйте! Я прошла доша-тест (${dosha ? DOSHA_NAMES[dosha] : ""}${ageGroup ? ", " + AGE_SUBTITLES[ageGroup] : ""}) и хочу персональную консультацию по уходу.`)}`}
+          href={`https://wa.me/79296753322?text=${encodeURIComponent(`Здравствуйте! Я прошла доша-тест (${dosha ? DOSHA_NAMES[dosha] : ""}${ageGroup ? ", " + AGE_SUBTITLES[ageGroup] : ""}) и хочу персональную консультацию по уходу.`)}`}
           target="_blank"
           rel="noopener"
           className="btn-lp w-full"

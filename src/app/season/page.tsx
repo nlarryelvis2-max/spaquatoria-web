@@ -1,18 +1,27 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { RITUCHARYA, getCurrentSeason } from "@/lib/content";
 import { products } from "@/lib/data";
+import { addToCart } from "@/lib/cart";
 import { DOSHA_NAMES, DOSHA_COLORS } from "@/lib/types";
 import { ProductCard } from "@/components/ProductCard";
 
 export default function SeasonPage() {
+  const [seasonAdded, setSeasonAdded] = useState(false);
   const current = getCurrentSeason();
   const currentIdx = RITUCHARYA.findIndex(s => s.name === current.name);
 
   const seasonProducts = products
     .filter(p => p.bodyZone === "face" && p.doshaAffinity.includes(current.dosha) && p.images.length > 0)
     .slice(0, 6);
+
+  const seasonTotal = seasonProducts.reduce((sum, p) => {
+    const vol = p.volumes.find(v => v.inStock) || p.volumes[0];
+    return sum + (vol ? vol.retailPrice : 0);
+  }, 0);
 
   return (
     <div className="max-w-lg mx-auto px-5 py-6 pb-28">
@@ -21,9 +30,9 @@ export default function SeasonPage() {
       <p className="body-lp muted mb-6">Аюрведа делит год на шесть сезонов. Каждый меняет состояние кожи и требует своего ритуала.</p>
 
       {/* Brand hero image */}
-      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
-        <img src="/brand/hero/massage.jpg" alt=""
-          className="w-full h-[180px] object-cover" />
+      <div className="relative -mx-5 mb-8 overflow-hidden h-[180px]" style={{ borderRadius: "0 0 8px 8px" }}>
+        <Image src="/brand/hero/massage.jpg" alt="Массаж — SPAquatoria"
+          fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
       </div>
 
@@ -69,6 +78,21 @@ export default function SeasonPage() {
           <div className="grid grid-cols-2 gap-3">
             {seasonProducts.map(p => <ProductCard key={p.id} product={p} />)}
           </div>
+          {seasonProducts.length >= 3 && (
+            <button
+              onClick={() => {
+                for (const p of seasonProducts.slice(0, 3)) {
+                  const vol = p.volumes.find(v => v.inStock) || p.volumes[0];
+                  if (vol) addToCart(p.id, vol.id);
+                }
+                setSeasonAdded(true);
+              }}
+              disabled={seasonAdded}
+              className="btn-lp w-full mt-4 disabled:opacity-60"
+            >
+              {seasonAdded ? "Набор в корзине" : `Собрать сезонный набор · ${seasonTotal.toLocaleString("ru-RU")} ₽`}
+            </button>
+          )}
         </div>
       )}
 

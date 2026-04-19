@@ -7,13 +7,16 @@ import {
   getCart, addToCart, removeFromCart, deleteFromCart, clearCart,
   getCartTotal, getCartCount, CartItem,
 } from "@/lib/cart";
-import { products, routines, getComplementaryProducts } from "@/lib/data";
+import { products, routines, getComplementaryProducts, getProductScore } from "@/lib/data";
+import { ProductCard } from "@/components/ProductCard";
 import { loadAccount, loadProfile, loadAgeGroup } from "@/lib/store";
 import {
   Product, DoshaProfile, getDominantDosha, DOSHA_NAMES, DOSHA_COLORS,
   STEP_NAMES, StepType, DoshaType, AgeGroup,
 } from "@/lib/types";
 import { getCurrentSeason } from "@/lib/content";
+import { ShippingProgress } from "@/components/ShippingProgress";
+import { getRecentlyViewedIds } from "@/lib/recently-viewed";
 
 type DeliveryMethod = "pickup" | "delivery";
 
@@ -36,8 +39,9 @@ export default function CartPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [total, setTotal] = useState(0);
   const [count, setCount] = useState(0);
-  const [showCheckout, setShowCheckout] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [orderNumber, setOrderNumber] = useState("");
+  const [promo, setPromo] = useState("");
   const [profile, setProfile] = useState<DoshaProfile | null>(null);
   const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
   const [form, setForm] = useState<CheckoutForm>({
@@ -167,17 +171,21 @@ export default function CartPage() {
   }, [cartProducts, dosha]);
 
   function handleSubmit() {
-    const lines: string[] = ["Заказ SPAquatoria", ""];
+    const num = `SPA-${Date.now().toString(36).toUpperCase()}`;
+    const lines: string[] = [`Заказ ${num}`, ""];
     for (const { item, product, volume } of cartProducts) {
       lines.push(`${product.name} (${volume.volume}) x${item.quantity} — ${(volume.retailPrice * item.quantity).toLocaleString("ru-RU")} ₽`);
     }
-    lines.push("", `Итого: ${total.toLocaleString("ru-RU")} ₽`, "");
+    lines.push("", `Итого: ${total.toLocaleString("ru-RU")} ₽`);
+    if (promo) lines.push(`Промокод: ${promo}`);
+    lines.push("");
     lines.push(`Имя: ${form.name}`, `Телефон: ${form.phone}`);
     if (form.email) lines.push(`Email: ${form.email}`);
     lines.push(`Доставка: ${form.delivery === "pickup" ? "Самовывоз" : "Доставка"}`);
     if (form.comment) lines.push(`Комментарий: ${form.comment}`);
     const text = encodeURIComponent(lines.join("\n"));
     window.open(`https://wa.me/79296753322?text=${text}`, "_blank");
+    setOrderNumber(num);
     clearCart();
     setSubmitted(true);
   }
@@ -193,6 +201,9 @@ export default function CartPage() {
             </svg>
           </div>
           <h1 className="heading-md mb-2">Заказ отправлен</h1>
+          {orderNumber && (
+            <p className="numeric-lp text-[13px] mb-1" style={{ color: "var(--lp-accent)" }}>{orderNumber}</p>
+          )}
           <p className="body-lp muted mb-8">Свяжемся с вами в WhatsApp</p>
           <Link href="/catalog" className="btn-lp">В каталог</Link>
         </div>
@@ -202,17 +213,78 @@ export default function CartPage() {
 
   /* ═══ EMPTY STATE ═════════════════════════════════ */
   if (cart.length === 0) {
+    const topProducts = products
+      .filter(p => p.images.length > 0 && p.volumes.some(v => v.inStock))
+      .map(p => ({ product: p, score: getProductScore(p.id) }))
+      .sort((a, b) => b.score.score - a.score.score)
+      .slice(0, 6);
+
+    const doshaProducts = dosha
+      ? products.filter(p => p.doshaAffinity.includes(dosha) && p.bodyZone === "face" && p.images.length > 0).slice(0, 4)
+      : [];
+
     return (
       <div className="max-w-lg mx-auto px-5 py-6 pb-28">
         <span className="eyebrow mb-3 block">Заказ</span>
         <h1 className="heading-xl mb-10">Корзина</h1>
-        <div className="flex flex-col items-center justify-center min-h-[50vh] text-center">
+        <div className="flex flex-col items-center justify-center text-center mb-10">
           <svg className="w-10 h-10 mb-5" style={{ color: "var(--lp-tertiary)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
           </svg>
           <p className="heading-md mb-2" style={{ fontWeight: 400 }}>Корзина пуста</p>
-          <p className="body-lp muted mb-8">Добавьте товары из каталога</p>
-          <Link href="/catalog" className="btn-lp">В каталог</Link>
+          <p className="body-lp muted mb-6">Добавьте товары из каталога</p>
+          <div className="flex gap-2">
+            <Link href="/catalog" className="btn-lp">В каталог</Link>
+            {!profile && <Link href="/test" className="btn-lp ghost">Пройти тест</Link>}
+          </div>
+        </div>
+
+        {/* Dosha recommendations */}
+        {doshaProducts.length > 0 && (
+          <div className="mb-8">
+            <p className="eyebrow mb-3">Рекомендуем для {DOSHA_NAMES[dosha!]}</p>
+            <div className="flex gap-2.5 overflow-x-auto no-scrollbar -mx-5 px-5 pb-1">
+              {doshaProducts.map(p => (
+                <div key={p.id} className="shrink-0 w-[150px]">
+                  <ProductCard product={p} />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Recently viewed */}
+        {(() => {
+          const recentIds = getRecentlyViewedIds();
+          const recentProducts = recentIds
+            .map(id => products.find(p => p.id === id))
+            .filter((p): p is Product => !!p)
+            .slice(0, 6);
+          if (recentProducts.length === 0) return null;
+          return (
+            <div className="mb-8">
+              <p className="eyebrow mb-3">Вы смотрели</p>
+              <div className="flex gap-2.5 overflow-x-auto no-scrollbar -mx-5 px-5 pb-1">
+                {recentProducts.map(p => (
+                  <div key={p.id} className="shrink-0 w-[150px]">
+                    <ProductCard product={p} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Top rated */}
+        <div className="mb-8">
+          <p className="eyebrow mb-3">Хиты</p>
+          <div className="flex gap-2.5 overflow-x-auto no-scrollbar -mx-5 px-5 pb-1">
+            {topProducts.map(({ product: p }) => (
+              <div key={p.id} className="shrink-0 w-[150px]">
+                <ProductCard product={p} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -369,8 +441,8 @@ export default function CartPage() {
               return (
                 <div key={product.id} className="shrink-0 w-[180px] paper-card flat overflow-hidden" style={{ padding: 0 }}>
                   {img && (
-                    <div className="h-[100px] overflow-hidden" style={{ background: "var(--lp-soft)" }}>
-                      <img src={img.url} alt="" className="w-full h-full object-cover" />
+                    <div className="h-[100px] overflow-hidden relative" style={{ background: "var(--lp-soft)" }}>
+                      <Image src={img.url} alt={product.name} fill sizes="180px" className="object-cover" />
                     </div>
                   )}
                   <div className="p-4">
@@ -392,6 +464,9 @@ export default function CartPage() {
         </section>
       )}
 
+      {/* ═══ SHIPPING PROGRESS ═══════════════════════ */}
+      <ShippingProgress />
+
       {/* ═══ TOTAL ══════════════════════════════════ */}
       <div className="flex justify-between items-baseline mb-6 px-1">
         <span className="body-lp" style={{ color: "var(--lp-muted)" }}>{count} {count === 1 ? "товар" : count < 5 ? "товара" : "товаров"}</span>
@@ -399,61 +474,70 @@ export default function CartPage() {
       </div>
 
       {/* ═══ CHECKOUT ══════════════════════════════= */}
-      {!showCheckout ? (
-        <button onClick={() => setShowCheckout(true)} className="btn-lp w-full">
-          Оформить заказ
-        </button>
-      ) : (
-        <section>
-          <span className="eyebrow mb-4 block">Оформление</span>
-          <div className="paper-card flat overflow-hidden">
-            {[
-              { label: "Имя", type: "text", value: form.name, key: "name", placeholder: "Ваше имя", required: true },
-              { label: "Телефон", type: "tel", value: form.phone, key: "phone", placeholder: "+7 (___) ___-__-__", required: true },
-              { label: "Email", type: "email", value: form.email, key: "email", placeholder: "email@example.com", required: false },
-            ].map((field, i) => (
-              <div key={field.key} className="px-5 py-3"
-                style={i > 0 ? { borderTop: "1px solid var(--lp-line-soft)" } : undefined}>
-                <label className="eyebrow mb-1 block" style={{ color: "var(--lp-tertiary)" }}>
-                  {field.label}{field.required && " *"}
-                </label>
-                <input
-                  type={field.type} value={field.value}
-                  onChange={e => setForm({ ...form, [field.key]: e.target.value })}
-                  className="w-full body-lp text-[15px] bg-transparent outline-none"
-                  placeholder={field.placeholder}
-                />
-              </div>
-            ))}
-            <div className="px-5 py-3" style={{ borderTop: "1px solid var(--lp-line-soft)" }}>
-              <label className="eyebrow mb-2 block" style={{ color: "var(--lp-tertiary)" }}>Получение</label>
-              <div className="flex gap-2">
-                {(["pickup", "delivery"] as DeliveryMethod[]).map(d => (
-                  <button key={d} onClick={() => setForm({ ...form, delivery: d })}
-                    className={`flex-1 pill-chip tap ${form.delivery === d ? "accent" : ""}`}
-                    style={form.delivery === d ? { background: "var(--brand)", borderColor: "var(--brand)", color: "#fff" } : undefined}>
-                    {d === "pickup" ? "Самовывоз" : "Доставка"}
-                  </button>
-                ))}
-              </div>
+      <section>
+        <span className="eyebrow mb-4 block">Оформление</span>
+        <div className="paper-card flat overflow-hidden">
+          {[
+            { label: "Имя", type: "text", value: form.name, key: "name", placeholder: "Ваше имя", required: true },
+            { label: "Телефон", type: "tel", value: form.phone, key: "phone", placeholder: "+7 (___) ___-__-__", required: true },
+            { label: "Email", type: "email", value: form.email, key: "email", placeholder: "email@example.com", required: false },
+          ].map((field, i) => (
+            <div key={field.key} className="px-5 py-3"
+              style={i > 0 ? { borderTop: "1px solid var(--lp-line-soft)" } : undefined}>
+              <label className="eyebrow mb-1 block" style={{ color: "var(--lp-tertiary)" }}>
+                {field.label}{field.required && " *"}
+              </label>
+              <input
+                type={field.type} value={field.value}
+                onChange={e => setForm({ ...form, [field.key]: e.target.value })}
+                className="w-full body-lp text-[15px] bg-transparent outline-none"
+                placeholder={field.placeholder}
+              />
             </div>
-            <div className="px-5 py-3" style={{ borderTop: "1px solid var(--lp-line-soft)" }}>
-              <label className="eyebrow mb-1 block" style={{ color: "var(--lp-tertiary)" }}>Комментарий</label>
-              <textarea value={form.comment}
-                onChange={e => setForm({ ...form, comment: e.target.value })}
-                className="w-full body-lp text-[14px] bg-transparent outline-none resize-none h-14"
-                placeholder="Пожелания к заказу" />
-            </div>
-            <div className="p-5" style={{ borderTop: "1px solid var(--lp-line-soft)" }}>
-              <button onClick={handleSubmit}
-                disabled={!form.name.trim() || !form.phone.trim()}
-                className="btn-lp w-full disabled:opacity-40">
-                Отправить заказ
-              </button>
+          ))}
+          <div className="px-5 py-3" style={{ borderTop: "1px solid var(--lp-line-soft)" }}>
+            <label className="eyebrow mb-2 block" style={{ color: "var(--lp-tertiary)" }}>Получение</label>
+            <div className="flex gap-2">
+              {(["pickup", "delivery"] as DeliveryMethod[]).map(d => (
+                <button key={d} onClick={() => setForm({ ...form, delivery: d })}
+                  className={`flex-1 pill-chip tap ${form.delivery === d ? "accent" : ""}`}
+                  style={form.delivery === d ? { background: "var(--brand)", borderColor: "var(--brand)", color: "#fff" } : undefined}>
+                  {d === "pickup" ? "Самовывоз" : "Доставка"}
+                </button>
+              ))}
             </div>
           </div>
-        </section>
-      )}
+          <div className="px-5 py-3" style={{ borderTop: "1px solid var(--lp-line-soft)" }}>
+            <label className="eyebrow mb-1 block" style={{ color: "var(--lp-tertiary)" }}>Промокод</label>
+            <input
+              type="text" value={promo}
+              onChange={e => setPromo(e.target.value.toUpperCase())}
+              className="w-full body-lp text-[15px] bg-transparent outline-none"
+              placeholder="Введите промокод"
+            />
+          </div>
+          <div className="px-5 py-3" style={{ borderTop: "1px solid var(--lp-line-soft)" }}>
+            <label className="eyebrow mb-1 block" style={{ color: "var(--lp-tertiary)" }}>Комментарий</label>
+            <textarea value={form.comment}
+              onChange={e => setForm({ ...form, comment: e.target.value })}
+              className="w-full body-lp text-[14px] bg-transparent outline-none resize-none h-14"
+              placeholder="Пожелания к заказу" />
+          </div>
+          <div className="p-5" style={{ borderTop: "1px solid var(--lp-line-soft)" }}>
+            <button onClick={handleSubmit}
+              disabled={!form.name.trim() || !form.phone.trim()}
+              className="btn-lp w-full disabled:opacity-40">
+              Отправить заказ · {total.toLocaleString("ru-RU")} ₽
+            </button>
+            <button onClick={handleSubmit}
+              disabled={!form.name.trim() || !form.phone.trim()}
+              className="w-full mt-2 py-3 text-[14px] font-medium rounded tap disabled:opacity-40"
+              style={{ background: "var(--lp-soft)", color: "var(--lp-accent)" }}>
+              Оплатить переводом
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

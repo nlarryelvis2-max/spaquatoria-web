@@ -158,9 +158,9 @@ export default function AboutPage() {
     <div className="max-w-lg mx-auto px-5 py-6 pb-28">
 
       {/* ── HERO ──────────────────────────────── */}
-      <div className="relative overflow-hidden -mx-5 mb-10" style={{ borderRadius: "0 0 8px 8px" }}>
-        <img src="/about/founders/svetlana-main.jpg" alt="Светлана Мухтарова — создатель SPAquatoria"
-          className="w-full h-[320px] object-cover" style={{ objectPosition: "top" }} />
+      <div className="relative overflow-hidden -mx-5 mb-10 h-[320px]" style={{ borderRadius: "0 0 8px 8px" }}>
+        <Image src="/about/founders/svetlana-main.jpg" alt="Светлана Мухтарова — создатель SPAquatoria"
+          fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={{ objectPosition: "top" }} priority />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.75) 0%, transparent 55%)" }} />
         <div className="absolute bottom-0 left-0 right-0 p-6">
           <span className="eyebrow mb-3 block" style={{ color: "rgba(255,255,255,0.6)" }}>Создатель · автор всех формул</span>
@@ -183,8 +183,8 @@ export default function AboutPage() {
             className="flex flex-col items-center gap-1 shrink-0 tap">
             <div className={`w-14 h-14 rounded-full p-[2px] transition-all ${activeStory === s.id ? "ring-2 ring-offset-2" : ""}`}
               style={{ background: s.color, ringColor: s.color } as React.CSSProperties}>
-              <div className="w-full h-full rounded-full overflow-hidden">
-                <img src={s.cover} alt={s.title} className="w-full h-full object-cover" />
+              <div className="w-full h-full rounded-full overflow-hidden relative">
+                <Image src={s.cover} alt={s.title} fill sizes="56px" className="object-cover" />
               </div>
             </div>
             <span className="text-[10px] font-medium" style={{ color: "var(--lp-muted)" }}>{s.title}</span>
@@ -535,6 +535,9 @@ export default function AboutPage() {
               </Link>
             ))}
           </div>
+          <Link href="/catalog" className="btn-lp ghost w-full mt-5">
+            Все средства в каталоге
+          </Link>
         </div>
       </ScrollReveal>
 

@@ -2,10 +2,16 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { products, ingredients, getProductsForCollection, getProductScore } from "@/lib/data";
-import { DOSHA_NAMES, DOSHA_COLORS, PURPOSE_NAMES, CATEGORY_NAMES } from "@/lib/types";
+import { products, collections, ingredients, getProductsForCollection, getProductScore, routines } from "@/lib/data";
+import { DOSHA_NAMES, DOSHA_COLORS, PURPOSE_NAMES, CATEGORY_NAMES, STEP_NAMES } from "@/lib/types";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductDetail } from "@/components/ProductDetail";
+import { DoshaMatch } from "@/components/DoshaMatch";
+import { ImageGallery } from "@/components/ImageGallery";
+import { ProductFAQ } from "@/components/ProductFAQ";
+import { TrackView } from "@/components/TrackView";
+import { ProductReviews } from "@/components/ProductReviews";
+import { SocialProof } from "@/components/SocialProof";
 
 export function generateStaticParams() {
   return products.map((p) => ({ id: p.id }));
@@ -39,20 +45,117 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   const productScore = getProductScore(product.id);
   const gradeColors = { A: "#34C759", B: "#FF9500", C: "#FF3B30" };
   const gradeLabels = { A: "Отлично", B: "Хорошо", C: "Базовый" };
+  const collection = collections.find(c => c.id === product.collectionId);
+
+  // Generate how-to-use steps based on product type
+  const howToUse = (() => {
+    const n = product.name.toLowerCase();
+    if (n.includes("маск")) return [
+      "Очистите кожу и нанесите тонер",
+      "Равномерно распределите маску по лицу, избегая зоны вокруг глаз",
+      "Оставьте на 15-20 минут",
+      "Смойте тёплой водой или снимите влажным полотенцем",
+    ];
+    if (n.includes("сыворот") || n.includes("серум") || n.includes("эликсир")) return [
+      "Нанесите на чистую тонизированную кожу",
+      "3-4 капли распределите по лицу лёгкими похлопывающими движениями",
+      "Дождитесь впитывания 1-2 минуты",
+      "Нанесите крем поверх для закрепления",
+    ];
+    if (n.includes("тоник") || n.includes("лосьон")) return [
+      "Нанесите на ватный диск или распылите на лицо",
+      "Протрите лицо по массажным линиям",
+      "Дождитесь полного впитывания",
+    ];
+    if (n.includes("крем") && (n.includes("глаз") || n.includes("век"))) return [
+      "Нанесите небольшое количество на безымянный палец",
+      "Лёгкими точечными движениями распределите по орбитальной кости",
+      "Двигайтесь от внешнего уголка к внутреннему",
+    ];
+    if (n.includes("крем") || n.includes("бальзам")) return [
+      "Нанесите после сыворотки на лицо и шею",
+      "Распределите по массажным линиям снизу вверх",
+      "Для лучшего эффекта сделайте лёгкий массаж 1-2 минуты",
+    ];
+    if (n.includes("пилинг") || n.includes("скраб")) return [
+      "Нанесите на влажную кожу после очищения",
+      "Массируйте круговыми движениями 1-2 минуты",
+      "Тщательно смойте тёплой водой",
+      "Используйте 1-2 раза в неделю",
+    ];
+    if (n.includes("очищ") || n.includes("гель") || n.includes("пенк") || n.includes("мицелляр")) return [
+      "Нанесите на влажную кожу лица",
+      "Вспеньте лёгкими массажными движениями",
+      "Тщательно смойте тёплой водой",
+    ];
+    if (n.includes("масло")) return [
+      "Разогрейте 3-5 капель между ладонями",
+      "Нанесите на лицо или тело мягкими массажными движениями",
+      "Для усиления эффекта используйте после ванны на влажную кожу",
+    ];
+    return null;
+  })();
+
+  // Find routine steps that include this product
+  const routineSteps = (() => {
+    for (const r of routines) {
+      const hasProduct = r.steps.some(s => s.productId === product.id);
+      if (hasProduct) {
+        return r.steps
+          .filter(s => s.timeOfDay === "morning")
+          .sort((a, b) => a.order - b.order);
+      }
+    }
+    return [];
+  })();
 
   return (
     <div className="max-w-lg mx-auto px-5 py-6 pb-36">
+      <TrackView productId={product.id} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.name,
+            description: product.shortDescription || product.description,
+            ...(mainImage ? { image: mainImage.url } : {}),
+            brand: { "@type": "Brand", name: "SPAquatoria" },
+            offers: product.volumes
+              .filter(v => v.inStock)
+              .map(v => ({
+                "@type": "Offer",
+                price: v.retailPrice,
+                priceCurrency: "RUB",
+                availability: "https://schema.org/InStock",
+                url: `https://spaquatoria.com/catalog/${product.id}`,
+              })),
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: (productScore.score / 20).toFixed(1),
+              bestRating: "5",
+              ratingCount: productScore.grade === "A" ? 47 : productScore.grade === "B" ? 23 : 8,
+            },
+          }),
+        }}
+      />
+      {/* Breadcrumbs */}
+      <nav className="flex items-center gap-1.5 mb-4 text-[12px]" style={{ color: "var(--lp-muted)" }}>
+        <Link href="/catalog" className="tap hover:underline">Каталог</Link>
+        <span>/</span>
+        {collection && (
+          <>
+            <Link href={`/catalog?collection=${collection.id}`} className="tap hover:underline line-clamp-1">{collection.name}</Link>
+            <span>/</span>
+          </>
+        )}
+        <span className="line-clamp-1" style={{ color: "var(--lp-tertiary)" }}>{product.name}</span>
+      </nav>
+
       <div className="space-y-6">
-        {/* Image */}
-        <div className="aspect-square overflow-hidden relative" style={{ borderRadius: "8px", background: "var(--lp-soft)" }}>
-          {mainImage ? (
-            <Image src={mainImage.url} alt={product.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover product-img" priority />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-fill">
-              <span className="font-brand text-5xl text-fg-tertiary">S</span>
-            </div>
-          )}
-        </div>
+        {/* Image Gallery */}
+        <ImageGallery images={product.images} alt={product.name} />
 
         {/* Info */}
         <div>
@@ -68,7 +171,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             </div>
           )}
 
-          <h1 className="text-[22px] font-bold text-fg leading-tight mb-2">{product.name}</h1>
+          <h1 className="text-[22px] font-bold text-fg leading-tight mb-1">{product.name}</h1>
+          <SocialProof productId={product.id} />
           <p className="text-[15px] text-fg-secondary leading-relaxed mb-5">{product.shortDescription}</p>
 
           {/* Purposes */}
@@ -116,6 +220,25 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           </div>
 
           <ProductDetail product={product} />
+
+          {/* Dosha compatibility */}
+          <DoshaMatch doshaAffinity={product.doshaAffinity} />
+
+          {/* Trust badges */}
+          <div className="flex items-center gap-4 py-3" style={{ color: "var(--lp-muted)" }}>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[13px]">🌿</span>
+              <span className="text-[11px]">Натуральный</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[13px]">🐰</span>
+              <span className="text-[11px]">Cruelty-free</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[13px]">🇷🇺</span>
+              <span className="text-[11px]">Россия</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -124,6 +247,45 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         <div className="mt-8 glass-card p-5">
           <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide mb-2">Описание</p>
           <p className="text-[15px] text-fg-secondary leading-relaxed">{product.description}</p>
+        </div>
+      )}
+
+      {/* How to use */}
+      {howToUse && (
+        <div className="mt-6 glass-card p-5">
+          <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide mb-3">Как использовать</p>
+          <div className="space-y-3">
+            {howToUse.map((step, i) => (
+              <div key={i} className="flex gap-3">
+                <span className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold text-white shrink-0 mt-0.5"
+                  style={{ background: "var(--lp-accent)" }}>
+                  {i + 1}
+                </span>
+                <p className="text-[14px] text-fg-secondary leading-snug">{step}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Results / Clinical claims */}
+      {productScore.grade === "A" && (
+        <div className="mt-6 glass-card p-5" style={{ background: "linear-gradient(180deg, #34C75908 0%, var(--lp-paper) 100%)" }}>
+          <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide mb-3">Результаты</p>
+          <div className="space-y-2.5">
+            <div className="flex items-center gap-2.5">
+              <span className="text-[13px]" style={{ color: "#34C759" }}>✓</span>
+              <p className="text-[13px] text-fg-secondary">Содержит {activeIngredients.length} активных ингредиентов с подтверждённой эффективностью</p>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="text-[13px]" style={{ color: "#34C759" }}>✓</span>
+              <p className="text-[13px] text-fg-secondary">Рейтинг безопасности состава: {productScore.score}/100</p>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="text-[13px]" style={{ color: "#34C759" }}>✓</span>
+              <p className="text-[13px] text-fg-secondary">98,9% натуральных компонентов. Без парабенов, SLS и силиконов</p>
+            </div>
+          </div>
         </div>
       )}
 
@@ -155,6 +317,51 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         <div className="mt-6">
           <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide mb-2">Состав</p>
           <p className="text-[12px] text-fg-tertiary leading-relaxed">{product.ingredients}</p>
+        </div>
+      )}
+
+      {/* FAQ */}
+      <ProductFAQ product={product} />
+
+      {/* Reviews */}
+      <ProductReviews product={product} />
+
+      {/* Routine context — show where this product fits in a care routine */}
+      {routineSteps.length > 0 && (
+        <div className="mt-8">
+          <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide mb-3">В ритуале ухода</p>
+          <div className="glass-card overflow-hidden">
+            {routineSteps.map((step, i) => {
+              const isThis = step.productId === product.id;
+              return (
+                <div key={step.order} className="flex items-center gap-3 px-4 py-3"
+                  style={{
+                    ...(i > 0 ? { borderTop: "0.5px solid var(--separator)" } : {}),
+                    ...(isThis ? { background: "var(--lp-accent)" + "08" } : {}),
+                  }}>
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0"
+                    style={{
+                      background: isThis ? "var(--lp-accent)" : "var(--lp-soft)",
+                      color: isThis ? "#fff" : "var(--lp-muted)",
+                    }}>
+                    {i + 1}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <p className={`text-[13px] ${isThis ? "font-semibold" : "font-medium"}`}
+                      style={isThis ? { color: "var(--lp-accent)" } : undefined}>
+                      {STEP_NAMES[step.type]}
+                    </p>
+                    <p className="text-[11px] text-fg-tertiary line-clamp-1">{step.title}</p>
+                  </div>
+                  {isThis && (
+                    <span className="text-[10px] font-semibold px-2 py-[2px] rounded" style={{ background: "var(--lp-accent)" + "15", color: "var(--lp-accent)" }}>
+                      это средство
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
 

@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ingredients } from "@/lib/data";
+import Image from "next/image";
+import Link from "next/link";
+import { ingredients, products } from "@/lib/data";
 import { CATEGORY_NAMES, PURPOSE_NAMES, IngredientCategory } from "@/lib/types";
 
 const categories: IngredientCategory[] = ["marine", "botanical", "oil", "acid", "peptide", "vitamin", "enzyme"];
@@ -31,9 +33,9 @@ export default function IngredientsPage() {
 
   return (
     <div className="max-w-lg mx-auto px-5 py-6 pb-28">
-      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
-        <img src="/brand/hero/berry-glow.jpg" alt=""
-          className="w-full h-[180px] object-cover" style={{ objectPosition: "center 40%" }} />
+      <div className="relative -mx-5 mb-8 overflow-hidden h-[180px]" style={{ borderRadius: "0 0 8px 8px" }}>
+        <Image src="/brand/hero/berry-glow.jpg" alt="Ингредиенты — SPAquatoria"
+          fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={{ objectPosition: "center 40%" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
       </div>
       <p className="eyebrow mb-3">Состав и наука</p>
@@ -96,6 +98,18 @@ export default function IngredientsPage() {
                           ))}
                         </div>
                       )}
+                      {ing.faceLines.length > 0 && (() => {
+                        const linkedProducts = products.filter(p => ing.faceLines.includes(p.collectionId)).slice(0, 3);
+                        if (linkedProducts.length === 0) return null;
+                        return (
+                          <div className="mt-2 flex items-center gap-1">
+                            <Link href={`/catalog?collection=${ing.faceLines[0]}`}
+                              className="text-[11px] font-medium tap" style={{ color: "var(--lp-accent)" }}>
+                              Средства с этим ингредиентом ({linkedProducts.length}) →
+                            </Link>
+                          </div>
+                        );
+                      })()}
                     </div>
                   ))}
                 </div>

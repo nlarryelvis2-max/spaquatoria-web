@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/lib/data";
 import { loadDealerAccount, saveDealerAccount, clearDealerAccount, DealerAccount } from "@/lib/store";
@@ -139,9 +140,9 @@ export default function DealersPage() {
   if (!account) {
     return (
       <div className="max-w-lg mx-auto px-5 py-6 pb-28">
-        <div className="relative -mx-5 mb-6 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
-          <img src="/brand/hero/subscribe-bg.png" alt=""
-            className="w-full h-[200px] object-cover" />
+        <div className="relative -mx-5 mb-6 overflow-hidden h-[200px]" style={{ borderRadius: "0 0 8px 8px" }}>
+          <Image src="/brand/hero/subscribe-bg.png" alt="Кабинет дилера — SPAquatoria"
+            fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 60%)" }} />
         </div>
         <p className="eyebrow mb-3">Кабинет дилера</p>
@@ -623,7 +624,7 @@ export default function DealersPage() {
                             const p = products.find(pr => pr.id === pid);
                             return p ? (
                               <Link key={pid} href={`/catalog/${pid}`} className="shrink-0 flex items-center gap-1.5 px-2 py-1 rounded-lg bg-fill tap">
-                                {p.images[0] && <img src={p.images[0].url} alt="" className="w-5 h-5 rounded object-cover" />}
+                                {p.images[0] && <span className="relative w-5 h-5 shrink-0"><Image src={p.images[0].url} alt={p.name} fill sizes="20px" className="rounded object-cover" /></span>}
                                 <span className="text-[11px] font-medium">{p.name.split(" ").slice(0, 2).join(" ")}</span>
                               </Link>
                             ) : null;
@@ -729,8 +730,8 @@ export default function DealersPage() {
                   style={i > 0 ? { borderTop: "0.5px solid var(--separator)" } : undefined}>
                   <span className="text-[17px] font-bold text-fg-tertiary w-5 text-center shrink-0">{i + 1}</span>
                   {product.images[0] && (
-                    <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-fill">
-                      <img src={product.images[0].url} alt="" className="w-full h-full object-cover" />
+                    <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-fill relative">
+                      <Image src={product.images[0].url} alt={product.name} fill sizes="40px" className="object-cover" />
                     </div>
                   )}
                   <div className="flex-1 min-w-0">

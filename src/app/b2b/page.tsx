@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function B2BPage() {
@@ -23,9 +24,9 @@ export default function B2BPage() {
 
   return (
     <div className="max-w-lg mx-auto px-5 py-6 pb-28">
-      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
-        <img src="/brand/team/about-main.jpg" alt=""
-          className="w-full h-[200px] object-cover" />
+      <div className="relative -mx-5 mb-8 overflow-hidden h-[200px]" style={{ borderRadius: "0 0 8px 8px" }}>
+        <Image src="/brand/team/about-main.jpg" alt="Команда SPAquatoria"
+          fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
       </div>
 
@@ -91,8 +92,8 @@ export default function B2BPage() {
             { label: "Маркетплейсы", img: "/brand/hero/subscribe-bg.png" },
           ].map(f => (
             <div key={f.label} className="glass-card py-3 text-center overflow-hidden">
-              <div className="mx-3 mb-2 overflow-hidden" style={{ borderRadius: "6px" }}>
-                <img src={f.img} alt="" className="w-full h-[60px] object-cover" />
+              <div className="mx-3 mb-2 overflow-hidden relative h-[60px]" style={{ borderRadius: "6px" }}>
+                <Image src={f.img} alt={f.label} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
               </div>
               <p className="text-[15px] font-medium">{f.label}</p>
             </div>
