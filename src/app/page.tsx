@@ -325,7 +325,7 @@ export default function HomePage() {
             <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide mb-3">Как тебя зовут?</p>
             <input type="text" value={regName} onChange={e => setRegName(e.target.value)}
               placeholder="Имя" autoFocus
-              className="w-full px-4 py-3 rounded-2xl text-[17px] outline-none glass-card mb-4" style={{ border: "none" }}
+              className="w-full px-4 py-3 rounded-lg text-[17px] outline-none glass-card mb-4" style={{ border: "none" }}
               onKeyDown={e => e.key === "Enter" && regName && setRegStep("contacts")}
             />
             <button onClick={() => setRegStep("contacts")} disabled={!regName}
@@ -340,13 +340,13 @@ export default function HomePage() {
             <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide mb-3">Контактные данные</p>
             <div className="space-y-3 mb-4">
               <input type="email" value={regEmail} onChange={e => setRegEmail(e.target.value)} placeholder="Email" autoFocus
-                className="w-full px-4 py-3 rounded-2xl text-[17px] outline-none glass-card" style={{ border: "none" }} />
+                className="w-full px-4 py-3 rounded-lg text-[17px] outline-none glass-card" style={{ border: "none" }} />
               <input type="tel" value={regPhone} onChange={e => setRegPhone(e.target.value)} placeholder="Телефон"
-                className="w-full px-4 py-3 rounded-2xl text-[17px] outline-none glass-card" style={{ border: "none" }} />
+                className="w-full px-4 py-3 rounded-lg text-[17px] outline-none glass-card" style={{ border: "none" }} />
               <input type="text" value={regCity} onChange={e => setRegCity(e.target.value)} placeholder="Город"
-                className="w-full px-4 py-3 rounded-2xl text-[17px] outline-none glass-card" style={{ border: "none" }} />
+                className="w-full px-4 py-3 rounded-lg text-[17px] outline-none glass-card" style={{ border: "none" }} />
               <input type="date" value={regBirthdate} onChange={e => setRegBirthdate(e.target.value)}
-                className="w-full px-4 py-3 rounded-2xl text-[17px] outline-none glass-card text-fg" style={{ border: "none" }} />
+                className="w-full px-4 py-3 rounded-lg text-[17px] outline-none glass-card text-fg" style={{ border: "none" }} />
             </div>
             <div className="flex gap-3">
               <button onClick={() => setRegStep("name")} className="flex-1 py-3.5 rounded-full glass-card text-[15px] font-semibold tap">Назад</button>
@@ -380,7 +380,7 @@ export default function HomePage() {
             <div className="grid grid-cols-2 gap-2 mb-6">
               {(["young", "active", "mature", "premium"] as AgeGroup[]).map(ag => (
                 <button key={ag} onClick={() => handleSelectAge(ag)}
-                  className={`py-4 rounded-2xl text-center tap transition-all ${regAge === ag ? "bg-brand text-white" : "glass-card"}`}>
+                  className={`py-4 rounded-lg text-center tap transition-all ${regAge === ag ? "bg-brand text-white" : "glass-card"}`}>
                   <p className="text-[17px] font-bold">{AGE_NAMES[ag]}</p>
                   <p className="text-[11px] opacity-60">{AGE_SUBTITLES[ag]}</p>
                 </button>
@@ -434,7 +434,7 @@ export default function HomePage() {
             className="eyebrow tap px-2 py-0.5 -mr-2" style={{ color: "var(--lp-tertiary)" }}>Выйти</button>
         </div>
 
-        <div className="relative overflow-hidden mb-8 -mx-5" style={{ borderRadius: "0 0 28px 28px" }}>
+        <div className="relative overflow-hidden mb-8 -mx-5" style={{ borderRadius: "0 0 8px 8px" }}>
           <img src="/brand/hero/face-care.jpg" alt=""
             className="w-full h-[220px] object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 60%)" }} />
@@ -507,7 +507,7 @@ export default function HomePage() {
             return (
               <Link href={`/catalog/${hero.id}`} className="block tap group mb-6">
                 {hero.images[0] && (
-                  <div className="relative overflow-hidden -mx-5" style={{ borderRadius: "20px" }}>
+                  <div className="relative overflow-hidden -mx-5" style={{ borderRadius: "8px" }}>
                     <img src={hero.images[0].url} alt=""
                       className="w-full h-[240px] object-cover product-img transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.7) 0%, transparent 55%)" }} />
@@ -537,7 +537,7 @@ export default function HomePage() {
             {recommendedProducts.slice(1, 3).map((product) => (
               <Link key={product.id} href={`/catalog/${product.id}`} className="flex gap-5 tap group">
                 {product.images[0] && (
-                  <div className="w-[140px] h-[180px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "12px" }}>
+                  <div className="w-[140px] h-[180px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "6px" }}>
                     <img src={product.images[0].url} alt=""
                       className="w-full h-full object-cover product-img transition-transform duration-700 group-hover:scale-105" />
                   </div>
@@ -609,7 +609,7 @@ export default function HomePage() {
         </div>
 
         {todayEvent && (
-          <div className="mt-4 rounded-[28px] overflow-hidden" style={{ background: todayEvent.gradient }}>
+          <div className="mt-4 rounded-lg overflow-hidden" style={{ background: todayEvent.gradient }}>
             <div className="p-6">
               <span className="eyebrow mb-2 block" style={{ color: "rgba(255,255,255,0.75)" }}>Сегодня</span>
               <p className="heading-md text-white mb-2" style={{ fontWeight: 400 }}>{todayEvent.title}</p>
@@ -622,7 +622,7 @@ export default function HomePage() {
       {/* ═══ FROM THE DIARIES — pull quote ═════════ */}
       <section className="mb-14">
         <span className="eyebrow mb-6 block">Из дневников</span>
-        <div className="relative overflow-hidden" style={{ borderRadius: "20px" }}>
+        <div className="relative overflow-hidden" style={{ borderRadius: "8px" }}>
           <img src={
             todayReview.dosha === "Питта" ? "/brand/collections/pearl-endorphin.jpg" :
             todayReview.dosha === "Вата" ? "/brand/collections/swan-grace.jpg" :
@@ -703,7 +703,7 @@ export default function HomePage() {
       {/* ═══ VOICE OF AYURVEDA ═════════════════════ */}
       <section className="mb-14">
         <span className="eyebrow mb-4 block">Голос аюрведы</span>
-        <div className="relative overflow-hidden -mx-5" style={{ borderRadius: "20px" }}>
+        <div className="relative overflow-hidden -mx-5" style={{ borderRadius: "8px" }}>
           <img src="/brand/hero/massage.jpg" alt="" className="w-full h-[280px] object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.82) 0%, rgba(22,18,12,0.45) 100%)" }} />
           <div className="absolute inset-0 flex flex-col justify-end p-7">
@@ -880,7 +880,7 @@ export default function HomePage() {
                 value={skinForm.note}
                 onChange={e => setSkinForm({ ...skinForm, note: e.target.value })}
                 placeholder="Заметка (необязательно)"
-                className="w-full px-4 py-3 rounded-2xl text-[15px] outline-none bg-fill mb-4"
+                className="w-full px-4 py-3 rounded-lg text-[15px] outline-none bg-fill mb-4"
               />
               <button onClick={handleSkinLog}
                 className="w-full bg-brand text-white py-3.5 rounded-full text-[15px] font-semibold tap">
@@ -1014,7 +1014,7 @@ export default function HomePage() {
               <input
                 type="text" value={addProductSearch} onChange={e => setAddProductSearch(e.target.value)}
                 placeholder="Поиск средства" autoFocus
-                className="w-full px-4 py-3 rounded-2xl text-[17px] outline-none bg-fill"
+                className="w-full px-4 py-3 rounded-lg text-[17px] outline-none bg-fill"
               />
             </div>
             <div className="overflow-y-auto px-5 pb-6" style={{ maxHeight: "calc(75vh - 90px)" }}>

@@ -20,7 +20,7 @@ export default async function FaceLinePage({ params }: { params: Promise<{ id: s
   return (
     <div className="max-w-lg mx-auto px-5 py-6">
       {/* Hero image */}
-      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 28px 28px" }}>
+      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
         <img src={`/about/lines/${line.id}.jpg`} alt={line.name}
           className="w-full h-[200px] object-cover" style={{ objectPosition: "top" }} />
         <div className="absolute inset-0" style={{ background: `linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)` }} />
@@ -97,9 +97,9 @@ export default async function FaceLinePage({ params }: { params: Promise<{ id: s
       {/* Products */}
       {lineProducts.length > 0 && (
         <div className="mt-6">
-          <div className="relative -mx-5 mb-4 overflow-hidden rounded-2xl mx-0">
+          <div className="relative -mx-5 mb-4 overflow-hidden rounded-lg mx-0">
             <img src={`/brand/collections/${line.id}.jpg`} alt={`${line.name} коллекция`}
-              className="w-full h-[120px] object-cover rounded-2xl" style={{ objectPosition: "top" }} />
+              className="w-full h-[120px] object-cover rounded-lg" style={{ objectPosition: "top" }} />
           </div>
           <div className="flex items-center justify-between mb-3">
             <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide">Средства линии</p>

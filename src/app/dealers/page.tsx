@@ -139,7 +139,7 @@ export default function DealersPage() {
   if (!account) {
     return (
       <div className="max-w-lg mx-auto px-5 py-6">
-        <div className="relative -mx-5 mb-6 overflow-hidden" style={{ borderRadius: "0 0 28px 28px" }}>
+        <div className="relative -mx-5 mb-6 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
           <img src="/brand/hero/subscribe-bg.png" alt=""
             className="w-full h-[160px] object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
@@ -156,7 +156,7 @@ export default function DealersPage() {
               type="text" value={loginInput}
               onChange={e => { setLoginInput(e.target.value); setLoginError(""); }}
               placeholder="Логин дилера"
-              className="flex-1 px-4 py-2.5 rounded-2xl text-[15px] outline-none bg-fill"
+              className="flex-1 px-4 py-2.5 rounded-lg text-[15px] outline-none bg-fill"
               onKeyDown={e => e.key === "Enter" && loginInput && handleLogin()}
             />
             <button onClick={handleLogin} disabled={!loginInput}
@@ -662,15 +662,15 @@ export default function DealersPage() {
           <div className="glass-card p-4">
             <p className="text-[13px] font-semibold uppercase tracking-wide text-fg-secondary mb-3">Прогноз</p>
             <div className="grid grid-cols-3 gap-2">
-              <div className="bg-fill rounded-2xl p-3 text-center">
+              <div className="bg-fill rounded-lg p-3 text-center">
                 <p className="text-[11px] text-fg-secondary">Май</p>
                 <p className="text-[17px] font-bold">{(forecast.nextMonth / 1000).toFixed(0)}K</p>
               </div>
-              <div className="bg-fill rounded-2xl p-3 text-center">
+              <div className="bg-fill rounded-lg p-3 text-center">
                 <p className="text-[11px] text-fg-secondary">Квартал</p>
                 <p className="text-[17px] font-bold">{(forecast.nextQuarter / 1000).toFixed(0)}K</p>
               </div>
-              <div className="bg-fill rounded-2xl p-3 text-center">
+              <div className="bg-fill rounded-lg p-3 text-center">
                 <p className="text-[11px] text-fg-secondary">Тренд</p>
                 <p className={`text-[17px] font-bold ${forecast.trend >= 0 ? "text-brand-green" : "text-brand-coral"}`}>
                   {forecast.trend >= 0 ? "+" : ""}{forecast.trend}%
@@ -852,14 +852,14 @@ export default function DealersPage() {
 
             <div className="space-y-2">
               <a href={`tel:${account.managerPhone}`}
-                className="flex items-center gap-3 bg-brand text-white rounded-2xl px-4 py-3 tap">
+                className="flex items-center gap-3 bg-brand text-white rounded-lg px-4 py-3 tap">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                 </svg>
                 <span className="text-[15px] font-semibold">{account.managerPhone}</span>
               </a>
               <a href={`mailto:b2b@spaquatoria.ru`}
-                className="flex items-center gap-3 bg-fill rounded-2xl px-4 py-3 tap">
+                className="flex items-center gap-3 bg-fill rounded-lg px-4 py-3 tap">
                 <svg className="w-5 h-5 text-fg-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>

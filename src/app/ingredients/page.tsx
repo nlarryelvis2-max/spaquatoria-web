@@ -31,7 +31,7 @@ export default function IngredientsPage() {
 
   return (
     <div className="max-w-lg mx-auto px-5 py-6 pb-28">
-      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 28px 28px" }}>
+      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
         <img src="/brand/hero/berry-glow.jpg" alt=""
           className="w-full h-[180px] object-cover" style={{ objectPosition: "center 40%" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
@@ -50,7 +50,7 @@ export default function IngredientsPage() {
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder="Поиск"
-          className="w-full pl-10 pr-4 py-2.5 rounded-2xl text-[15px] outline-none glass-card"
+          className="w-full pl-10 pr-4 py-2.5 rounded-lg text-[15px] outline-none glass-card"
           style={{ border: "none" }}
         />
       </div>

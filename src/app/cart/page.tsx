@@ -236,7 +236,7 @@ export default function CartPage() {
               className="flex gap-4 p-4"
               style={i > 0 ? { borderTop: "1px solid var(--lp-line-soft)" } : undefined}>
               <Link href={`/catalog/${product.id}`}
-                className="shrink-0 w-[72px] h-[90px] overflow-hidden relative" style={{ background: "var(--lp-soft)", borderRadius: "12px" }}>
+                className="shrink-0 w-[72px] h-[90px] overflow-hidden relative" style={{ background: "var(--lp-soft)", borderRadius: "6px" }}>
                 {mainImage ? (
                   <Image src={mainImage.url} alt={product.name} fill sizes="72px" className="object-cover product-img" />
                 ) : (

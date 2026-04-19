@@ -21,7 +21,7 @@ export default function SeasonPage() {
       <p className="body-lp muted mb-6">Аюрведа делит год на шесть сезонов. Каждый меняет состояние кожи и требует своего ритуала.</p>
 
       {/* Brand hero image */}
-      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 28px 28px" }}>
+      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
         <img src="/brand/hero/massage.jpg" alt=""
           className="w-full h-[180px] object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />

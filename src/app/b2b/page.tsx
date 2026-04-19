@@ -23,7 +23,7 @@ export default function B2BPage() {
 
   return (
     <div className="max-w-lg mx-auto px-5 py-6 pb-28">
-      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 28px 28px" }}>
+      <div className="relative -mx-5 mb-8 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
         <img src="/brand/team/about-main.jpg" alt=""
           className="w-full h-[200px] object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
@@ -144,27 +144,27 @@ export default function B2BPage() {
             <div className="grid grid-cols-2 gap-2">
               <input required type="text" placeholder="Имя *"
                 value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})}
-                className="px-4 py-2.5 bg-fill rounded-2xl text-[15px] outline-none" />
+                className="px-4 py-2.5 bg-fill rounded-lg text-[15px] outline-none" />
               <input required type="text" placeholder="Компания *"
                 value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})}
-                className="px-4 py-2.5 bg-fill rounded-2xl text-[15px] outline-none" />
+                className="px-4 py-2.5 bg-fill rounded-lg text-[15px] outline-none" />
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               <input required type="email" placeholder="Email *"
                 value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})}
-                className="px-4 py-2.5 bg-fill rounded-2xl text-[15px] outline-none" />
+                className="px-4 py-2.5 bg-fill rounded-lg text-[15px] outline-none" />
               <input type="tel" placeholder="Телефон"
                 value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})}
-                className="px-4 py-2.5 bg-fill rounded-2xl text-[15px] outline-none" />
+                className="px-4 py-2.5 bg-fill rounded-lg text-[15px] outline-none" />
             </div>
 
             <input type="text" placeholder="Город"
               value={formData.city} onChange={e => setFormData({...formData, city: e.target.value})}
-              className="w-full px-4 py-2.5 bg-fill rounded-2xl text-[15px] outline-none" />
+              className="w-full px-4 py-2.5 bg-fill rounded-lg text-[15px] outline-none" />
 
             <select value={formData.type} onChange={e => setFormData({...formData, type: e.target.value})}
-              className="w-full px-4 py-2.5 bg-fill rounded-2xl text-[15px] outline-none cursor-pointer text-fg-secondary">
+              className="w-full px-4 py-2.5 bg-fill rounded-lg text-[15px] outline-none cursor-pointer text-fg-secondary">
               <option value="salon">SPA-центр / Салон красоты</option>
               <option value="shop">Магазин косметики</option>
               <option value="marketplace">Маркетплейс</option>
@@ -174,7 +174,7 @@ export default function B2BPage() {
 
             <textarea placeholder="Комментарий" rows={3}
               value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})}
-              className="w-full px-4 py-2.5 bg-fill rounded-2xl text-[15px] outline-none resize-none" />
+              className="w-full px-4 py-2.5 bg-fill rounded-lg text-[15px] outline-none resize-none" />
 
             <button type="submit"
               className="w-full bg-brand text-white py-3 rounded-full text-[15px] font-semibold tap">

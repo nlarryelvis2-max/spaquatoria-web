@@ -357,7 +357,7 @@ function CatalogInner() {
           value={search}
           onChange={e => { setSearch(e.target.value); if (e.target.value) setActiveCat(null); }}
           placeholder="Поиск средств"
-          className="w-full pl-10 pr-4 py-2.5 rounded-2xl text-[15px] outline-none glass-card"
+          className="w-full pl-10 pr-4 py-2.5 rounded-lg text-[15px] outline-none glass-card"
           style={{ border: "none" }}
         />
       </div>
@@ -399,10 +399,10 @@ function CatalogInner() {
                   key={cat.id}
                   onClick={() => setActiveCat(cat.id)}
                   className="relative overflow-hidden text-left tap group"
-                  style={{ borderRadius: 22 }}
+                  style={{ borderRadius: 8 }}
                 >
                   {cat.image ? (
-                    <div className="relative aspect-[3/4] w-full overflow-hidden" style={{ borderRadius: 22 }}>
+                    <div className="relative aspect-[3/4] w-full overflow-hidden" style={{ borderRadius: 8 }}>
                       <img src={cat.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style={{ objectPosition: "top" }} />
                       <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.75) 0%, rgba(22,18,12,0.15) 50%, transparent 100%)" }} />
                       <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -412,7 +412,7 @@ function CatalogInner() {
                       </div>
                     </div>
                   ) : (
-                    <div className="aspect-[3/4] w-full flex flex-col justify-end p-4" style={{ borderRadius: 22, background: "var(--lp-soft)" }}>
+                    <div className="aspect-[3/4] w-full flex flex-col justify-end p-4" style={{ borderRadius: 8, background: "var(--lp-soft)" }}>
                       <svg className="w-6 h-6 mb-3" style={{ color: "var(--lp-muted)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d={cat.icon} />
                       </svg>
@@ -454,7 +454,7 @@ function CatalogInner() {
                   <Link key={line.id} href={`/lines/${line.id}`}
                     className={`relative overflow-hidden tap ${isMyLine ? "ring-2" : ""}`}
                     style={{
-                      borderRadius: 22,
+                      borderRadius: 8,
                       background: "var(--lp-soft)",
                       ...(isMyLine ? { boxShadow: `0 0 0 2px #${line.color}30` } : {}),
                     }}
@@ -501,7 +501,7 @@ function CatalogInner() {
           {/* CTA if no profile */}
           {!profile && (
             <Link href="/test" className="block">
-              <div className="rounded-2xl p-5" style={{ background: "linear-gradient(135deg, #3C184B 0%, #7B5D8A 100%)" }}>
+              <div className="rounded-lg p-5" style={{ background: "linear-gradient(135deg, #3C184B 0%, #7B5D8A 100%)" }}>
                 <h3 className="text-[17px] font-bold text-white mb-1">Персонализируйте каталог</h3>
                 <p className="text-[14px] text-white/70 leading-snug mb-3">
                   Пройдите доша-тест — мы подберём средства именно для вашего типа кожи

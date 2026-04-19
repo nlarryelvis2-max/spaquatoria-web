@@ -157,7 +157,7 @@ export default function AboutPage() {
     <div className="max-w-lg mx-auto px-5 py-6 pb-28">
 
       {/* ── HERO ──────────────────────────────── */}
-      <div className="relative overflow-hidden -mx-5 mb-10" style={{ borderRadius: "0 0 28px 28px" }}>
+      <div className="relative overflow-hidden -mx-5 mb-10" style={{ borderRadius: "0 0 8px 8px" }}>
         <img src="/about/founders/svetlana-main.jpg" alt="Светлана Мухтарова — создатель SPAquatoria"
           className="w-full h-[320px] object-cover" style={{ objectPosition: "top" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.75) 0%, transparent 55%)" }} />
@@ -482,7 +482,7 @@ export default function AboutPage() {
                   <h3 className="text-[14px] uppercase" style={{ color: d.color, letterSpacing: "0.15em", fontWeight: 400 }}>{d.name}</h3>
                   <span className="eyebrow ml-auto" style={{ color: "var(--lp-muted)" }}>{d.sub}</span>
                   {dosha === d.key && (
-                    <span className="eyebrow px-2.5 py-1 rounded-full text-white text-[9px]" style={{ backgroundColor: d.color }}>
+                    <span className="eyebrow px-2 py-0.5 text-white text-[9px]" style={{ backgroundColor: d.color, borderRadius: "3px" }}>
                       ваша
                     </span>
                   )}
@@ -685,7 +685,7 @@ export default function AboutPage() {
 
       {/* ── NUMBERS ────────────────────────────── */}
       <ScrollReveal>
-        <div className="-mx-5 p-8 text-center mb-14" style={{ background: "var(--brand)", borderRadius: "20px" }}>
+        <div className="-mx-5 p-8 text-center mb-14" style={{ background: "var(--brand)", borderRadius: "8px" }}>
           <span className="eyebrow mb-6 block" style={{ color: "rgba(255,255,255,0.5)" }}>В цифрах</span>
           <div className="grid grid-cols-2 gap-6">
             {[

@@ -210,7 +210,7 @@ export default function ProfilePage() {
 
       {/* ── 1. HERO: Banner + Avatar + Name + Dosha ───── */}
       <div className="mb-6">
-        <div className="relative overflow-hidden -mx-5 mb-5" style={{ borderRadius: "0 0 28px 28px" }}>
+        <div className="relative overflow-hidden -mx-5 mb-5" style={{ borderRadius: "0 0 8px 8px" }}>
           <img src="/brand/hero/body-care.jpg" alt="" className="w-full h-[180px] object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 55%)" }} />
         </div>
