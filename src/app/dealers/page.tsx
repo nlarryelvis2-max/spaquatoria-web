@@ -331,7 +331,7 @@ export default function DealersPage() {
                   const cfg = typeConfig[rec.type] || typeConfig.gap;
                   const product = rec.products[0] ? products.find(p => p.id === rec.products[0]) : null;
                   return (
-                    <div key={i} className="flex items-start gap-2.5 p-2.5 rounded-xl bg-fill">
+                    <div key={i} className="flex items-start gap-2.5 p-2.5 rounded-lg bg-fill">
                       <span className="text-[16px] mt-0.5 shrink-0">{cfg.icon}</span>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
@@ -415,12 +415,12 @@ export default function DealersPage() {
               <div className="glass-card p-4">
                 <p className="text-[11px] font-semibold text-fg-tertiary uppercase tracking-wide mb-2">Что видят ваши клиенты сегодня</p>
                 <div className="flex gap-3">
-                  <div className="flex-1 rounded-xl bg-fill p-3">
+                  <div className="flex-1 rounded-lg bg-fill p-3">
                     <p className="text-[10px] text-fg-tertiary uppercase tracking-wide mb-1">Сезон</p>
                     <p className="text-[13px] font-semibold">{season.name}</p>
                     <p className="text-[11px] text-fg-secondary">{DOSHA_NAMES[season.dosha]}</p>
                   </div>
-                  <div className="flex-1 rounded-xl bg-fill p-3">
+                  <div className="flex-1 rounded-lg bg-fill p-3">
                     <p className="text-[10px] text-fg-tertiary uppercase tracking-wide mb-1">Ингредиент дня</p>
                     <p className="text-[13px] font-semibold">{todayIngredient.title}</p>
                     <p className="text-[11px] text-fg-secondary">{todayIngredient.subtitle}</p>
@@ -563,7 +563,7 @@ export default function DealersPage() {
               <p className="text-[11px] font-semibold text-fg-tertiary uppercase tracking-wide mb-2">Ваш профиль</p>
               <div className="grid grid-cols-2 gap-2">
                 {insights.map(ins => (
-                  <div key={ins.label} className="rounded-xl bg-fill p-2.5">
+                  <div key={ins.label} className="rounded-lg bg-fill p-2.5">
                     <div className="flex items-center gap-1.5 mb-1">
                       <span className="text-[14px]">{ins.icon}</span>
                       <p className="text-[10px] font-semibold text-fg-tertiary uppercase tracking-wide">{ins.label}</p>
@@ -591,7 +591,7 @@ export default function DealersPage() {
                   };
                   const cfg = typeConfig[rec.type] || typeConfig.gap;
                   return (
-                    <div key={i} className="p-2.5 rounded-xl" style={{ backgroundColor: `${cfg.color}08`, borderLeft: `3px solid ${cfg.color}` }}>
+                    <div key={i} className="p-2.5 rounded-lg" style={{ backgroundColor: `${cfg.color}08`, borderLeft: `3px solid ${cfg.color}` }}>
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-[14px]">{cfg.icon}</span>
                         <p className="text-[13px] font-semibold flex-1">{rec.title}</p>
@@ -719,7 +719,7 @@ export default function DealersPage() {
                   style={i > 0 ? { borderTop: "0.5px solid var(--separator)" } : undefined}>
                   <span className="text-[17px] font-bold text-fg-tertiary w-5 text-center shrink-0">{i + 1}</span>
                   {product.images[0] && (
-                    <div className="w-10 h-10 rounded-[10px] overflow-hidden shrink-0 bg-fill">
+                    <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-fill">
                       <img src={product.images[0].url} alt="" className="w-full h-full object-cover" />
                     </div>
                   )}

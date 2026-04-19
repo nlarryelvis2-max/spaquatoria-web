@@ -1030,7 +1030,7 @@ export default function HomePage() {
                     className="w-full flex items-center gap-3.5 py-3.5 tap text-left"
                     style={i > 0 ? { borderTop: "0.5px solid var(--separator)" } : undefined}>
                     {p.images[0] && (
-                      <div className="w-11 h-11 rounded-[12px] overflow-hidden shrink-0 bg-fill">
+                      <div className="w-11 h-11 rounded-lg overflow-hidden shrink-0 bg-fill">
                         <img src={p.images[0].url} alt="" className="w-full h-full object-cover product-img" />
                       </div>
                     )}

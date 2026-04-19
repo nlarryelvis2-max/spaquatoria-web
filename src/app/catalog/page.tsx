@@ -165,7 +165,7 @@ function CollectionSection({ collectionId, items, dominantDosha }: {
   return (
     <div>
       {collImage && (
-        <div className="mb-3 overflow-hidden" style={{ borderRadius: 18 }}>
+        <div className="mb-3 overflow-hidden" style={{ borderRadius: 8 }}>
           <img src={collImage} alt={name} className="w-full h-[120px] object-cover" style={{ objectPosition: "top" }} />
         </div>
       )}

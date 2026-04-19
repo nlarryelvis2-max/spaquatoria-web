@@ -441,7 +441,7 @@ export default function ProfilePage() {
                 const vVal = Math.round(vikriti[d] * 100);
                 const delta = vVal - pVal;
                 return (
-                  <div key={d} className="flex-1 rounded-xl bg-fill p-2 text-center">
+                  <div key={d} className="flex-1 rounded-lg bg-fill p-2 text-center">
                     <div className="w-2 h-2 rounded-full mx-auto mb-1" style={{ backgroundColor: DOSHA_COLORS[d] }} />
                     <p className="text-[10px] font-semibold" style={{ color: DOSHA_COLORS[d] }}>{DOSHA_NAMES[d]}</p>
                     <p className="text-[12px] font-bold tabular-nums">{pVal}→{vVal}%</p>
@@ -457,7 +457,7 @@ export default function ProfilePage() {
           ) : (
             <div className="flex gap-1.5">
               {sorted.map(([d, value]) => (
-                <div key={d} className="flex-1 rounded-xl bg-fill p-2 text-center">
+                <div key={d} className="flex-1 rounded-lg bg-fill p-2 text-center">
                   <div className="w-2 h-2 rounded-full mx-auto mb-1" style={{ backgroundColor: DOSHA_COLORS[d] }} />
                   <p className="text-[10px] font-semibold" style={{ color: DOSHA_COLORS[d] }}>{DOSHA_NAMES[d]}</p>
                   <p className="text-[13px] font-bold tabular-nums">{Math.round(value * 100)}%</p>
@@ -467,7 +467,7 @@ export default function ProfilePage() {
           )}
 
           {imbalance.length > 0 && (
-            <div className="mt-2.5 px-3 py-2 rounded-xl" style={{ background: "var(--lp-soft)" }}>
+            <div className="mt-2.5 px-3 py-2 rounded-lg" style={{ background: "var(--lp-soft)" }}>
               <p className="text-[11px] text-fg-secondary">
                 <span className="font-semibold">Рекомендация:</span>{" "}
                 {imbalance[0].dosha === "vata" && "снизь Вату — масляные сыворотки, тёплые процедуры"}

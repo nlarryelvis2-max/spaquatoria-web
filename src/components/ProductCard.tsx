@@ -43,7 +43,7 @@ export function ProductCard({ product, showScore = false }: { product: Product; 
         {scoreData && (
           <div
             className="absolute top-2 right-2 w-5 h-5 flex items-center justify-center text-[9px] font-bold text-white"
-            style={{ backgroundColor: GRADE_COLORS[scoreData.grade], borderRadius: "3px" }}
+            style={{ backgroundColor: GRADE_COLORS[scoreData.grade], borderRadius: "4px" }}
           >
             {scoreData.grade}
           </div>

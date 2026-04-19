@@ -482,7 +482,7 @@ export default function AboutPage() {
                   <h3 className="text-[14px] uppercase" style={{ color: d.color, letterSpacing: "0.15em", fontWeight: 400 }}>{d.name}</h3>
                   <span className="eyebrow ml-auto" style={{ color: "var(--lp-muted)" }}>{d.sub}</span>
                   {dosha === d.key && (
-                    <span className="eyebrow px-2 py-0.5 text-white text-[9px]" style={{ backgroundColor: d.color, borderRadius: "3px" }}>
+                    <span className="eyebrow px-2 py-0.5 text-white text-[9px]" style={{ backgroundColor: d.color, borderRadius: "4px" }}>
                       ваша
                     </span>
                   )}

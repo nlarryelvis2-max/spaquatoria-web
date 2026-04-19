@@ -114,7 +114,7 @@ export default function TestPage() {
                 return (
                   <Link key={p.id} href={`/catalog/${p.id}`} className="flex items-center gap-3 tap">
                     <span className="numeric-lp text-[11px] w-5 shrink-0" style={{ color: "var(--lp-tertiary)" }}>0{i + 1}</span>
-                    <div className="w-14 h-14 shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: 14 }}>
+                    <div className="w-14 h-14 shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: 8 }}>
                       {img && <Image src={img.url} alt={p.name} width={56} height={56} className="object-cover w-full h-full" />}
                     </div>
                     <div className="flex-1 min-w-0">
