@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { dealers, products } from "@/lib/data";
+import { products } from "@/lib/data";
 import { loadDealerAccount, saveDealerAccount, clearDealerAccount, DealerAccount } from "@/lib/store";
 import {
   SALON_PROTOCOLS, getCurrentSeason, INGREDIENT_STORIES,
@@ -135,21 +135,21 @@ export default function DealersPage() {
 
   if (!mounted) return null;
 
-  // ─── Public dealer list (not logged in) ────────
+  // ─── Dealer login (not logged in) ────────
   if (!account) {
     return (
-      <div className="max-w-lg mx-auto px-5 py-6">
+      <div className="max-w-lg mx-auto px-5 py-6 pb-28">
         <div className="relative -mx-5 mb-6 overflow-hidden" style={{ borderRadius: "0 0 8px 8px" }}>
           <img src="/brand/hero/subscribe-bg.png" alt=""
-            className="w-full h-[160px] object-cover" />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 50%)" }} />
+            className="w-full h-[200px] object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--lp-bg) 0%, transparent 60%)" }} />
         </div>
-        <p className="eyebrow mb-3">Партнёры</p>
-        <h1 className="heading-xl mb-3">Дилеры</h1>
-        <p className="body-lp muted mb-8">Где купить SPAquatoria</p>
+        <p className="eyebrow mb-3">Кабинет дилера</p>
+        <h1 className="heading-xl mb-3">Для партнёров</h1>
+        <p className="body-lp muted mb-8">Управление заказами, аналитика, протоколы процедур</p>
 
         {/* Dealer login */}
-        <div className="glass-card p-5 mb-5">
+        <div className="glass-card p-5 mb-6">
           <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide mb-3">Вход для дилеров</p>
           <div className="flex gap-2 mb-2">
             <input
@@ -167,25 +167,35 @@ export default function DealersPage() {
           {loginError && <p className="text-[13px] text-brand-coral">{loginError}</p>}
         </div>
 
-        {/* Public dealer list */}
-        <div className="glass-card overflow-hidden">
-          {dealers.map((dealer, i) => (
-            <div key={dealer.id} className="px-4 py-4"
-              style={i > 0 ? { borderTop: "0.5px solid var(--separator)" } : undefined}>
-              <h3 className="text-[15px] font-semibold text-brand">{dealer.companyName}</h3>
-              <p className="text-[13px] text-fg-secondary mt-0.5">{dealer.address}, {dealer.city}</p>
-              <div className="flex flex-wrap gap-3 mt-2.5">
-                {dealer.phones.map(phone => (
-                  <a key={phone} href={`tel:${phone}`} className="text-[13px] text-brand tap">{phone}</a>
-                ))}
+        {/* What's inside */}
+        <div className="mb-6">
+          <p className="eyebrow mb-3">Возможности кабинета</p>
+          <div className="glass-card overflow-hidden">
+            {[
+              { icon: "📊", title: "Аналитика продаж", desc: "Выручка, ABC-анализ, прогнозы, топ-продукты" },
+              { icon: "📋", title: "Протоколы процедур", desc: "Пошаговые SPA-протоколы с дозировкой" },
+              { icon: "📦", title: "Управление заказами", desc: "История, статусы, оптовые цены" },
+              { icon: "💡", title: "Умные рекомендации", desc: "Что закупить, какие бандлы собрать" },
+            ].map((item, i) => (
+              <div key={item.title} className="flex items-start gap-3 px-4 py-3.5"
+                style={i > 0 ? { borderTop: "0.5px solid var(--separator)" } : undefined}>
+                <span className="text-[18px] mt-0.5">{item.icon}</span>
+                <div>
+                  <p className="text-[15px] font-semibold mb-0.5">{item.title}</p>
+                  <p className="text-[13px] text-fg-secondary leading-snug">{item.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        <div className="mt-6 glass-card p-4 text-center">
-          <p className="text-[13px] text-fg-secondary mb-2">Хотите стать дилером?</p>
-          <Link href="/b2b" className="text-[15px] text-brand font-semibold tap">Оставить заявку</Link>
+        {/* CTA */}
+        <div className="glass-card p-5 text-center">
+          <p className="text-[15px] font-semibold mb-1">Ещё не партнёр?</p>
+          <p className="text-[13px] text-fg-secondary mb-4">Оптовые цены от 40% ниже розницы</p>
+          <Link href="/b2b" className="inline-block bg-brand text-white px-8 py-3 rounded text-[15px] font-semibold tap">
+            Оставить заявку
+          </Link>
         </div>
       </div>
     );

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { loadProfile } from "@/lib/store";
+import { dealers } from "@/lib/data";
 import { DoshaProfile, getDominantDosha, DOSHA_NAMES, DOSHA_COLORS, DoshaType } from "@/lib/types";
 
 /* ─── Stories ─── */
@@ -731,6 +732,39 @@ export default function AboutPage() {
                 Задать вопрос
               </a>
             </div>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* ── ГДЕ КУПИТЬ ──────────────────────────── */}
+      <ScrollReveal>
+        <div className="mb-14" id="where-to-buy">
+          <p className="eyebrow mb-4">Где купить</p>
+          <p className="body-lp muted mb-4">Салоны и магазины, где представлена SPAquatoria</p>
+          <div className="paper-card flat overflow-hidden">
+            {dealers.slice(0, 8).map((dealer, i) => (
+              <div key={dealer.id} className="px-4 py-3.5"
+                style={i > 0 ? { borderTop: "1px solid var(--lp-line-soft)" } : undefined}>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <p className="lp-name text-[14px]">{dealer.companyName}</p>
+                    <p className="text-[12px] mt-0.5" style={{ color: "var(--lp-muted)" }}>{dealer.city}, {dealer.address}</p>
+                  </div>
+                  {dealer.phones[0] && (
+                    <a href={`tel:${dealer.phones[0]}`} className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center tap" style={{ background: "var(--lp-soft)" }}>
+                      <svg className="w-4 h-4" style={{ color: "var(--brand)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+            {dealers.length > 8 && (
+              <div className="px-4 py-3 text-center" style={{ borderTop: "1px solid var(--lp-line-soft)" }}>
+                <p className="text-[12px]" style={{ color: "var(--lp-muted)" }}>и ещё {dealers.length - 8} партнёров по всей России</p>
+              </div>
+            )}
           </div>
         </div>
       </ScrollReveal>
