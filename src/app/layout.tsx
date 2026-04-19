@@ -24,6 +24,13 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: "SPAquatoria",
   },
+  openGraph: {
+    title: "SPAquatoria — Живая косметика",
+    description: "Персональный ритуал ухода на основе аюрведы. 350+ средств для лица, тела и волос.",
+    siteName: "SPAquatoria",
+    locale: "ru_RU",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

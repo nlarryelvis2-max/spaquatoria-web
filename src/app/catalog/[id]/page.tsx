@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { products, ingredients, getProductsForCollection, getProductScore } from "@/lib/data";
@@ -8,6 +9,22 @@ import { ProductDetail } from "@/components/ProductDetail";
 
 export function generateStaticParams() {
   return products.map((p) => ({ id: p.id }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const product = products.find((p) => p.id === id);
+  if (!product) return { title: "Товар не найден" };
+  const img = product.images.find((i) => i.isMain) || product.images[0];
+  return {
+    title: `${product.name} — SPAquatoria`,
+    description: product.shortDescription || product.description || "Натуральная SPA-косметика SPAquatoria",
+    openGraph: {
+      title: product.name,
+      description: product.shortDescription || "",
+      ...(img ? { images: [{ url: img.url }] } : {}),
+    },
+  };
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
@@ -24,7 +41,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   const gradeLabels = { A: "Отлично", B: "Хорошо", C: "Базовый" };
 
   return (
-    <div className="max-w-lg mx-auto px-5 py-6">
+    <div className="max-w-lg mx-auto px-5 py-6 pb-36">
       <div className="space-y-6">
         {/* Image */}
         <div className="aspect-square overflow-hidden relative" style={{ borderRadius: "8px", background: "var(--lp-soft)" }}>
