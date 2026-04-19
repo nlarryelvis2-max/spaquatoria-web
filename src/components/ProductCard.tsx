@@ -23,6 +23,7 @@ export function ProductCard({ product, showScore = false }: { product: Product; 
             fill
             sizes="(max-width: 768px) 50vw, 25vw"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            style={{ mixBlendMode: "multiply" }}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">

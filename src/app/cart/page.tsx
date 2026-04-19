@@ -238,7 +238,7 @@ export default function CartPage() {
               <Link href={`/catalog/${product.id}`}
                 className="shrink-0 w-[72px] h-[90px] overflow-hidden relative" style={{ background: "var(--lp-soft)", borderRadius: "12px" }}>
                 {mainImage ? (
-                  <Image src={mainImage.url} alt={product.name} fill sizes="72px" className="object-cover" />
+                  <Image src={mainImage.url} alt={product.name} fill sizes="72px" className="object-cover product-img" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
                     <span className="heading-md" style={{ color: "var(--lp-tertiary)" }}>S</span>

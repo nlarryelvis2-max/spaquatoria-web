@@ -604,7 +604,7 @@ export default function ProfilePage() {
               <Link key={product.id} href={`/catalog/${product.id}`}
                 className="glass-card overflow-hidden tap">
                 {product.images[0] && (
-                  <img src={product.images[0].url} alt="" className="w-full h-28 object-cover" />
+                  <img src={product.images[0].url} alt="" className="w-full h-28 object-cover product-img" />
                 )}
                 <div className="p-2">
                   <p className="text-[11px] font-medium line-clamp-2 leading-tight">{product.name}</p>

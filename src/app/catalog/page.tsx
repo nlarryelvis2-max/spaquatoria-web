@@ -365,16 +365,19 @@ function CatalogInner() {
       {showCategoryGrid ? (
         /* ═══════ Category grid ═══════ */
         <div className="space-y-4">
-          {/* Personalized picks carousel */}
+          {/* Personalized recommendations */}
           {dominantDosha && doshaTopPicks.length > 0 && (
-            <div>
-              <div className="flex items-center gap-2 mb-2.5">
-                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: DOSHA_COLORS[dominantDosha] }} />
-                <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide">
-                  Для вас
+            <div className="paper-card flat" style={{ padding: 0, overflow: "hidden" }}>
+              <div className="px-5 pt-5 pb-3">
+                <span className="eyebrow" style={{ color: DOSHA_COLORS[dominantDosha] }}>Подобрано для вас</span>
+                <p className="heading-md mt-2" style={{ fontSize: 18 }}>
+                  {DOSHA_CATALOG_TIPS[dominantDosha].heading}
+                </p>
+                <p className="body-lp muted text-[13px] mt-1">
+                  {DOSHA_CATALOG_TIPS[dominantDosha].tip}
                 </p>
               </div>
-              <div className="flex gap-2 overflow-x-auto no-scrollbar -mx-5 px-5 pb-1 snap-x snap-mandatory">
+              <div className="flex gap-2.5 overflow-x-auto no-scrollbar px-5 pb-5 snap-x snap-mandatory">
                 {doshaTopPicks.map(p => (
                   <div key={p.id} className="shrink-0 w-[130px] snap-start">
                     <ProductCard product={p} showScore />
@@ -389,25 +392,35 @@ function CatalogInner() {
 
           {/* Category cards */}
           <div>
-            <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide mb-2.5">Категории</p>
-            <div className="grid grid-cols-2 gap-2.5">
+            <span className="eyebrow mb-4 block">Категории</span>
+            <div className="grid grid-cols-2 gap-3">
               {CATEGORIES.filter(c => categoryCounts[c.id]).map(cat => (
                 <button
                   key={cat.id}
                   onClick={() => setActiveCat(cat.id)}
-                  className="relative overflow-hidden text-left tap"
-                  style={{ borderRadius: 22, background: "var(--lp-soft)" }}
+                  className="relative overflow-hidden text-left tap group"
+                  style={{ borderRadius: 22 }}
                 >
-                  {cat.image && (
-                    <div className="aspect-[4/3] w-full overflow-hidden">
-                      <img src={cat.image} alt="" className="w-full h-full object-cover" style={{ objectPosition: "center 30%" }} />
+                  {cat.image ? (
+                    <div className="relative aspect-[3/4] w-full overflow-hidden" style={{ borderRadius: 22 }}>
+                      <img src={cat.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style={{ objectPosition: "top" }} />
+                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.75) 0%, rgba(22,18,12,0.15) 50%, transparent 100%)" }} />
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <p className="text-[16px] font-medium text-white" style={{ letterSpacing: "-0.01em" }}>{cat.name}</p>
+                        <p className="text-[11px] text-white/60 leading-snug mt-1">{cat.desc}</p>
+                        <p className="text-[11px] text-white/40 mt-1.5 font-medium">{categoryCounts[cat.id]} средств</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="aspect-[3/4] w-full flex flex-col justify-end p-4" style={{ borderRadius: 22, background: "var(--lp-soft)" }}>
+                      <svg className="w-6 h-6 mb-3" style={{ color: "var(--lp-muted)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d={cat.icon} />
+                      </svg>
+                      <p className="text-[16px] font-medium" style={{ color: "var(--lp-ink)" }}>{cat.name}</p>
+                      <p className="text-[11px] leading-snug mt-1" style={{ color: "var(--lp-muted)" }}>{cat.desc}</p>
+                      <p className="text-[11px] mt-1.5" style={{ color: "var(--lp-tertiary)" }}>{categoryCounts[cat.id]} средств</p>
                     </div>
                   )}
-                  <div className="p-3.5">
-                    <p className="text-[15px] font-semibold text-fg">{cat.name}</p>
-                    <p className="text-[12px] text-fg-tertiary leading-snug mt-0.5">{cat.desc}</p>
-                    <p className="text-[12px] text-fg-secondary mt-1">{categoryCounts[cat.id]} средств</p>
-                  </div>
                 </button>
               ))}
             </div>

@@ -26,6 +26,7 @@ import {
   DoshaProfile, getDominantDosha, DOSHA_NAMES, DOSHA_COLORS,
   AGE_NAMES, AGE_SUBTITLES, AgeGroup,
 } from "@/lib/types";
+import { BrandIcon } from "@/components/BrandIcon";
 
 type RegStep = "name" | "contacts" | "skin" | "age";
 
@@ -423,12 +424,7 @@ export default function HomePage() {
         ) : null;
       })()}
 
-      {/* ── Audience router (three doors) ────────── */}
-      <div className="flex items-center gap-1.5 mb-10 text-[11px]" style={{ letterSpacing: "0.16em", textTransform: "uppercase" }}>
-        <span className="px-3 py-1.5 rounded-full" style={{ background: "var(--brand)", color: "#fff" }}>Клиент</span>
-        <Link href="/dealers" className="px-3 py-1.5 rounded-full tap" style={{ color: "var(--lp-muted)", border: "1px solid var(--lp-line-soft)" }}>Салон</Link>
-        <Link href="/b2b" className="px-3 py-1.5 rounded-full tap" style={{ color: "var(--lp-muted)", border: "1px solid var(--lp-line-soft)" }}>Партнёр</Link>
-      </div>
+      {/* Role switcher moved to Header — persistent across all pages */}
 
       {/* ═══ EDITORIAL HERO ═══════════════════════ */}
       <header className="mb-12">
@@ -513,7 +509,7 @@ export default function HomePage() {
                 {hero.images[0] && (
                   <div className="relative overflow-hidden -mx-5" style={{ borderRadius: "20px" }}>
                     <img src={hero.images[0].url} alt=""
-                      className="w-full h-[240px] object-cover transition-transform duration-700 group-hover:scale-105" />
+                      className="w-full h-[240px] object-cover product-img transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.7) 0%, transparent 55%)" }} />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <p className="eyebrow mb-2" style={{ color: "rgba(255,255,255,0.65)" }}>
@@ -543,7 +539,7 @@ export default function HomePage() {
                 {product.images[0] && (
                   <div className="w-[140px] h-[180px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)", borderRadius: "12px" }}>
                     <img src={product.images[0].url} alt=""
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      className="w-full h-full object-cover product-img transition-transform duration-700 group-hover:scale-105" />
                   </div>
                 )}
                 <div className="flex-1 min-w-0 py-1">
@@ -664,7 +660,7 @@ export default function HomePage() {
               return p?.images[0] ? (
                 <div key={u.productId} className="w-[48px] h-[48px] rounded-full overflow-hidden shrink-0"
                   style={{ border: "2px solid var(--lp-bg)", background: "var(--lp-soft)" }}>
-                  <img src={p.images[0].url} alt="" className="w-full h-full object-cover" />
+                  <img src={p.images[0].url} alt="" className="w-full h-full object-cover product-img" />
                 </div>
               ) : null;
             })}
@@ -726,7 +722,7 @@ export default function HomePage() {
             {todayPoll.options.map(opt => (
               <button key={opt.id} onClick={() => handlePollVote(opt.id)}
                 className="pill-chip tap" style={{ padding: "10px 18px" }}>
-                <span className="mr-2">{opt.emoji}</span>
+                <span className="mr-2.5 inline-flex" style={{ color: "var(--lp-muted)" }}><BrandIcon id={opt.icon} size={18} /></span>
                 {opt.text}
               </button>
             ))}
@@ -743,8 +739,8 @@ export default function HomePage() {
                       background: isSelected ? "var(--lp-soft)" : "transparent",
                     }} />
                   <div className="relative flex items-center justify-between h-full">
-                    <span className="text-[14px]">
-                      <span className="mr-2">{opt.emoji}</span>
+                    <span className="text-[14px] flex items-center">
+                      <span className="mr-2.5 inline-flex" style={{ color: isSelected ? "var(--brand)" : "var(--lp-muted)" }}><BrandIcon id={opt.icon} size={18} /></span>
                       {opt.text}
                       {isSelected && <span className="eyebrow ml-3" style={{ color: "var(--brand)" }}>·вы</span>}
                     </span>
@@ -786,7 +782,7 @@ export default function HomePage() {
                 className="flex items-center gap-4 tap" style={{ paddingBottom: 12, borderBottom: "1px solid var(--lp-line-soft)" }}>
                 {product.images[0] && (
                   <div className="w-[48px] h-[48px] shrink-0 overflow-hidden" style={{ background: "var(--lp-soft)" }}>
-                    <img src={product.images[0].url} alt="" className="w-full h-full object-cover" />
+                    <img src={product.images[0].url} alt="" className="w-full h-full object-cover product-img" />
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
@@ -1035,7 +1031,7 @@ export default function HomePage() {
                     style={i > 0 ? { borderTop: "0.5px solid var(--separator)" } : undefined}>
                     {p.images[0] && (
                       <div className="w-11 h-11 rounded-[12px] overflow-hidden shrink-0 bg-fill">
-                        <img src={p.images[0].url} alt="" className="w-full h-full object-cover" />
+                        <img src={p.images[0].url} alt="" className="w-full h-full object-cover product-img" />
                       </div>
                     )}
                     <div className="flex-1 min-w-0">

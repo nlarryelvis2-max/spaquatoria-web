@@ -206,50 +206,50 @@ export const SOCIAL_REVIEWS: SocialReview[] = [
 export interface QuickPoll {
   id: string;
   question: string;
-  options: { id: string; text: string; emoji: string; simulatedPct: number }[];
+  options: { id: string; text: string; icon: string; simulatedPct: number }[];
 }
 
 export const QUICK_POLLS: QuickPoll[] = [
   { id: "time", question: "Когда ты ухаживаешь за кожей?", options: [
-    { id: "morning", text: "Утром", emoji: "🌅", simulatedPct: 34 },
-    { id: "evening", text: "Вечером", emoji: "🌙", simulatedPct: 48 },
-    { id: "both", text: "Оба раза", emoji: "✨", simulatedPct: 18 },
+    { id: "morning", text: "Утром", icon: "morning", simulatedPct: 34 },
+    { id: "evening", text: "Вечером", icon: "evening", simulatedPct: 48 },
+    { id: "both", text: "Оба раза", icon: "both", simulatedPct: 18 },
   ]},
   { id: "priority", question: "Что важнее в уходе?", options: [
-    { id: "hydration", text: "Увлажнение", emoji: "💧", simulatedPct: 42 },
-    { id: "protection", text: "Защита", emoji: "🛡️", simulatedPct: 31 },
-    { id: "anti-age", text: "Anti-age", emoji: "⏳", simulatedPct: 27 },
+    { id: "hydration", text: "Увлажнение", icon: "hydration", simulatedPct: 42 },
+    { id: "protection", text: "Защита", icon: "protection", simulatedPct: 31 },
+    { id: "anti-age", text: "Anti-age", icon: "anti-age", simulatedPct: 27 },
   ]},
   { id: "texture", question: "Какая текстура тебе ближе?", options: [
-    { id: "cream", text: "Крем", emoji: "🧴", simulatedPct: 38 },
-    { id: "gel", text: "Гель", emoji: "💎", simulatedPct: 24 },
-    { id: "oil", text: "Масло", emoji: "🫒", simulatedPct: 38 },
+    { id: "cream", text: "Крем", icon: "cream", simulatedPct: 38 },
+    { id: "gel", text: "Гель", icon: "gel", simulatedPct: 24 },
+    { id: "oil", text: "Масло", icon: "oil", simulatedPct: 38 },
   ]},
   { id: "mask", question: "Как часто делаешь маску?", options: [
-    { id: "weekly", text: "Каждую неделю", emoji: "📅", simulatedPct: 35 },
-    { id: "rare", text: "Иногда", emoji: "🤷", simulatedPct: 45 },
-    { id: "never", text: "Не делаю", emoji: "😅", simulatedPct: 20 },
+    { id: "weekly", text: "Каждую неделю", icon: "weekly", simulatedPct: 35 },
+    { id: "rare", text: "Иногда", icon: "rare", simulatedPct: 45 },
+    { id: "never", text: "Не делаю", icon: "never", simulatedPct: 20 },
   ]},
   { id: "discover", question: "Как ты узнаёшь о новых средствах?", options: [
-    { id: "salon", text: "В салоне", emoji: "💆", simulatedPct: 41 },
-    { id: "friends", text: "Подруги", emoji: "👯", simulatedPct: 33 },
-    { id: "self", text: "Сама ищу", emoji: "🔍", simulatedPct: 26 },
+    { id: "salon", text: "В салоне", icon: "salon", simulatedPct: 41 },
+    { id: "friends", text: "Подруги", icon: "friends", simulatedPct: 33 },
+    { id: "self", text: "Сама ищу", icon: "self", simulatedPct: 26 },
   ]},
   { id: "feeling", question: "Как твоя кожа сегодня?", options: [
-    { id: "great", text: "Отлично", emoji: "😊", simulatedPct: 28 },
-    { id: "ok", text: "Нормально", emoji: "😐", simulatedPct: 52 },
-    { id: "meh", text: "Не очень", emoji: "😔", simulatedPct: 20 },
+    { id: "great", text: "Отлично", icon: "great", simulatedPct: 28 },
+    { id: "ok", text: "Нормально", icon: "ok", simulatedPct: 52 },
+    { id: "meh", text: "Не очень", icon: "meh", simulatedPct: 20 },
   ]},
   { id: "season-fav", question: "Любимый сезон для кожи?", options: [
-    { id: "spring", text: "Весна", emoji: "🌸", simulatedPct: 29 },
-    { id: "summer", text: "Лето", emoji: "☀️", simulatedPct: 22 },
-    { id: "autumn", text: "Осень", emoji: "🍂", simulatedPct: 33 },
-    { id: "winter", text: "Зима", emoji: "❄️", simulatedPct: 16 },
+    { id: "spring", text: "Весна", icon: "spring", simulatedPct: 29 },
+    { id: "summer", text: "Лето", icon: "summer", simulatedPct: 22 },
+    { id: "autumn", text: "Осень", icon: "autumn", simulatedPct: 33 },
+    { id: "winter", text: "Зима", icon: "winter", simulatedPct: 16 },
   ]},
   { id: "ritual-time", question: "Сколько времени на уход утром?", options: [
-    { id: "5min", text: "До 5 мин", emoji: "⚡", simulatedPct: 45 },
-    { id: "10min", text: "5-10 мин", emoji: "⏱️", simulatedPct: 38 },
-    { id: "15plus", text: "15+ мин", emoji: "🧖", simulatedPct: 17 },
+    { id: "5min", text: "До 5 мин", icon: "5min", simulatedPct: 45 },
+    { id: "10min", text: "5-10 мин", icon: "10min", simulatedPct: 38 },
+    { id: "15plus", text: "15+ мин", icon: "15plus", simulatedPct: 17 },
   ]},
 ];
 
