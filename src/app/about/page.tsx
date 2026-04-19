@@ -12,14 +12,14 @@ import { DoshaProfile, getDominantDosha, DOSHA_NAMES, DOSHA_COLORS, DoshaType } 
 interface StoryItem {
   id: string;
   title: string;
-  emoji: string;
+  cover: string;
   color: string;
   slides: { heading: string; body: string; photo?: string }[];
 }
 
 const STORIES: StoryItem[] = [
   {
-    id: "s1", title: "Светлана", emoji: "👩‍🔬", color: "var(--brand)",
+    id: "s1", title: "Светлана", cover: "/about/founders/svetlana-portrait.jpg", color: "var(--brand)",
     slides: [
       { heading: "К.х.н. Светлана Эдгаровна Мухтарова", body: "Создатель SPAquatoria. Химик-технолог, руководитель научного центра «Лаборатория Живая косметика-про». Автор всех формул бренда с 1996 года.", photo: "/about/founders/svetlana-portrait.jpg" },
       { heading: "Династия", body: "Отец — Эдгар Илалович Мухтаров — разработал технологии экстракции биоактивных веществ из лекарственных растений в советское время. Патенты НПО «Техкон» — семейное наследие.", photo: "/about/founders/svetlana-main.jpg" },
@@ -28,7 +28,7 @@ const STORIES: StoryItem[] = [
     ],
   },
   {
-    id: "s2", title: "Наука", emoji: "🔬", color: "#7B5D8A",
+    id: "s2", title: "Наука", cover: "/about/factory/1.jpg", color: "#7B5D8A",
     slides: [
       { heading: "НПО «Техкон» с 1989", body: "4 лаборатории в научном центре. Технологии экстракции биоактивных веществ из лекарственных растений. Патент RU2302423C2 — выделение антоцианинов.", photo: "/about/factory/1.jpg" },
       { heading: "98,9% натуральность", body: "Без парабенов, SLS, силиконов, синтетических отдушек. Без компонентов животного происхождения, добытых насилием. Без тестирования на животных.", photo: "/about/factory/3.jpg" },
@@ -36,21 +36,21 @@ const STORIES: StoryItem[] = [
     ],
   },
   {
-    id: "s3", title: "Ритуал", emoji: "✨", color: "#B84B8C",
+    id: "s3", title: "Ритуал", cover: "/about/products/yoga-1.jpg", color: "#B84B8C",
     slides: [
       { heading: "Масляная маска", body: "Масло-эликсир на корни за 30 мин до мытья. Массируй 5 минут. Тёплое полотенце усиливает эффект.", photo: "/about/products/yoga-1.jpg" },
       { heading: "Точки Марма", body: "107 энергетических точек. При нанесении крема надавливай на точки вокруг глаз и висков — усиливает впитывание.", photo: "/about/products/pearl-2.jpg" },
     ],
   },
   {
-    id: "s4", title: "Аюрведа", emoji: "🧘", color: "#C8956E",
+    id: "s4", title: "Аюрведа", cover: "/about/events/yoga-day.jpg", color: "#C8956E",
     slides: [
       { heading: "5000 лет знаний", body: "Три доши (Вата, Питта, Капха) определяют тип кожи, метаболизм, предрасположенности. Зная свою дошу — выбираешь уход, который понимает твою природу.", photo: "/about/events/yoga-day.jpg" },
       { heading: "Yoga Line", body: "Линия аромаэссенций для кинезиодиагностики чакр. Соединение аюрведы с йога-практиками. Музыкальная терапия — индийские раги как канал воздействия.", photo: "/about/lines/yoga-line.jpg" },
     ],
   },
   {
-    id: "s5", title: "Выставки", emoji: "🏆", color: "#5EBB6E",
+    id: "s5", title: "Выставки", cover: "/about/events/intercharm-2018.png", color: "#5EBB6E",
     slides: [
       { heading: "InterCHARM", body: "Главная beauty-выставка России. SPAquatoria — постоянный участник с 2016. Мастер-классы, миолифтинг-массаж, антицеллюлитные техники.", photo: "/about/events/intercharm-2018.png" },
       { heading: "Healing Space", body: "Конференция массажных техник и оздоровительных практик. Основана SPAquatoria в 2018. Международные спикеры: Индия, Швейцария, Россия.", photo: "/about/events/healing-space.jpg" },
@@ -58,7 +58,7 @@ const STORIES: StoryItem[] = [
     ],
   },
   {
-    id: "s6", title: "Команда", emoji: "👥", color: "#FF8B5E",
+    id: "s6", title: "Команда", cover: "/about/founders/denis.jpg", color: "#FF8B5E",
     slides: [
       { heading: "Денис Данилов — CEO", body: "Генеральный директор, со-основатель и идейный вдохновитель SPAquatoria. Управляет экосистемой: фабрика → дилеры → салоны → потребитель.", photo: "/about/founders/denis.jpg" },
       { heading: "Денис Демидов — тренер", body: "Ведущий мастер-классов по миолифтинг-массажу лица и антицеллюлитным техникам. Выступает на InterCHARM, обучает косметологов в регионах.", photo: "/about/trainers/demidov.jpg" },
@@ -182,8 +182,8 @@ export default function AboutPage() {
             className="flex flex-col items-center gap-1 shrink-0 tap">
             <div className={`w-14 h-14 rounded-full p-[2px] transition-all ${activeStory === s.id ? "ring-2 ring-offset-2" : ""}`}
               style={{ background: s.color, ringColor: s.color } as React.CSSProperties}>
-              <div className="w-full h-full rounded-full bg-bg flex items-center justify-center">
-                <span className="text-[20px]">{s.emoji}</span>
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <img src={s.cover} alt={s.title} className="w-full h-full object-cover" />
               </div>
             </div>
             <span className="text-[10px] font-medium" style={{ color: "var(--lp-muted)" }}>{s.title}</span>
@@ -194,11 +194,11 @@ export default function AboutPage() {
       {/* ── INLINE STORY CARD (journal-style) ──── */}
       {activeStoryData && (
         <div className="mb-6">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="eyebrow px-2.5 py-1 rounded-full text-white text-[9px]"
-              style={{ backgroundColor: activeStoryData.color }}>
+          <div className="flex items-center gap-2.5 mb-3">
+            <span className="eyebrow" style={{ color: "var(--lp-ink)" }}>
               {activeStoryData.title}
             </span>
+            <span style={{ width: "1px", height: "10px", background: "var(--lp-line-strong)", display: "inline-block" }} />
             <span className="eyebrow" style={{ color: "var(--lp-tertiary)" }}>
               {activeStoryData.slides.length} разделов
             </span>
@@ -316,11 +316,12 @@ export default function AboutPage() {
                 <div key={i} style={i > 0 ? { borderTop: "1px solid var(--lp-line-soft)" } : undefined}>
                   <button onClick={() => setOpenJournal(isOpen ? null : i)}
                     className="w-full text-left px-4 py-3.5 tap">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="eyebrow px-2.5 py-1 rounded-full text-white text-[9px]"
-                        style={{ backgroundColor: j.color }}>{j.tag}</span>
+                    <div className="flex items-center gap-2.5 mb-2">
+                      <span className="eyebrow" style={{ color: "var(--lp-muted)" }}>{j.tag}</span>
+                      <span style={{ width: "1px", height: "10px", background: "var(--lp-line-strong)", display: "inline-block" }} />
                       <span className="eyebrow" style={{ color: "var(--lp-tertiary)" }}>{j.date}</span>
-                      <svg className={`w-3.5 h-3.5 muted ml-auto shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                      <svg className={`w-3.5 h-3.5 ml-auto shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                        style={{ color: "var(--lp-tertiary)" }}
                         fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                       </svg>
