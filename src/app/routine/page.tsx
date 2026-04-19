@@ -85,10 +85,10 @@ export default function RoutinePage() {
 
       {/* Context */}
       <div className="flex gap-1.5 mb-5">
-        <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ backgroundColor: DOSHA_COLORS[dosha] + "15", color: DOSHA_COLORS[dosha] }}>
+        <span className="text-[11px] font-semibold px-2.5 py-1 rounded" style={{ backgroundColor: DOSHA_COLORS[dosha] + "15", color: DOSHA_COLORS[dosha] }}>
           {DOSHA_NAMES[dosha]}
         </span>
-        <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-fill text-fg-secondary">
+        <span className="text-[11px] font-semibold px-2.5 py-1 rounded bg-fill text-fg-secondary">
           {AGE_SUBTITLES[ageGroup]}
         </span>
       </div>
@@ -99,7 +99,7 @@ export default function RoutinePage() {
           <button
             key={t}
             onClick={() => setTimeOfDay(t)}
-            className={`rounded-full px-5 py-[7px] text-[13px] font-semibold transition-all ${
+            className={`rounded px-5 py-[7px] text-[13px] font-semibold transition-all ${
               timeOfDay === t
                 ? "bg-brand text-white shadow-sm"
                 : "text-fg-secondary"

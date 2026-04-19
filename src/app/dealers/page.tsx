@@ -160,7 +160,7 @@ export default function DealersPage() {
               onKeyDown={e => e.key === "Enter" && loginInput && handleLogin()}
             />
             <button onClick={handleLogin} disabled={!loginInput}
-              className="bg-brand text-white px-5 py-2.5 rounded-full text-[15px] font-semibold tap disabled:opacity-40">
+              className="bg-brand text-white px-5 py-2.5 rounded text-[15px] font-semibold tap disabled:opacity-40">
               Войти
             </button>
           </div>
@@ -224,7 +224,7 @@ export default function DealersPage() {
           { key: "manager" as Tab, label: "Менеджер" },
         ]).map(t => (
           <button key={t.key} onClick={() => setTab(t.key)}
-            className={`shrink-0 px-4 py-[7px] rounded-full text-[13px] font-semibold transition-all tap ${
+            className={`shrink-0 px-4 py-[7px] rounded text-[13px] font-semibold transition-all tap ${
               tab === t.key ? "bg-brand text-white" : "bg-fill text-fg-secondary"
             }`}>
             {t.label}
@@ -317,7 +317,7 @@ export default function DealersPage() {
             <div className="glass-card p-3">
               <div className="flex items-center justify-between mb-2">
                 <p className="text-[11px] font-semibold text-fg-tertiary uppercase tracking-wide">Умные рекомендации</p>
-                <span className="text-[11px] font-semibold text-brand px-2 py-0.5 rounded-full bg-brand/10">{recommendations.length}</span>
+                <span className="text-[11px] font-semibold text-brand px-2 py-0.5 rounded bg-brand/10">{recommendations.length}</span>
               </div>
               <div className="space-y-2">
                 {recommendations.slice(0, 4).map((rec, i) => {
@@ -336,7 +336,7 @@ export default function DealersPage() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
                           <p className="text-[13px] font-semibold leading-tight">{rec.title}</p>
-                          <span className={`text-[9px] font-bold px-1.5 py-[1px] rounded-full shrink-0 ${
+                          <span className={`text-[9px] font-bold px-1.5 py-[1px] rounded shrink-0 ${
                             rec.priority === "high" ? "bg-[#FF3B3015] text-[#FF3B30]" :
                             rec.priority === "medium" ? "bg-[#FF950015] text-[#FF9500]" :
                             "bg-fill-secondary text-fg-tertiary"
@@ -514,7 +514,7 @@ export default function DealersPage() {
                     <div className="flex-1">
                       <h3 className="text-[17px] font-bold leading-tight">{proto.title}</h3>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-[12px] font-semibold px-2 py-0.5 rounded-full"
+                        <span className="text-[12px] font-semibold px-2 py-0.5 rounded"
                           style={{ backgroundColor: `${diffColors[proto.difficulty]}15`, color: diffColors[proto.difficulty] }}>
                           {diffLabels[proto.difficulty]}
                         </span>
@@ -595,7 +595,7 @@ export default function DealersPage() {
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-[14px]">{cfg.icon}</span>
                         <p className="text-[13px] font-semibold flex-1">{rec.title}</p>
-                        <span className="text-[9px] font-bold px-1.5 py-[1px] rounded-full"
+                        <span className="text-[9px] font-bold px-1.5 py-[1px] rounded"
                           style={{ backgroundColor: `${cfg.color}15`, color: cfg.color }}>
                           {cfg.label}
                         </span>
@@ -790,7 +790,7 @@ export default function DealersPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-[13px] text-fg-secondary">{order.date} · {order.items} позиций</span>
-                    <span className="text-[11px] font-semibold px-2.5 py-[3px] rounded-full"
+                    <span className="text-[11px] font-semibold px-2.5 py-[3px] rounded"
                       style={{ backgroundColor: statusCfg.bg, color: statusCfg.color }}>
                       {statusCfg.label}
                     </span>
@@ -812,7 +812,7 @@ export default function DealersPage() {
             <p className="text-[17px] font-bold mb-1">Оптовый каталог</p>
             <p className="text-[13px] text-fg-secondary mb-4">Ваша скидка: <span className="font-bold text-brand">{account.discount}%</span></p>
             <Link href="/catalog"
-              className="inline-block bg-brand text-white px-6 py-3 rounded-full text-[15px] font-semibold tap">
+              className="inline-block bg-brand text-white px-6 py-3 rounded text-[15px] font-semibold tap">
               Перейти в каталог
             </Link>
           </div>
@@ -915,9 +915,9 @@ export default function DealersPage() {
             <p className="text-[13px] text-fg-secondary mb-5">{account.companyName}</p>
             <div className="flex gap-3">
               <button onClick={() => setShowLogout(false)}
-                className="flex-1 py-2.5 rounded-full glass-card text-[15px] font-semibold tap">Отмена</button>
+                className="flex-1 py-2.5 rounded glass-card text-[15px] font-semibold tap">Отмена</button>
               <button onClick={handleLogout}
-                className="flex-1 py-2.5 rounded-full bg-brand text-white text-[15px] font-semibold tap">Выйти</button>
+                className="flex-1 py-2.5 rounded bg-brand text-white text-[15px] font-semibold tap">Выйти</button>
             </div>
           </div>
         </div>

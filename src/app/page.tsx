@@ -329,7 +329,7 @@ export default function HomePage() {
               onKeyDown={e => e.key === "Enter" && regName && setRegStep("contacts")}
             />
             <button onClick={() => setRegStep("contacts")} disabled={!regName}
-              className="w-full bg-brand text-white py-3.5 rounded-full text-[15px] font-semibold tap disabled:opacity-40">
+              className="w-full bg-brand text-white py-3.5 rounded text-[15px] font-semibold tap disabled:opacity-40">
               Далее
             </button>
           </div>
@@ -349,8 +349,8 @@ export default function HomePage() {
                 className="w-full px-4 py-3 rounded-lg text-[17px] outline-none glass-card text-fg" style={{ border: "none" }} />
             </div>
             <div className="flex gap-3">
-              <button onClick={() => setRegStep("name")} className="flex-1 py-3.5 rounded-full glass-card text-[15px] font-semibold tap">Назад</button>
-              <button onClick={() => setRegStep("skin")} className="flex-1 bg-brand text-white py-3.5 rounded-full text-[15px] font-semibold tap">Далее</button>
+              <button onClick={() => setRegStep("name")} className="flex-1 py-3.5 rounded glass-card text-[15px] font-semibold tap">Назад</button>
+              <button onClick={() => setRegStep("skin")} className="flex-1 bg-brand text-white py-3.5 rounded text-[15px] font-semibold tap">Далее</button>
             </div>
           </div>
         )}
@@ -362,14 +362,14 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-2 mb-6">
               {SKIN_CONCERN_OPTIONS.map(c => (
                 <button key={c} onClick={() => toggleConcern(c)}
-                  className={`px-4 py-2 rounded-full text-[15px] font-medium tap transition-all ${regConcerns.includes(c) ? "bg-brand text-white" : "glass-card text-fg-secondary"}`}>
+                  className={`px-4 py-2 rounded text-[15px] font-medium tap transition-all ${regConcerns.includes(c) ? "bg-brand text-white" : "glass-card text-fg-secondary"}`}>
                   {c}
                 </button>
               ))}
             </div>
             <div className="flex gap-3">
-              <button onClick={() => setRegStep("contacts")} className="flex-1 py-3.5 rounded-full glass-card text-[15px] font-semibold tap">Назад</button>
-              <button onClick={() => setRegStep("age")} className="flex-1 bg-brand text-white py-3.5 rounded-full text-[15px] font-semibold tap">Далее</button>
+              <button onClick={() => setRegStep("contacts")} className="flex-1 py-3.5 rounded glass-card text-[15px] font-semibold tap">Назад</button>
+              <button onClick={() => setRegStep("age")} className="flex-1 bg-brand text-white py-3.5 rounded text-[15px] font-semibold tap">Далее</button>
             </div>
           </div>
         )}
@@ -387,9 +387,9 @@ export default function HomePage() {
               ))}
             </div>
             <div className="flex gap-3">
-              <button onClick={() => setRegStep("skin")} className="flex-1 py-3.5 rounded-full glass-card text-[15px] font-semibold tap">Назад</button>
+              <button onClick={() => setRegStep("skin")} className="flex-1 py-3.5 rounded glass-card text-[15px] font-semibold tap">Назад</button>
               <button onClick={finishRegistration} disabled={!regAge}
-                className="flex-1 bg-brand text-white py-3.5 rounded-full text-[15px] font-semibold tap disabled:opacity-40">Готово</button>
+                className="flex-1 bg-brand text-white py-3.5 rounded text-[15px] font-semibold tap disabled:opacity-40">Готово</button>
             </div>
             <Link href="/catalog" className="block text-center text-[13px] text-brand mt-4 tap">Пропустить</Link>
           </div>
@@ -883,7 +883,7 @@ export default function HomePage() {
                 className="w-full px-4 py-3 rounded-lg text-[15px] outline-none bg-fill mb-4"
               />
               <button onClick={handleSkinLog}
-                className="w-full bg-brand text-white py-3.5 rounded-full text-[15px] font-semibold tap">
+                className="w-full bg-brand text-white py-3.5 rounded text-[15px] font-semibold tap">
                 Сохранить
               </button>
             </div>
@@ -946,7 +946,7 @@ export default function HomePage() {
               <h3 className="text-[20px] font-bold mb-1">Доши в гармонии</h3>
               <p className="text-[15px] text-fg-secondary mb-5">Ваш текущий баланс близок к вашей конституции. Продолжайте ухаживать за собой!</p>
               <button onClick={() => setShowVikritiResult(false)}
-                className="w-full bg-brand text-white py-3.5 rounded-full text-[15px] font-semibold tap">
+                className="w-full bg-brand text-white py-3.5 rounded text-[15px] font-semibold tap">
                 Отлично
               </button>
             </div>
@@ -981,7 +981,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-[8px] h-[8px] rounded-full" style={{ backgroundColor: DOSHA_COLORS[imbalanceAdvice.dosha] }} />
                   <span className="text-[15px] font-semibold">{imbalanceAdvice.title}</span>
-                  <span className={`ml-auto text-[11px] font-bold px-2 py-0.5 rounded-full ${
+                  <span className={`ml-auto text-[11px] font-bold px-2 py-0.5 rounded ${
                     imbalanceAdvice.level === "strong" ? "bg-red-100 text-red-600" :
                     imbalanceAdvice.level === "moderate" ? "bg-orange-100 text-orange-600" :
                     "bg-green-100 text-green-600"
@@ -992,7 +992,7 @@ export default function HomePage() {
                 <p className="text-[13px] text-fg-secondary leading-snug">{imbalanceAdvice.description}</p>
               </div>
               <button onClick={() => setShowVikritiResult(false)}
-                className="w-full bg-brand text-white py-3.5 rounded-full text-[15px] font-semibold tap">
+                className="w-full bg-brand text-white py-3.5 rounded text-[15px] font-semibold tap">
                 Понятно
               </button>
             </div>

@@ -151,7 +151,7 @@ body {
   background: var(--lp-paper);
   border: 1px solid var(--lp-line);
   box-shadow: none;
-  border-radius: 999px;
+  border-radius: 8px;
 }
 
 .glass-card-interactive {
@@ -465,12 +465,12 @@ button:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 2px
 /* iOS segmented control — glass variant */
 .segment-bg {
   background: var(--fill);
-  border-radius: 14px;
+  border-radius: 6px;
   padding: 3px;
 }
 
 .segment-btn {
-  border-radius: 11px;
+  border-radius: 4px;
   padding: 7px 18px;
   font-size: 13px;
   font-weight: 600;

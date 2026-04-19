@@ -174,7 +174,7 @@ function CollectionSection({ collectionId, items, dominantDosha }: {
           <div className="flex items-center gap-2">
             <h3 className="text-[17px] font-semibold text-fg">{name}</h3>
             {doshaMatch && (
-              <span className="text-[10px] font-bold text-white px-2 py-0.5 rounded-full" style={{ background: DOSHA_COLORS[dominantDosha] }}>
+              <span className="text-[10px] font-bold text-white px-2 py-0.5 rounded" style={{ background: DOSHA_COLORS[dominantDosha] }}>
                 {DOSHA_NAMES[dominantDosha]}
               </span>
             )}
@@ -404,11 +404,11 @@ function CatalogInner() {
                   {cat.image ? (
                     <div className="relative aspect-[3/4] w-full overflow-hidden" style={{ borderRadius: 8 }}>
                       <img src={cat.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style={{ objectPosition: "top" }} />
-                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.75) 0%, rgba(22,18,12,0.15) 50%, transparent 100%)" }} />
+                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,18,12,0.88) 0%, rgba(22,18,12,0.55) 40%, rgba(22,18,12,0.15) 70%, transparent 100%)" }} />
                       <div className="absolute bottom-0 left-0 right-0 p-4">
-                        <p className="text-[16px] font-medium text-white" style={{ letterSpacing: "-0.01em" }}>{cat.name}</p>
-                        <p className="text-[11px] text-white/60 leading-snug mt-1">{cat.desc}</p>
-                        <p className="text-[11px] text-white/40 mt-1.5 font-medium">{categoryCounts[cat.id]} средств</p>
+                        <p className="text-[16px] font-medium text-white" style={{ letterSpacing: "-0.01em", textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}>{cat.name}</p>
+                        <p className="text-[12px] text-white/75 leading-snug mt-1" style={{ textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>{cat.desc}</p>
+                        <p className="text-[11px] text-white/50 mt-1.5 font-medium">{categoryCounts[cat.id]} средств</p>
                       </div>
                     </div>
                   ) : (
@@ -467,7 +467,7 @@ function CatalogInner() {
                         <span className="text-[13px] font-bold text-white">{line.name}</span>
                         <span className="text-[11px] text-white/80">{line.ageRange}</span>
                         {isMyLine && (
-                          <span className="text-[10px] font-bold text-white bg-white/25 px-2 py-0.5 rounded-full">ваша</span>
+                          <span className="text-[10px] font-bold text-white bg-white/25 px-2 py-0.5 rounded">ваша</span>
                         )}
                       </div>
                     </div>
@@ -506,7 +506,7 @@ function CatalogInner() {
                 <p className="text-[14px] text-white/70 leading-snug mb-3">
                   Пройдите доша-тест — мы подберём средства именно для вашего типа кожи
                 </p>
-                <span className="inline-block bg-white/20 text-white text-[13px] font-semibold px-5 py-2 rounded-full">
+                <span className="inline-block bg-white/20 text-white text-[13px] font-semibold px-5 py-2 rounded">
                   Пройти тест
                 </span>
               </div>
@@ -558,7 +558,7 @@ function CatalogInner() {
                   key={g.collectionId}
                   id={`pill-${g.collectionId}`}
                   onClick={() => scrollToCollection(g.collectionId)}
-                  className={`shrink-0 px-3 py-[6px] rounded-full text-[12px] font-medium tap transition-all ${
+                  className={`shrink-0 px-3 py-[6px] rounded text-[12px] font-medium tap transition-all ${
                     isActive
                       ? "bg-brand text-white"
                       : doshaMatch
@@ -579,7 +579,7 @@ function CatalogInner() {
               <button
                 key={d}
                 onClick={() => setSelectedDosha(selectedDosha === d ? null : d)}
-                className="shrink-0 px-3 py-[6px] rounded-full text-[13px] font-medium transition-colors"
+                className="shrink-0 px-3 py-[6px] rounded text-[13px] font-medium transition-colors"
                 style={selectedDosha === d
                   ? { backgroundColor: DOSHA_COLORS[d], color: "#fff" }
                   : { backgroundColor: "var(--fill)", color: "var(--fg-secondary)" }
@@ -648,7 +648,7 @@ function CatalogInner() {
               <button
                 key={d}
                 onClick={() => setSelectedDosha(selectedDosha === d ? null : d)}
-                className="shrink-0 px-3 py-[6px] rounded-full text-[13px] font-medium transition-colors"
+                className="shrink-0 px-3 py-[6px] rounded text-[13px] font-medium transition-colors"
                 style={selectedDosha === d
                   ? { backgroundColor: DOSHA_COLORS[d], color: "#fff" }
                   : { backgroundColor: "var(--fill)", color: "var(--fg-secondary)" }

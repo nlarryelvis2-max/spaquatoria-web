@@ -90,7 +90,7 @@ export default function IngredientsPage() {
                       {ing.benefits.length > 0 && (
                         <div className="flex flex-wrap gap-1 mt-2">
                           {ing.benefits.map(b => (
-                            <span key={b} className="text-[10px] font-semibold px-2 py-[2px] rounded-full bg-brand-green/10 text-brand-green">
+                            <span key={b} className="text-[10px] font-semibold px-2 py-[2px] rounded bg-brand-green/10 text-brand-green">
                               {PURPOSE_NAMES[b]}
                             </span>
                           ))}

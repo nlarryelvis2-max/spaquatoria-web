@@ -150,7 +150,7 @@ export default function ProfilePage() {
         </div>
         <h1 className="text-[20px] font-bold text-fg mb-1">Профиль</h1>
         <p className="text-[14px] text-fg-secondary mb-5">Зарегистрируйся для персональных рекомендаций</p>
-        <Link href="/" className="inline-block bg-brand text-white px-8 py-3 rounded-full text-[15px] font-semibold tap">
+        <Link href="/" className="inline-block bg-brand text-white px-8 py-3 rounded text-[15px] font-semibold tap">
           Зарегистрироваться
         </Link>
       </div>
@@ -189,7 +189,7 @@ export default function ProfilePage() {
           <div className="flex flex-wrap gap-1.5">
             {SKIN_CONCERN_OPTIONS.map(c => (
               <button key={c} onClick={() => toggleConcern(c)}
-                className={`px-3 py-1.5 rounded-full text-[12px] font-medium tap ${
+                className={`px-3 py-1.5 rounded text-[12px] font-medium tap ${
                   form.skinConcerns.includes(c) ? "bg-brand text-white" : "glass-card text-fg-secondary"
                 }`}>
                 {c}
@@ -654,7 +654,7 @@ export default function ProfilePage() {
         {account.skinConcerns.length > 0 && (
           <div className="px-3 py-2.5 flex flex-wrap gap-1.5" style={{ borderTop: "0.5px solid var(--separator)" }}>
             {account.skinConcerns.map(c => (
-              <span key={c} className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-brand/10 text-brand">{c}</span>
+              <span key={c} className="px-2 py-0.5 rounded text-[11px] font-medium bg-brand/10 text-brand">{c}</span>
             ))}
           </div>
         )}
@@ -694,11 +694,11 @@ export default function ProfilePage() {
             <p className="text-[13px] text-fg-secondary mb-4">Профиль, тесты, избранное и средства будут удалены</p>
             <div className="flex gap-3">
               <button onClick={() => setShowConfirmClear(false)}
-                className="flex-1 py-2.5 rounded-full glass-card text-[15px] font-semibold tap">
+                className="flex-1 py-2.5 rounded glass-card text-[15px] font-semibold tap">
                 Отмена
               </button>
               <button onClick={handleClearAll}
-                className="flex-1 py-2.5 rounded-full bg-brand-coral text-white text-[15px] font-semibold tap">
+                className="flex-1 py-2.5 rounded bg-brand-coral text-white text-[15px] font-semibold tap">
                 Удалить
               </button>
             </div>

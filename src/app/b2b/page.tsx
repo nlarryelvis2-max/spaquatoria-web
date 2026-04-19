@@ -177,7 +177,7 @@ export default function B2BPage() {
               className="w-full px-4 py-2.5 bg-fill rounded-lg text-[15px] outline-none resize-none" />
 
             <button type="submit"
-              className="w-full bg-brand text-white py-3 rounded-full text-[15px] font-semibold tap">
+              className="w-full bg-brand text-white py-3 rounded text-[15px] font-semibold tap">
               Отправить заявку
             </button>
           </form>

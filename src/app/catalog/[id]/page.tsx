@@ -43,7 +43,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           {product.doshaAffinity.length > 0 && (
             <div className="flex gap-1.5 mb-2">
               {product.doshaAffinity.map(d => (
-                <span key={d} className="text-[11px] font-semibold px-2.5 py-[3px] rounded-full"
+                <span key={d} className="text-[11px] font-semibold px-2.5 py-[3px] rounded"
                   style={{ backgroundColor: DOSHA_COLORS[d] + "15", color: DOSHA_COLORS[d] }}>
                   {DOSHA_NAMES[d]}
                 </span>
@@ -60,7 +60,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
               <p className="text-[13px] font-semibold text-fg-secondary uppercase tracking-wide mb-2">Назначение</p>
               <div className="flex flex-wrap gap-1">
                 {product.purposes.map(p => (
-                  <span key={p} className="text-[11px] font-medium px-2.5 py-[3px] rounded-full bg-brand-green/10 text-brand-green">
+                  <span key={p} className="text-[11px] font-medium px-2.5 py-[3px] rounded bg-brand-green/10 text-brand-green">
                     {PURPOSE_NAMES[p]}
                   </span>
                 ))}
